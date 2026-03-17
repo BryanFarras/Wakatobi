@@ -1,18 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvh5s6pgekfoq"]
+[gd_scene load_steps=24 format=3 uid="uid://bvh5s6pgekfoq"]
 
 [ext_resource type="Script" uid="uid://bgp6ihig7f5cn" path="res://scripts/audio/audio_manager.gd" id="1_cfl81"]
 [ext_resource type="Script" uid="uid://hduwjcrkeky7" path="res://scripts/audio/sfx_character.gd" id="2_85pnb"]
+[ext_resource type="AudioStream" uid="uid://c26rvnljs0tlf" path="res://assets/audio/player/player_footsteps_sand1.mp3" id="3_28alx"]
 [ext_resource type="Script" uid="uid://c7rxll6vk8h2f" path="res://scripts/audio/sfx_environtment.gd" id="3_wp3eh"]
 [ext_resource type="Script" uid="uid://bh1ajjbc4ura0" path="res://scripts/audio/sfx_ambience.gd" id="4_c3tep"]
+[ext_resource type="AudioStream" uid="uid://60n2emm1y3pw" path="res://assets/audio/player/player_footsteps_sand2.mp3" id="4_emnvs"]
 [ext_resource type="Script" uid="uid://yeupqexnns00" path="res://scripts/audio/music.gd" id="5_xe7xr"]
+[ext_resource type="AudioStream" uid="uid://b6o0035ra0bnn" path="res://assets/audio/player/player_footsteps_sand3.mp3" id="5_ypw6b"]
+[ext_resource type="AudioStream" uid="uid://dttdtxm7lpdgu" path="res://assets/audio/player/player_footsteps_sand4.mp3" id="6_dlb7n"]
+[ext_resource type="AudioStream" uid="uid://cfd03gar2pa6x" path="res://assets/audio/player/player_footsteps_soil1.mp3" id="7_g78vt"]
+[ext_resource type="AudioStream" uid="uid://bovlsbas8cyjy" path="res://assets/audio/player/player_footsteps_soil2.mp3" id="8_gkbs7"]
+[ext_resource type="AudioStream" uid="uid://cksxhvwt02lsu" path="res://assets/audio/player/player_footsteps_soil3.mp3" id="9_c4cst"]
+[ext_resource type="AudioStream" uid="uid://cx5y0p6ebxfap" path="res://assets/audio/player/player_footsteps_soil4.mp3" id="10_1mp4c"]
+[ext_resource type="AudioStream" uid="uid://c5f8e6onrq123" path="res://assets/audio/player/player_footsteps_wood1.mp3" id="11_wfmnx"]
+[ext_resource type="AudioStream" uid="uid://bivy4316yplmb" path="res://assets/audio/player/player_footsteps_wood2.mp3" id="12_n8661"]
+[ext_resource type="AudioStream" uid="uid://dyaob4nes6fmy" path="res://assets/audio/player/player_footsteps_wood3.mp3" id="13_onqdg"]
+[ext_resource type="AudioStream" uid="uid://bw5snilu7ewie" path="res://assets/audio/player/player_footsteps_wood4.mp3" id="14_15ev1"]
+[ext_resource type="AudioStream" uid="uid://cgfdn73pxe8pa" path="res://assets/audio/player/player_footsteps_wood5.mp3" id="15_v6axm"]
+[ext_resource type="AudioStream" uid="uid://dvo5a36r3sry2" path="res://assets/audio/player/player_footsteps_grass1.mp3" id="16_hkpre"]
+[ext_resource type="AudioStream" uid="uid://u6vk2r2k80qx" path="res://assets/audio/player/player_footsteps_grass2.mp3" id="17_mjcpo"]
+[ext_resource type="AudioStream" uid="uid://dvtf8bgi2uakt" path="res://assets/audio/player/player_footsteps_grass3.mp3" id="18_qnat3"]
+[ext_resource type="AudioStream" uid="uid://bp5lda134wd6n" path="res://assets/audio/player/player_footsteps_grass4.mp3" id="19_nqbmb"]
+[ext_resource type="AudioStream" uid="uid://dkl5puixece0a" path="res://assets/placeholder/Song5 3.mp3" id="23_emnvs"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_cfl81")
 
 [node name="SFX_Character" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+volume_db = 5.954
+bus = &"Player"
 script = ExtResource("2_85pnb")
-footstep_interval = 0.249
+steps_sand = Array[AudioStream]([ExtResource("3_28alx"), ExtResource("4_emnvs"), ExtResource("5_ypw6b"), ExtResource("6_dlb7n")])
+steps_soil = Array[AudioStream]([ExtResource("7_g78vt"), ExtResource("8_gkbs7"), ExtResource("9_c4cst"), ExtResource("10_1mp4c")])
+steps_wood = Array[AudioStream]([ExtResource("11_wfmnx"), ExtResource("12_n8661"), ExtResource("13_onqdg"), ExtResource("14_15ev1"), ExtResource("15_v6axm")])
+steps_grass = Array[AudioStream]([ExtResource("16_hkpre"), ExtResource("17_mjcpo"), ExtResource("18_qnat3"), ExtResource("19_nqbmb")])
+footstep_interval = 0.3
 
 [node name="SFX_Environtment" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -26,3 +50,8 @@ script = ExtResource("4_c3tep")
 unique_name_in_owner = true
 script = ExtResource("5_xe7xr")
 music_clips = Array[AudioStream]([null, null, null])
+
+[node name="Music2" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("23_emnvs")
+bus = &"Player"

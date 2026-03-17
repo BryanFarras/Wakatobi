@@ -37,6 +37,13 @@ extends CharacterBody2D
 var last_direction: Vector2 = Vector2.DOWN
 var is_interacting: bool = false
 
+# Reference to AudioManager autoload
+var audio_manager := AudioManager
+
+# Track footstep state
+var _was_moving: bool = false
+var _current_surface: String = "sand" # TODO: Replace with actual surface detection
+
 func _ready() -> void:
 	add_to_group("player")
 	inventory_pcam.set_priority(inventory_pcam_inactive_priority)
@@ -63,8 +70,18 @@ func _physics_process(_delta: float) -> void:
 		input_dir = input_dir.normalized()
 		last_direction = input_dir
 		velocity = input_dir * speed
+
+		# Play footstep SFX if just started moving
+		if not _was_moving:
+			audio_manager.play_footstep(_current_surface)
+			_was_moving = true
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed * 0.2)
+
+		# Stop footstep SFX if just stopped moving
+		if _was_moving:
+			audio_manager.sfx_character.stop_footstep()
+			_was_moving = false
 
 	move_and_slide()
 	_handle_animation()
