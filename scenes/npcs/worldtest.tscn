@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3pafhut8y3ra"]
+
+[ext_resource type="Texture2D" uid="uid://c1ukqs4lf833t" path="res://assets/placeholder/map.png" id="1_lyo6i"]
+[ext_resource type="Texture2D" uid="uid://xagt1yerg37m" path="res://icon.svg" id="2_2i0k6"]
+[ext_resource type="PackedScene" uid="uid://31gbi4k0x2eh" path="res://scenes/door.tscn" id="3_qnvrv"]
+[ext_resource type="PackedScene" uid="uid://dqy4rbj540ddk" path="res://scenes/testing/playertest.tscn" id="4_2i0k6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnsk1"]
+size = Vector2(128, 124)
+
+[node name="World" type="Node2D"]
+
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("1_lyo6i")
+centered = false
+
+[node name="Building" type="StaticBody2D" parent="."]
+position = Vector2(165, 37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_nnsk1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Building"]
+texture = ExtResource("2_2i0k6")
+
+[node name="Door" parent="Building" instance=ExtResource("3_qnvrv")]
+position = Vector2(0, 56)
+door_id = "ext_door_a"
+target_scene_key = "building_a"
+target_door_id = "int_door_a"
+player_spawn_offset = Vector2(0, 40)
+
+[node name="Player" parent="." instance=ExtResource("4_2i0k6")]
+position = Vector2(10861, 2512)
+
+[node name="AudioRegions" type="Node2D" parent="."]
+
+[node name="sand" type="Node2D" parent="AudioRegions"]
+
+[node name="wood" type="Node2D" parent="AudioRegions"]
+
+[node name="Area2D" type="Area2D" parent="AudioRegions/wood"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AudioRegions/wood/Area2D"]
+polygon = PackedVector2Array(9062, 3666, 10891, 3654, 10909, 5250, 9816, 5250, 9815, 5007, 10527, 5013, 10521, 3889, 9056, 3899)
+
+[node name="soil" type="Node2D" parent="AudioRegions"]

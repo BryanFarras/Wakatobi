@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AudioManager="*res://scenes/audio/audio_manager.tscn"
 SceneManager="*res://scenes/global/scene_manager.tscn"
 PlayerManager="*res://scripts/global/player_manager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
@@ -26,6 +25,7 @@ Inventory="*res://scripts/global/inventory.gd"
 EventManager="*res://scripts/event/event_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestData="*res://scripts/global/QuestData.gd"
+AudioManager="*res://scenes/audio/audio_manager.tscn"
 
 [debug]
 

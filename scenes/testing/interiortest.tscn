@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://53itexkfj20r"]
+
+[ext_resource type="Texture2D" uid="uid://mpolivqk06jn" path="res://assets/placeholder/Potrait Character/Placeholder 2/pl2 worry.png" id="1_r41jq"]
+[ext_resource type="PackedScene" uid="uid://31gbi4k0x2eh" path="res://scenes/door.tscn" id="2_v0s0g"]
+[ext_resource type="PackedScene" uid="uid://bxoqkjf0awfn6" path="res://scenes/interaction/sign.tscn" id="3_7jv8a"]
+[ext_resource type="PackedScene" uid="uid://be3j7lfnl6rpm" path="res://scenes/event/event.tscn" id="4_c1b8a"]
+[ext_resource type="PackedScene" uid="uid://df3nrjrjnu1si" path="res://scenes/npcs/tetua.tscn" id="5_u0flw"]
+
+[node name="Interior" type="Node2D"]
+
+[node name="Tetua_Anambas" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -26.0
+offset_right = 12.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r41jq")
+expand_mode = 1
+
+[node name="Door" parent="." instance=ExtResource("2_v0s0g")]
+position = Vector2(0, 63)
+door_id = "int_door_b"
+target_scene_key = "water_testing"
+target_door_id = "ext_door_b"
+player_spawn_offset = Vector2(0, -40)
+
+[node name="Sign" parent="." instance=ExtResource("3_7jv8a")]
+position = Vector2(-75, 0)
+
+[node name="Sign2" parent="." instance=ExtResource("4_c1b8a")]
+position = Vector2(144, 0)
+
+[node name="tetua" parent="." instance=ExtResource("5_u0flw")]
+position = Vector2(0.99999994, -19.999998)
+scale = Vector2(0.1, 0.1)
