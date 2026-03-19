@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cqps71nl13t8b"]
+[gd_scene load_steps=17 format=4 uid="uid://cqps71nl13t8b"]
 
 [ext_resource type="Texture2D" uid="uid://dxea7ldx0ynhv" path="res://assets/placeholder/c6r3t7vy48 biurhjfls 835ohbtiejgn d.png" id="1_0kmdv"]
 [ext_resource type="Shader" uid="uid://b331u204n8i4" path="res://shaders/scrolling.gdshader" id="1_ioupg"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cybjrf4ltng0u" path="res://assets/placeholder/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled Dirt.png" id="2_ioupg"]
 [ext_resource type="Texture2D" uid="uid://xagt1yerg37m" path="res://icon.svg" id="3_0kmdv"]
 [ext_resource type="PackedScene" uid="uid://cud4yo55dpxbh" path="res://scenes/player.tscn" id="5_63f1m"]
+[ext_resource type="PackedScene" uid="uid://6176a4sqbgas" path="res://scenes/testing/water_sound1.tscn" id="7_cxd72"]
+[ext_resource type="AudioStream" uid="uid://l3lha4ejl3rr" path="res://assets/audio/SFX/sand_1.mp3" id="8_8bhvo"]
+[ext_resource type="AudioStream" uid="uid://c4525xhna43mk" path="res://assets/audio/SFX/wave_sand1.mp3" id="9_gsfg8"]
+[ext_resource type="AudioStream" uid="uid://dkri05d45jklk" path="res://assets/audio/SFX/wave_sand2.mp3" id="10_uy2da"]
+[ext_resource type="AudioStream" uid="uid://cl77nhnlj7c0o" path="res://assets/audio/SFX/amb_beach1.mp3" id="11_uy2da"]
+[ext_resource type="PackedScene" uid="uid://31gbi4k0x2eh" path="res://scenes/door.tscn" id="12_g6cb4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gsfg8"]
 texture = ExtResource("2_ioupg")
@@ -79,6 +85,9 @@ sources/0 = SubResource("TileSetAtlasSource_gsfg8")
 shader = ExtResource("1_ioupg")
 shader_parameter/scroll_speed = Vector2(5.015, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eslbs"]
+size = Vector2(128, 124)
+
 [node name="water_testing" type="Node2D"]
 
 [node name="Ground2" type="TileMapLayer" parent="."]
@@ -114,3 +123,289 @@ tile_set = SubResource("TileSet_uy2da")
 
 [node name="Player" parent="." instance=ExtResource("5_63f1m")]
 position = Vector2(900, 110)
+
+[node name="water sound" parent="." instance=ExtResource("7_cxd72")]
+position = Vector2(20, 1)
+
+[node name="sand sound" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(128, 129)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(301, 82)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(525, 104)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(743, 99)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(1001, 55)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(1189, 177)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D7" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(1126, 374)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D8" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(969, 528)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D9" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(664, 567)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D10" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(403, 584)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D11" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(144, 513)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D12" type="AudioStreamPlayer2D" parent="sand sound"]
+position = Vector2(38, 324)
+stream = ExtResource("8_8bhvo")
+autoplay = true
+max_distance = 128.0
+parameters/looping = true
+
+[node name="wave sound" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(80, 204)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(306, 132)
+stream = ExtResource("10_uy2da")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(475, 171)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(717, 186)
+stream = ExtResource("10_uy2da")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(939, 152)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(1108, 150)
+stream = ExtResource("10_uy2da")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D7" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(1050, 326)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D8" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(925, 460)
+stream = ExtResource("10_uy2da")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D9" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(708, 493)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D10" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(483, 511)
+stream = ExtResource("10_uy2da")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D11" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(273, 498)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D12" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(169, 392)
+stream = ExtResource("10_uy2da")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D13" type="AudioStreamPlayer2D" parent="wave sound"]
+position = Vector2(85, 319)
+stream = ExtResource("9_gsfg8")
+autoplay = true
+max_distance = 151.0
+max_polyphony = 20
+parameters/looping = true
+
+[node name="beach amb" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(80, 123)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(395, 80)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(710, 57)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(1093, 8)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(1182, 329)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(856, 591)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D7" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(547, 606)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D8" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(172, 567)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="AudioStreamPlayer2D9" type="AudioStreamPlayer2D" parent="beach amb"]
+position = Vector2(8, 359)
+stream = ExtResource("11_uy2da")
+autoplay = true
+max_distance = 415.0
+max_polyphony = 30
+parameters/looping = true
+
+[node name="Building" type="StaticBody2D" parent="."]
+position = Vector2(547, -81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_eslbs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Building"]
+texture = ExtResource("3_0kmdv")
+
+[node name="Door" parent="Building" instance=ExtResource("12_g6cb4")]
+position = Vector2(0, 56)
+door_id = "ext_door_b"
+target_scene_key = "interiortest"
+target_door_id = "int_door_b"
+player_spawn_offset = Vector2(0, 40)
