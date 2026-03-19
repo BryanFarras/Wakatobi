@@ -45,4 +45,27 @@ position = Vector2(10861, 2512)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AudioRegions/wood/Area2D"]
 polygon = PackedVector2Array(9062, 3666, 10891, 3654, 10909, 5250, 9816, 5250, 9815, 5007, 10527, 5013, 10521, 3889, 9056, 3899)
 
+[node name="Area2D2" type="Area2D" parent="AudioRegions/wood"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AudioRegions/wood/Area2D2"]
+position = Vector2(-2102, 806)
+polygon = PackedVector2Array(7855, 4839, 13684, 4802, 13680, 5026, 7854, 5075)
+
+[node name="Area2D3" type="Area2D" parent="AudioRegions/wood"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AudioRegions/wood/Area2D3"]
+position = Vector2(609, 1125)
+polygon = PackedVector2Array(10980, 5077, 11345, 5072, 11343, 5469, 10971, 5486)
+
 [node name="soil" type="Node2D" parent="AudioRegions"]
+
+[node name="Area2D2" type="Area2D" parent="AudioRegions/soil"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AudioRegions/soil/Area2D2"]
+position = Vector2(3751, 1741)
+polygon = PackedVector2Array(7819, 4862, 8201, 4860, 8209, 4826, 12389, 4819, 12594, 5206, 10123, 5215, 10119, 5431, 9684, 5436, 9684, 5211, 8284, 5215, 8283, 5318, 7830, 5327)
+
+[node name="Area2D" type="Area2D" parent="AudioRegions/soil"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AudioRegions/soil/Area2D"]
+polygon = PackedVector2Array(10031, 5256, 10024, 5622, 11583, 5614, 11582, 6197, 11961, 6197, 11962, 5875, 15141, 5864, 15119, 5618, 15178, 5509, 15260, 5443, 15316, 5287, 14449, 5279)
