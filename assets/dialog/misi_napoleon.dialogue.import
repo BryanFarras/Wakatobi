@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cwjtxumoe2og6"
+path="res://.godot/imported/misi_napoleon.dialogue-6d1c0341a6883feb720c2a278b6bc3ca.tres"
+
+[deps]
+
+source_file="res://assets/dialog/misi_napoleon.dialogue"
+dest_files=["res://.godot/imported/misi_napoleon.dialogue-6d1c0341a6883feb720c2a278b6bc3ca.tres"]
+
+[params]
+
+defaults=true

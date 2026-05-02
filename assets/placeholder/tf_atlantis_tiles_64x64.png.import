@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1ukqs4lf833t"
-path="res://.godot/imported/map.png-089eca3f4cd6a83f225a1b088191af7b.ctex"
+uid="uid://n3qup0jl6s18"
+path="res://.godot/imported/tf_atlantis_tiles_64x64.png-097b2a9ab4986c067956748654984f10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder/map.png"
-dest_files=["res://.godot/imported/map.png-089eca3f4cd6a83f225a1b088191af7b.ctex"]
+source_file="res://assets/placeholder/tf_atlantis_tiles_64x64.png"
+dest_files=["res://.godot/imported/tf_atlantis_tiles_64x64.png-097b2a9ab4986c067956748654984f10.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
