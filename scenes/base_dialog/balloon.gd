@@ -25,22 +25,24 @@ extends CanvasLayer
 
 @onready var potrait_left = $Left
 @onready var potrait_right = $Right
+@onready var anim = $Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control/AnimationPlayer
 
-var character_portrait_left: String = "":
-	set(path):
-		character_portrait_left = path
-		if path == "":
-			potrait_left.texture = null
-		else:
-			potrait_left.texture = load(path)
+func slide_kanan() :
+	anim.play("slide_kanan")
 
-var character_portrait_right: String = "":
-	set(path):
-		character_portrait_right = path
-		if path == "":
-			potrait_right.texture = null
-		else:
-			potrait_right.texture = load(path)
+func kiri_potrait(character:String):
+	if character.is_empty() : potrait_right.texture = null
+	else : 
+		var path = PotraitData.potrait_list.get(character)
+		if path == null : potrait_right.texture = null
+		else : potrait_right.texture = load(path)
+
+func kanan_potrait(character:String):
+	if character.is_empty() : potrait_left.texture = null
+	else : 
+		var path = PotraitData.potrait_list.get(character)
+		if path == null : potrait_left.texture = null
+		else : potrait_left.texture = load(path)
 
 func kiri():
 	potrait_left.set_modulate(Color(0.392, 0.392, 0.392))

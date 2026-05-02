@@ -1,5 +1,11 @@
 extends Node
 
+var available_quest:Dictionary = {
+	"Napoleon_1" : "res://assets/quest/misi_napoleon_1.tres",
+	"Napoleon_2" : "res://assets/quest/misi_napoleon_2.tres",
+	"Napoleon_3" : "res://assets/quest/misi_napoleon_3.tres"
+}
+
 var active_quests: Dictionary = {}
 
 var completed_quest_ids: Array[String] = []

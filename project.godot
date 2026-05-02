@@ -25,7 +25,10 @@ Inventory="*res://scripts/global/inventory.gd"
 EventManager="*res://scripts/event/event_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestData="*res://scripts/global/QuestData.gd"
+
 AudioManager="*res://scenes/audio/audio_manager.tscn"
+PotraitData="*res://scripts/global/Potrait_Data.gd"
+
 
 [debug]
 
@@ -62,7 +65,7 @@ inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/dialog/papan_disentuh.dialogue", "res://scenes/base_dialog/Intro.dialogue")
+locale/translations_pot_files=PackedStringArray("res://assets/dialog/papan_disentuh.dialogue", "res://scenes/base_dialog/Intro.dialogue", "res://assets/dialog/misi_napoleon.dialogue")
 
 [layer_names]
 

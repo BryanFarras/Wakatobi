@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcck1wybi6jny"]
+[gd_scene load_steps=20 format=3 uid="uid://bcck1wybi6jny"]
 
 [ext_resource type="Script" uid="uid://uj0xr3oxcg5m" path="res://scenes/base_dialog/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -109,10 +109,75 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.5, 0.6, 1)
 }
 
+[sub_resource type="Animation" id="Animation_anl77"]
+resource_name = "slide_kanan"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Balloon/../Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(883, 222), Vector2(972, 222), Vector2(896, 222)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Balloon/../Left:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7664931, 0.84375, 0.7777778]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Balloon/../Left:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.3425926, 0.3425926, 0.3425926]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Balloon/../Left:anchor_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.9296875, 1.0069444, 0.9409722]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Balloon/../Left:anchor_bottom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.8055556, 0.8055556, 0.8055556]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1337t"]
 _data = {
 &"RESET": SubResource("Animation_nlsx6"),
-&"progress": SubResource("Animation_qkmqt")
+&"progress": SubResource("Animation_qkmqt"),
+&"slide_kanan": SubResource("Animation_anl77")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_haw62"]
@@ -184,10 +249,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Left" type="TextureRect" parent="."]
 anchors_preset = -1
-anchor_left = 0.7986111
+anchor_left = 0.7664931
 anchor_top = 0.3425926
-anchor_right = 0.9618056
+anchor_right = 0.9296875
 anchor_bottom = 0.8055556
+offset_right = -0.00024414063
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("3_82sb8")
