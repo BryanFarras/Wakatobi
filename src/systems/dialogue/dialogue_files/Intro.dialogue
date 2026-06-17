@@ -1,0 +1,18 @@
+~ start
+set dim_potrait = "R"
+Nathan: [[Hi|Hello|Howdy]], [speed=0.1][[Hi|Hello|Howdy]],
+set dim_potrait = "L"
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one. => War
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END 
+
+~ War
+Nathan: [[Hell nah|WDYM|WARRRR]]
+set dim_potrait = "R"
+Nico: WTH IS GOING ON?

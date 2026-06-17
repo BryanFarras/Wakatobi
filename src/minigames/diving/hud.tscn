@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" uid="uid://dqye7ppaaj74i" path="res://src/minigames/diving/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glass_panel"]
+bg_color = Color(0.06, 0.1, 0.15, 0.65)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 8.0
+expand_margin_right = 12.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.05, 0.07, 0.1, 0.6)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.12, 0.45, 0.7, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DiverHUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsPanel" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 214.0
+offset_top = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_glass_panel")
+
+[node name="StatsContainer" type="VBoxContainer" parent="Control/StatsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="DepthLabel" type="Label" parent="Control/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Depth: 0.0 m"
+
+[node name="WeightLabel" type="Label" parent="Control/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Cargo: 0.0 / 30.0 kg"
+
+[node name="ScoreLabel" type="Label" parent="Control/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Cargo Value: $0"
+
+[node name="OxygenPanel" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -90.0
+offset_right = 140.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_glass_panel")
+
+[node name="OxygenContainer" type="VBoxContainer" parent="Control/OxygenPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/OxygenPanel/OxygenContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Oxygen Level"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/OxygenPanel/OxygenContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+value = 100.0
+show_percentage = false
+
+[node name="FaintedScreen" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.06, 0.1, 0.82)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/FaintedScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="FaintedLabel" type="Label" parent="Control/FaintedScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.25, 0.25, 1)
+theme_override_font_sizes/font_size = 28
+text = "Diver Fainted!"
+horizontal_alignment = 1
+
+[node name="SubLabel" type="Label" parent="Control/FaintedScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "You ran out of oxygen and lost your cargo."
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Control/FaintedScreen/VBoxContainer"]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+text = "Retry Dive"

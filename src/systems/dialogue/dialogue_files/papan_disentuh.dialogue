@@ -1,0 +1,45 @@
+~ Awal
+if QuestData.get_quest_status("Papan!") == "active":
+	if QuestData.try_complete_quest("Papan!"):
+		=> Papan_Ditemukan
+	else 
+		=> Papan_Belum_Ditemukan
+elif QuestData.get_quest_status("Papan!") == "completed":
+	=> Selesai
+else :
+	=> Pertama_Bertemu
+
+~ Pertama_Bertemu
+do kanan()
+Player: [wave amp=10 freq=5][[Halo|Hai]], Kamu siapa?[/wave]
+do kiri()
+XXXX: [wave amp=10 freq=5]Namaku adalah Ambas.[/wave]
+do kanan()
+Player: [wave amp=10 freq=5]Baiklah Ambas, apa yang kamu butuhkan?[/wave]
+do kiri()
+Ambas: [wave amp=10 freq=5]Aku mau kamu melakukan sesuatu ke papan di kiriku![/wave]
+do kanan()
+Player: ...
+- Terima
+	Player: [wave amp=10 freq=5]Baiklah, tunggu sebentar.[/wave]
+	do QuestData.accept_quest(load("res://assets/quest/interaksi_papan.tres"))
+	=> END
+- Tolak
+	Player: [shake rate=20 level=10]Tidak Mau![/shake] => END
+- Kabur => END
+
+~ Papan_Ditemukan
+do kiri()
+Ambas: [shake rate=20 level=10]WAH! KAMU HEBAT [/shake]
+do QuestData.try_complete_quest("Papan!")
+=> END
+
+~ Papan_Belum_Ditemukan
+do kiri()
+Ambas: [wave amp=10 freq=5]Kamu belum melakukan apapun ke papan yang dikiri.[/wave] => END
+
+~ Selesai
+do kiri()
+Ambas: [wave amp=10 freq=5]Sudah cukup, kamu bisa pergi.[/wave] => END
+
+=> END

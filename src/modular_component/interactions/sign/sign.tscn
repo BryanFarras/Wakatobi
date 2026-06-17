@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxoqkjf0awfn6"]
+
+[ext_resource type="Script" uid="uid://di07qg8h2lk1u" path="res://src/modular_component/interactions/sign/sign.gd" id="1_8yyji"]
+[ext_resource type="Texture2D" uid="uid://bepgd8knm6luc" path="res://assets/placeholder/sign.png" id="2_s0ifd"]
+[ext_resource type="PackedScene" uid="uid://4rqdup3rhsqo" path="res://src/modular_component/interactions/interactable.tscn" id="3_qkam6"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_qkam6"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_pnnkw"]
+[ext_resource type="Texture2D" uid="uid://due0mid78qc2s" path="res://assets/placeholder/sign_prompt.png" id="6_s0ifd"]
+
+[sub_resource type="Resource" id="Resource_4irdt"]
+script = ExtResource("5_pnnkw")
+duration = 0.6
+transition = 8
+ease = 1
+
+[sub_resource type="Animation" id="Animation_s0ifd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignUI/CanvasGroup:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_c4bei"]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignUI/CanvasGroup:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jattv"]
+resource_name = "interact"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignUI/CanvasGroup:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c4bei"]
+_data = {
+&"RESET": SubResource("Animation_s0ifd"),
+&"hide": SubResource("Animation_c4bei"),
+&"show": SubResource("Animation_jattv")
+}
+
+[node name="Sign" type="Node2D"]
+script = ExtResource("1_8yyji")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s0ifd")
+
+[node name="Interactable" parent="." instance=ExtResource("3_qkam6")]
+unique_name_in_owner = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -52)
+script = ExtResource("4_qkam6")
+zoom = Vector2(4, 4)
+tween_resource = SubResource("Resource_4irdt")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="SignUI" type="CanvasLayer" parent="."]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="SignUI"]
+self_modulate = Color(1, 1, 1, 0)
+
+[node name="Panel" type="Panel" parent="SignUI/CanvasGroup"]
+custom_minimum_size = Vector2(400, 200)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 376.0
+offset_top = 60.0
+offset_right = 776.0
+offset_bottom = 260.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="SignUI/CanvasGroup/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -177.5
+offset_right = 241.0
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_s0ifd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SignUI/CanvasGroup/Panel/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 77.5
+offset_right = 421.0
+offset_bottom = 276.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_c4bei")
+}

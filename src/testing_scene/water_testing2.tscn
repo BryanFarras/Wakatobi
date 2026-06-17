@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://2ods1rnwtqg5"]
+
+[ext_resource type="Shader" uid="uid://dnluwiiah1wnt" path="res://shaders/water3.gdshader" id="1_b07ki"]
+[ext_resource type="Texture2D" uid="uid://xagt1yerg37m" path="res://icon.svg" id="2_kp4vy"]
+[ext_resource type="Material" uid="uid://biqmu40owvua3" path="res://shaders/water2.tres" id="3_0i0ee"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04rya"]
+shader = ExtResource("1_b07ki")
+shader_parameter/WATER_COL = Color(0.176471, 0.635294, 0.85098, 1)
+shader_parameter/WATER2_COL = Color(0.0588235, 0.529412, 0.776471, 1)
+shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
+shader_parameter/distortion_speed = 13.105
+shader_parameter/tile = Vector2(0.965, 0.07)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cma3d"]
+shader = ExtResource("1_b07ki")
+shader_parameter/WATER_COL = Color(0.176471, 0.635294, 0.85098, 1)
+shader_parameter/WATER2_COL = Color(0.0588235, 0.529412, 0.776471, 1)
+shader_parameter/FOAM_COL = Color(0.83996814, 0.99999994, 0.9958661, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_04rya")
+position = Vector2(601.5, 334)
+scale = Vector2(10.3984375, 6.21875)
+texture = ExtResource("2_kp4vy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = ExtResource("3_0i0ee")
+position = Vector2(631.5, 344.5)
+scale = Vector2(10.8671875, 6.3828125)
+texture = ExtResource("2_kp4vy")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasModulate"]
+material = SubResource("ShaderMaterial_cma3d")
