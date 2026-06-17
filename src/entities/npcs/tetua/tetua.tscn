@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://df3nrjrjnu1si"]
+
+[ext_resource type="PackedScene" uid="uid://bnt7h6hdfyb6t" path="res://src/entities/npcs/base_npc/base_npc.tscn" id="1_qikq5"]
+[ext_resource type="Texture2D" uid="uid://b3pr6fd6gw2j" path="res://assets/placeholder/Potrait Character/Placeholder 2/pl2 shy.png" id="2_065ms"]
+[ext_resource type="Texture2D" uid="uid://badrftu0aw1ts" path="res://assets/placeholder/Potrait Character/Placeholder 2/pl2 surprise.png" id="3_8fhdf"]
+[ext_resource type="Texture2D" uid="uid://mpolivqk06jn" path="res://assets/placeholder/Potrait Character/Placeholder 2/pl2 worry.png" id="4_2fatc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkeyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_065ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8fhdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2fatc")
+}],
+"loop": true,
+"name": &"idle_atas",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_065ms")
+}],
+"loop": true,
+"name": &"idle_bawah",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_kanan",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_kiri",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jalan_atas",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jalan_bawah",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jalan_kanan",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jalan_kiri",
+"speed": 5.0
+}]
+
+[node name="tetua" instance=ExtResource("1_qikq5")]
+
+[node name="animation" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_bkeyd")
+animation = &"idle_atas"

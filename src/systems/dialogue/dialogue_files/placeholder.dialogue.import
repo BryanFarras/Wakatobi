@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dklch5xlwq2oo"
+path="res://.godot/imported/placeholder.dialogue-337bd1bf4dedb69c17b35b815baba793.tres"
+
+[deps]
+
+source_file="res://src/systems/dialogue/dialogue_files/placeholder.dialogue"
+dest_files=["res://.godot/imported/placeholder.dialogue-337bd1bf4dedb69c17b35b815baba793.tres"]
+
+[params]
+
+defaults=true

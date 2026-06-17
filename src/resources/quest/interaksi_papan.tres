@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BaseQuest" load_steps=6 format=3 uid="uid://d1mjmt47gtujk"]
+
+[ext_resource type="Resource" uid="uid://d84plxjsjf6l" path="res://src/systems/dialogue/dialogue_files/papan_disentuh.dialogue" id="1_pstmy"]
+[ext_resource type="Script" uid="uid://btw4jkooueh6l" path="res://src/systems/quests/quest_requirements.gd" id="2_rts4r"]
+[ext_resource type="Resource" uid="uid://r48ji2mr5o0m" path="res://src/resources/items/papan_disentuh.tres" id="3_xpgh2"]
+[ext_resource type="Script" uid="uid://dv6le8sqlym2g" path="res://src/systems/quests/base_quest.gd" id="4_imxxo"]
+
+[sub_resource type="Resource" id="Resource_xla6d"]
+script = ExtResource("2_rts4r")
+item = ExtResource("3_xpgh2")
+quantity = 1
+metadata/_custom_type_script = "uid://btw4jkooueh6l"
+
+[resource]
+script = ExtResource("4_imxxo")
+quest_id = "Papan!"
+quest_name = "Papan Disentuh!"
+dialogue = ExtResource("1_pstmy")
+items_needed = Array[ExtResource("2_rts4r")]([SubResource("Resource_xla6d")])
+metadata/_custom_type_script = "uid://dv6le8sqlym2g"

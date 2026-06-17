@@ -18,15 +18,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scenes/global/scene_manager.tscn"
-PlayerManager="*res://scripts/global/player_manager.gd"
+SceneManager="*res://src/autoload/scene_manager/scene_manager.tscn"
+PlayerManager="*res://src/autoload/player_manager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Inventory="*res://scripts/global/inventory.gd"
-EventManager="*res://scripts/event/event_manager.gd"
+Inventory="*res://src/systems/inventory/inventory.gd"
+EventManager="*res://src/modular_component/events/event_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-QuestData="*res://scripts/global/QuestData.gd"
-AudioManager="*res://scenes/audio/audio_manager.tscn"
-PotraitData="*res://scripts/global/Potrait_Data.gd"
+QuestData="*res://src/autoload/quest_data.gd"
+AudioManager="*res://src/autoload/audio_manager/audio_manager.tscn"
+PotraitData="*res://src/autoload/potrait_data.gd"
 
 [debug]
 
@@ -95,7 +95,7 @@ inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/dialog/papan_disentuh.dialogue", "res://scenes/base_dialog/Intro.dialogue", "res://assets/dialog/misi_napoleon.dialogue")
+locale/translations_pot_files=PackedStringArray("res://src/systems/dialogue/dialogue_files/Intro.dialogue", "res://src/systems/dialogue/dialogue_files/misi_napoleon.dialogue", "res://src/systems/dialogue/dialogue_files/papan_disentuh.dialogue", "res://src/systems/dialogue/dialogue_files/placeholder.dialogue")
 
 [layer_names]
 

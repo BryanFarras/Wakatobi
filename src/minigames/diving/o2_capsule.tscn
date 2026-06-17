@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" uid="uid://b1bvca1ho7w40" path="res://src/minigames/diving/o2_capsule.gd" id="1_o2capsule"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2"]
+radius = 12.0
+height = 36.0
+
+[node name="O2Capsule" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_o2capsule")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o2")
+
+[node name="Body" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.8, 0.44, 1)
+
+[node name="Cap" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -18.0
+offset_right = 5.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9, 0.9, 0.9, 1)
+
+[node name="CapLine" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -21.0
+offset_right = 2.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3, 0.3, 0.3, 1)

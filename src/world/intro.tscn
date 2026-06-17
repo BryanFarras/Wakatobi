@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bki36g6nu5hud"]
+
+[ext_resource type="Script" uid="uid://ctupgnmrycm2o" path="res://src/world/intro.gd" id="1_i8qk8"]
+[ext_resource type="Texture2D" uid="uid://c60l6ie6c0ccl" path="res://assets/placeholder/Intro/First.jpg" id="2_3q6ft"]
+[ext_resource type="Texture2D" uid="uid://cpsp6lk7n3ylc" path="res://assets/placeholder/Intro/Second.jpg" id="3_3rbaq"]
+[ext_resource type="Texture2D" uid="uid://bmv3028bagr8w" path="res://assets/placeholder/Intro/Third.jpg" id="4_gi8a2"]
+[ext_resource type="Texture2D" uid="uid://vvcfi8qb433n" path="res://assets/placeholder/Intro/Fourth.jpg" id="5_05h6f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayt76"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8qk8"]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i8qk8")
+Text = PackedStringArray("Pada Zaman Dahulu", "Hiduplah", "")
+Images = Array[Texture2D]([ExtResource("2_3q6ft"), ExtResource("3_3rbaq"), ExtResource("4_gi8a2"), ExtResource("5_05h6f")])
+
+[node name="Blackscreen" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ayt76")
+
+[node name="Upper" type="Control" parent="Blackscreen"]
+layout_mode = 2
+
+[node name="Centering" type="CenterContainer" parent="Blackscreen/Upper"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.7648148
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Blackscreen/Upper/Centering"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+
+[node name="Images" type="TextureRect" parent="Blackscreen/Upper/Centering/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_3q6ft")
+expand_mode = 1
+
+[node name="Lower" type="Control" parent="Blackscreen"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Blackscreen/Lower"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Blackscreen/Lower/CenterContainer"]
+custom_minimum_size = Vector2(1080, 720)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Blackscreen/Lower/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+
+[node name="Narasi" type="Label" parent="Blackscreen/Lower/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "sa"
+horizontal_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i8qk8")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
+[connection signal="current_animation_changed" from="Animation" to="." method="_on_animation_current_animation_changed"]
