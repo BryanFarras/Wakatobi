@@ -91,6 +91,7 @@ entity_name = "EventSign"
 event_sequence = Array[ExtResource("2_dr0o5")]([SubResource("Resource_0kjsw"), SubResource("Resource_dr0o5"), SubResource("Resource_6oy23"), SubResource("Resource_x53aw")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_pwbew")
 
 [node name="Interactable" parent="." instance=ExtResource("3_181ql")]

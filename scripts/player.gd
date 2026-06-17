@@ -29,7 +29,7 @@ extends CharacterBody2D
 ## Priority PCam inventory saat tertutup
 @export var inventory_pcam_inactive_priority: int = 0
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Anim
 @onready var inventory_pcam: Node2D = $InventoryPCam
 @onready var inventory_ui: CanvasLayer = $InventoryUI
 @onready var animation_tree: AnimationTree = %AnimationTree
@@ -113,8 +113,16 @@ func _close_inventory() -> void:
 func _handle_animation() -> void:
 	var is_moving: bool = velocity.length() > 0
 	
+	# Update kondisi state machine
 	animation_tree.set("parameters/conditions/walk", is_moving)
 	animation_tree.set("parameters/conditions/idle", not is_moving)
 
-	animation_tree.set("parameters/idle/blend_position", last_direction)
-	animation_tree.set("parameters/walk/blend_position", last_direction)
+	# Blend position butuh nilai -1, 0, atau 1 yang stabil
+	# Kita bulatkan last_direction agar tidak ada nilai diagonal yang nanggung
+	var blend_pos = Vector2(
+		round(last_direction.x),
+		round(last_direction.y)
+	)
+
+	animation_tree.set("parameters/idle/blend_position", blend_pos)
+	animation_tree.set("parameters/walk/blend_position", blend_pos)

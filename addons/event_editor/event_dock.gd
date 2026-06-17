@@ -98,6 +98,8 @@ func _populate_dropdown() -> void:
 
 func set_target(node: Node2D) -> void:
 	target_node = node
+	_discover_commands()
+	_populate_dropdown()
 	refresh_list()
 	_clear_editor_panel()
 
@@ -327,7 +329,8 @@ func _create_input_field(cmd: Resource, prop: Dictionary) -> void:
 		dropdown.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var options = prop["hint_string"].split(",")
 		for i in range(options.size()):
-			dropdown.add_item(options[i].strip_edges(), i)
+			var opt_name = options[i].split(":")[0].strip_edges()
+			dropdown.add_item(opt_name, i)
 			
 		dropdown.selected = current_value if current_value != null else 0
 		dropdown.item_selected.connect(func(index):
@@ -376,6 +379,35 @@ func _create_input_field(cmd: Resource, prop: Dictionary) -> void:
 				refresh_list() # Added here
 			)
 			hbox.add_child(line_edit)
+	elif prop["type"] == TYPE_NODE_PATH:
+		var line_edit = LineEdit.new()
+		line_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		line_edit.text = str(current_value) if current_value else ""
+		
+		line_edit.text_changed.connect(func(new_text):
+			cmd.set(prop["name"], NodePath(new_text))
+			target_node.notify_property_list_changed()
+			refresh_list()
+		)
+		hbox.add_child(line_edit)
+	elif prop["type"] == TYPE_OBJECT:
+		var picker = EditorResourcePicker.new()
+		picker.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var base_type = "Resource"
+		if prop.has("class_name") and prop["class_name"] != "":
+			base_type = prop["class_name"]
+		elif prop.has("hint_string") and prop["hint_string"] != "":
+			base_type = prop["hint_string"]
+			
+		picker.base_type = base_type
+		picker.edited_resource = current_value
+		
+		picker.resource_changed.connect(func(res):
+			cmd.set(prop["name"], res)
+			target_node.notify_property_list_changed()
+			refresh_list()
+		)
+		hbox.add_child(picker)
 			
 	elif prop["type"] == TYPE_VECTOR2:
 		var vec_hbox = HBoxContainer.new()
