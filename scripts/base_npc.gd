@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export_group("Settings")
 @export var speed: float = 50.0
 @export var quest_data: BaseQuest 
+@export var is_static: bool = false
+@export_enum("atas", "bawah", "kiri", "kanan") var default_direction: String = "bawah"
 
 @onready var sprite: AnimatedSprite2D = $animation
 @onready var interact_label: Label = $Label
@@ -15,16 +17,45 @@ var last_direction: String = "bawah"
 var move_direction: Vector2 = Vector2.DOWN
 var wander_timer: float = 0.0
 
+var is_controlled_externally: bool = false
+var external_direction: Vector2 = Vector2.ZERO
+var external_move_timer: float = 0.0
+
 func _ready() -> void:
 	interact_label.hide()
-	sprite.play("idle_bawah")
-	pilih_arah_baru()
+	last_direction = default_direction
+	sprite.play("idle_" + last_direction)
+	if not is_static:
+		pilih_arah_baru()
 
 func _physics_process(_delta: float) -> void:
 	if is_talking:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
+		
+	if is_controlled_externally:
+		external_move_timer -= _delta
+		if external_move_timer <= 0:
+			is_controlled_externally = false
+			velocity = Vector2.ZERO
+			if not is_static:
+				pilih_arah_baru()
+		else:
+			move_direction = external_direction
+			velocity = move_direction * speed
+			update_raycast_rotation()
+			play_movement_animation()
+			move_and_slide()
+		return
+		
+	if is_static:
+		velocity = Vector2.ZERO
+		update_raycast_rotation()
+		play_movement_animation()
+		move_and_slide()
+		return
+		
 	if ray_cast.is_colliding():
 		pilih_arah_baru()
 	wander_timer -= _delta
@@ -34,6 +65,12 @@ func _physics_process(_delta: float) -> void:
 	update_raycast_rotation()
 	play_movement_animation()
 	move_and_slide()
+
+func move_externally(dir: Vector2, time: float) -> void:
+	external_direction = dir
+	external_move_timer = time
+	is_controlled_externally = true
+
 
 func pilih_arah_baru():
 	var directions = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2.ZERO]

@@ -2,12 +2,14 @@
 extends Node
 
 var is_processing_event: bool = false
+var current_context_node: Node = null
 
-func run_event_sequence(commands: Array[EventCommand]) -> void:
+func run_event_sequence(commands: Array[EventCommand], context_node: Node = null) -> void:
 	if is_processing_event:
 		return
 		
 	is_processing_event = true
+	current_context_node = context_node
 	
 	var player = PlayerManager.get_player()
 	if player:
@@ -42,6 +44,7 @@ func run_event_sequence(commands: Array[EventCommand]) -> void:
 	if player:
 		player.is_interacting = false
 		
+	current_context_node = null
 	is_processing_event = false
 
 # Internal logic to parse the condition string

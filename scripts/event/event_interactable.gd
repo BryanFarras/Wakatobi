@@ -14,4 +14,4 @@ func _ready():
 
 func _on_interact():
 	if event_sequence.size() > 0:
-		EventManager.run_event_sequence(event_sequence)
+		EventManager.run_event_sequence(event_sequence, self)

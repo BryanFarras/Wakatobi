@@ -13,6 +13,7 @@ func _ready() -> void:
 	# Pastikan Player tidak ada di scene awal (bisa dihapus dari main scene)
 	if get_tree().current_scene.has_node("Player"):
 		push_warning("PlayerManager: Player ditemukan di scene awal! Pastikan Player dihapus dari scene dan hanya di-instance lewat PlayerManager.")
+		_player = get_tree().current_scene.get_node("Player") as CharacterBody2D
 	
 	if get_tree().current_scene.has_node("SpawnPoint"):
 		var spawn_point := get_tree().current_scene.get_node("SpawnPoint") as Node2D
