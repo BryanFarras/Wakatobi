@@ -23,6 +23,7 @@ extends CharacterBody2D
 # ============================================================
 
 @export var speed: float = 150.0
+@export var run_speed: float = 250.0
 
 ## Priority PCam inventory saat terbuka — lebih tinggi dari PCam gameplay (10)
 @export var inventory_pcam_active_priority: int = 20
@@ -33,6 +34,7 @@ extends CharacterBody2D
 @onready var inventory_pcam: Node2D = $InventoryPCam
 @onready var inventory_ui: CanvasLayer = $InventoryUI
 @onready var animation_tree: AnimationTree = %AnimationTree
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var last_direction: Vector2 = Vector2.DOWN
 var is_interacting: bool = false
@@ -50,6 +52,9 @@ func _ready() -> void:
 	inventory_pcam.set_tween_on_load(false)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if SceneManager.is_transitioning:
+		return
+		
 	if event.is_action_pressed("inventory"):
 		if is_interacting:
 			_close_inventory()
@@ -57,9 +62,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			_open_inventory()
 
 func _physics_process(_delta: float) -> void:
-	if is_interacting:
+	if is_interacting or SceneManager.is_transitioning:
 		velocity = Vector2.ZERO
 		return
+
+	var is_running = Input.is_key_pressed(KEY_SHIFT)
+	var current_speed = run_speed if is_running else speed
 
 	var input_dir := Vector2(
 		Input.get_axis("ui_left", "ui_right"),
@@ -69,21 +77,28 @@ func _physics_process(_delta: float) -> void:
 	if input_dir.length() > 0:
 		input_dir = input_dir.normalized()
 		last_direction = input_dir
-		velocity = input_dir * speed
+		velocity = input_dir * current_speed
+
+		# Adjust footstep interval and animation speed scale when moving
+		audio_manager.sfx_character.footstep_interval = 0.25 if is_running else 0.4
+		animation_player.speed_scale = 1.6 if is_running else 1.0
 
 		# Play footstep SFX if just started moving
 		if not _was_moving:
 			audio_manager.play_footstep(_current_surface)
 			_was_moving = true
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, speed * 0.2)
+		velocity = velocity.move_toward(Vector2.ZERO, current_speed * 0.2)
 
 		# Stop footstep SFX if just stopped moving
 		if _was_moving:
 			audio_manager.sfx_character.stop_footstep()
 			_was_moving = false
+			# Reset animation speed scale when idle
+			animation_player.speed_scale = 1.0
 
 	move_and_slide()
+	global_position = global_position.snapped(Vector2(0.1, 0.1))
 	_handle_animation()
 
 # -------------------------------------------------------
@@ -109,6 +124,10 @@ func _close_inventory() -> void:
 # -------------------------------------------------------
 # Animation
 # -------------------------------------------------------
+
+func set_direction(dir: Vector2) -> void:
+	last_direction = dir
+	_handle_animation()
 
 func _handle_animation() -> void:
 	var is_moving: bool = velocity.length() > 0

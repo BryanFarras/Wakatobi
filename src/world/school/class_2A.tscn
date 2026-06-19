@@ -1,0 +1,245 @@
+[gd_scene load_steps=22 format=4 uid="uid://d0l7banp7iinh"]
+
+[ext_resource type="Texture2D" uid="uid://bwbta7an310cj" path="res://assets/textures/environment/School - Class IIB.png" id="1_yx776"]
+[ext_resource type="Texture2D" uid="uid://n7wisps11xxi" path="res://assets/Sample Project/Graphics/Tilesets/Collision.png" id="2_pwvpf"]
+[ext_resource type="PackedScene" uid="uid://31gbi4k0x2eh" path="res://src/world/door.tscn" id="2_x2wy2"]
+[ext_resource type="Script" uid="uid://bhoxnssmr62q7" path="res://src/entities/npcs/base_npc/base_npc.gd" id="4_a7ula"]
+[ext_resource type="Texture2D" uid="uid://phg4g51unyg2" path="res://assets/Sample Project/Graphics/Characters/Special_Cast.png" id="5_a7ula"]
+[ext_resource type="Texture2D" uid="uid://qgtks2cact8p" path="res://assets/Sample Project/Graphics/Characters/Actor - SchoolA_Indo.png" id="6_5vejg"]
+[ext_resource type="SpriteFrames" uid="uid://b5tstmwg4jmwq" path="res://src/entities/npcs/base_npc/base_anim.tres" id="6_le4hg"]
+[ext_resource type="Script" uid="uid://dxka5o8i5shwx" path="res://src/modular_component/events/event_interactable.gd" id="7_ishjm"]
+[ext_resource type="Script" uid="uid://i6aqbfqieekr" path="res://src/modular_component/events/commands/event_command.gd" id="8_cubnx"]
+[ext_resource type="Script" uid="uid://ckfmwr51u6neu" path="res://src/modular_component/events/commands/show_balloon_command.gd" id="9_bxaga"]
+[ext_resource type="Script" uid="uid://mci63wejq2xp" path="res://src/modular_component/events/commands/show_text_command.gd" id="9_delim"]
+[ext_resource type="Script" uid="uid://db067uqto5eoy" path="res://src/modular_component/events/commands/wait_command.gd" id="10_s3aoe"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwvpf"]
+texture = ExtResource("2_pwvpf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_hsvq7"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_pwvpf")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjwpf"]
+radius = 16.0
+
+[sub_resource type="Resource" id="Resource_yjhpv"]
+script = ExtResource("9_delim")
+character_name = "Wa Ode"
+text = "Hello"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gor76"]
+radius = 32.0
+
+[sub_resource type="Resource" id="Resource_s3aoe"]
+script = ExtResource("10_s3aoe")
+
+[sub_resource type="Resource" id="Resource_db0fj"]
+script = ExtResource("9_bxaga")
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_bxaga"]
+script = ExtResource("9_delim")
+character_name = "Guru"
+text = "OK, semuanya. Sekian pembelajaran kita hari ini."
+
+[sub_resource type="Resource" id="Resource_cubnx"]
+script = ExtResource("9_delim")
+character_name = "Guru"
+text = "Jangan lupa kerjain PR-nya ya."
+
+[node name="Class2a" type="Node2D"]
+
+[node name="SchoolClassIib" type="Sprite2D" parent="."]
+position = Vector2(448, 432)
+texture = ExtResource("1_yx776")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(415, 256)
+
+[node name="Tileset" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tileset"]
+visible = false
+tile_map_data = PackedByteArray("AAAIAAUAAQAAAAAAAAAJAAUAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAUAAQAAAAAAAAAMAAUAAQAAAAAAAAANAAUAAQAAAAAAAAAOAAUAAQAAAAAAAAAPAAUAAQAAAAAAAAAPAAYAAQAAAAAAAAAQAAYAAQAAAAAAAAARAAYAAQAAAAAAAAASAAYAAQAAAAAAAAATAAYAAQAAAAAAAAATAAcAAQAAAAAAAAATAAgAAQAAAAAAAAASAAkAAQAAAAAAAAASAAoAAQAAAAAAAAASAAsAAQAAAAAAAAASAAwAAQAAAAAAAAASAA0AAQAAAAAAAAASAA4AAQAAAAAAAAASAA8AAQAAAAAAAAASABAAAQAAAAAAAAAHAA8AAQAAAAAAAAAHAA4AAQAAAAAAAAAHAA0AAQAAAAAAAAAHAAwAAQAAAAAAAAAHAAsAAQAAAAAAAAAHAAoAAQAAAAAAAAAHAAkAAQAAAAAAAAAHAAgAAQAAAAAAAAAHAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAUAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAAHABAAAQAAAAAAAAAHABEAAQAAAAAAAAAIABEAAQAAAAAAAAAJABEAAQAAAAAAAAAKABEAAQAAAAAAAAALABEAAQAAAAAAAAAMABEAAQAAAAAAAAANABEAAQAAAAAAAAAOABEAAQAAAAAAAAAPABEAAQAAAAAAAAAQABEAAQAAAAAAAAARABEAAQAAAAAAAAASABEAAQAAAAAAAAAIAAkAAQAAAAAAAAAJAAkAAQAAAAAAAAAMAAkAAQAAAAAAAAANAAkAAQAAAAAAAAAQAAkAAQAAAAAAAAARAAkAAQAAAAAAAAARAAsAAQAAAAAAAAAQAAsAAQAAAAAAAAANAAsAAQAAAAAAAAAMAAsAAQAAAAAAAAAJAAsAAQAAAAAAAAAIAAsAAQAAAAAAAAAIAA0AAQAAAAAAAAAJAA0AAQAAAAAAAAAMAA0AAQAAAAAAAAANAA0AAQAAAAAAAAAQAA0AAQAAAAAAAAARAA0AAQAAAAAAAAARAA8AAQAAAAAAAAAQAA8AAQAAAAAAAAANAA8AAQAAAAAAAAAMAA8AAQAAAAAAAAAJAA8AAQAAAAAAAAAIAA8AAQAAAAAAAAASAAgAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_hsvq7")
+
+[node name="Objects_NPCs" type="Node2D" parent="."]
+
+[node name="Door" parent="Objects_NPCs" instance=ExtResource("2_x2wy2")]
+position = Vector2(618, 240.00002)
+scale = Vector2(1, 1.6)
+door_id = "exit"
+target_scene_path = "uid://cvekd3jmijixo"
+target_door_id = "class_2A"
+
+[node name="WaOde" type="CharacterBody2D" parent="Objects_NPCs"]
+position = Vector2(272, 336)
+script = ExtResource("4_a7ula")
+is_static = true
+default_direction = "atas"
+spritesheet = ExtResource("5_a7ula")
+visibility_flag = "STORY_INTRO_DONE"
+visible_when_flag_is = false
+
+[node name="collision" type="CollisionShape2D" parent="Objects_NPCs/WaOde"]
+shape = SubResource("CircleShape2D_mjwpf")
+
+[node name="animation" type="AnimatedSprite2D" parent="Objects_NPCs/WaOde"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("6_le4hg")
+animation = &"idle_bawah"
+
+[node name="raycast" type="RayCast2D" parent="Objects_NPCs/WaOde"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventPage1" type="Node2D" parent="Objects_NPCs/WaOde"]
+script = ExtResource("7_ishjm")
+event_sequence = Array[ExtResource("8_cubnx")]([SubResource("Resource_yjhpv")])
+
+[node name="interaksi" type="Area2D" parent="Objects_NPCs/WaOde/EventPage1"]
+
+[node name="area" type="CollisionShape2D" parent="Objects_NPCs/WaOde/EventPage1/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="Objects_NPCs/WaOde"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+metadata/_edit_use_anchors_ = true
+
+[node name="NPC_Murid_1" type="CharacterBody2D" parent="Objects_NPCs"]
+position = Vector2(400, 400)
+script = ExtResource("4_a7ula")
+is_static = true
+default_direction = "atas"
+spritesheet = ExtResource("6_5vejg")
+visibility_flag = "STORY_INTRO_DONE"
+visible_when_flag_is = false
+
+[node name="collision" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_1"]
+shape = SubResource("CircleShape2D_mjwpf")
+
+[node name="animation" type="AnimatedSprite2D" parent="Objects_NPCs/NPC_Murid_1"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("6_le4hg")
+animation = &"idle_bawah"
+
+[node name="raycast" type="RayCast2D" parent="Objects_NPCs/NPC_Murid_1"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventPage1" type="Node2D" parent="Objects_NPCs/NPC_Murid_1"]
+script = ExtResource("7_ishjm")
+
+[node name="interaksi" type="Area2D" parent="Objects_NPCs/NPC_Murid_1/EventPage1"]
+
+[node name="area" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_1/EventPage1/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="Objects_NPCs/NPC_Murid_1"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+metadata/_edit_use_anchors_ = true
+
+[node name="NPC_Murid_2" type="CharacterBody2D" parent="Objects_NPCs"]
+position = Vector2(304, 464)
+script = ExtResource("4_a7ula")
+is_static = true
+default_direction = "atas"
+spritesheet = ExtResource("6_5vejg")
+character_index = 4
+visibility_flag = "STORY_INTRO_DONE"
+visible_when_flag_is = false
+
+[node name="collision" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_2"]
+shape = SubResource("CircleShape2D_mjwpf")
+
+[node name="animation" type="AnimatedSprite2D" parent="Objects_NPCs/NPC_Murid_2"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("6_le4hg")
+animation = &"idle_bawah"
+
+[node name="raycast" type="RayCast2D" parent="Objects_NPCs/NPC_Murid_2"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventPage1" type="Node2D" parent="Objects_NPCs/NPC_Murid_2"]
+script = ExtResource("7_ishjm")
+
+[node name="interaksi" type="Area2D" parent="Objects_NPCs/NPC_Murid_2/EventPage1"]
+
+[node name="area" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_2/EventPage1/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="Objects_NPCs/NPC_Murid_2"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+metadata/_edit_use_anchors_ = true
+
+[node name="NPC_Murid_3" type="CharacterBody2D" parent="Objects_NPCs"]
+position = Vector2(528, 528)
+script = ExtResource("4_a7ula")
+is_static = true
+default_direction = "atas"
+spritesheet = ExtResource("6_5vejg")
+character_index = 2
+visibility_flag = "STORY_INTRO_DONE"
+visible_when_flag_is = false
+
+[node name="collision" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_3"]
+shape = SubResource("CircleShape2D_mjwpf")
+
+[node name="animation" type="AnimatedSprite2D" parent="Objects_NPCs/NPC_Murid_3"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("6_le4hg")
+animation = &"idle_bawah"
+
+[node name="raycast" type="RayCast2D" parent="Objects_NPCs/NPC_Murid_3"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventPage1" type="Node2D" parent="Objects_NPCs/NPC_Murid_3"]
+script = ExtResource("7_ishjm")
+
+[node name="interaksi" type="Area2D" parent="Objects_NPCs/NPC_Murid_3/EventPage1"]
+
+[node name="area" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_3/EventPage1/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="Objects_NPCs/NPC_Murid_3"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+metadata/_edit_use_anchors_ = true
+
+[node name="CutsceneIntro" type="Node2D" parent="Objects_NPCs"]
+position = Vector2(720, 368)
+script = ExtResource("7_ishjm")
+trigger_type = 1
+entity_name = "CutsceneIntro"
+event_sequence = Array[ExtResource("8_cubnx")]([SubResource("Resource_s3aoe"), SubResource("Resource_db0fj"), SubResource("Resource_bxaga"), SubResource("Resource_cubnx")])
+
+[connection signal="body_shape_entered" from="Objects_NPCs/WaOde/EventPage1/interaksi" to="Objects_NPCs/WaOde" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="Objects_NPCs/WaOde/EventPage1/interaksi" to="Objects_NPCs/WaOde" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="Objects_NPCs/NPC_Murid_1/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_1" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="Objects_NPCs/NPC_Murid_1/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_1" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="Objects_NPCs/NPC_Murid_2/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_2" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="Objects_NPCs/NPC_Murid_2/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_2" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="Objects_NPCs/NPC_Murid_3/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_3" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="Objects_NPCs/NPC_Murid_3/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_3" method="_on_interaksi_body_shape_exited"]

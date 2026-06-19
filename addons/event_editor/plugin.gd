@@ -7,6 +7,7 @@ var dock_instance: Control
 func _enter_tree() -> void:
 	# Instantiate the UI script we just wrote
 	dock_instance = preload("res://addons/event_editor/event_dock.gd").new()
+	dock_instance.undo_redo = get_undo_redo()
 	
 	# Add it to the bottom panel (next to Output, Debugger, etc.)
 	add_control_to_bottom_panel(dock_instance, "Event Editor")

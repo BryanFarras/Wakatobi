@@ -18,6 +18,8 @@ var _door_registry: Dictionary = {}
 # Posisi spawn yang sudah di-resolve, menunggu scene baru siap
 var _player_spawn_position: Vector2 = Vector2.INF
 
+var is_transitioning: bool = false
+
 # -------------------------------------------------------
 # Public API
 # -------------------------------------------------------
@@ -29,18 +31,43 @@ func register_door(door_id: String, marker: Marker2D) -> void:
 	_door_registry[door_id] = marker
 	_set_player_position()
 
-## Dipanggil oleh Door saat player menyentuhnya
-func go_to_door(scene_key: String, door_id: String) -> void:
-	if not _scenes.has(scene_key):
-		push_error("SceneManager: scene key '%s' tidak ditemukan!" % scene_key)
+## Mengembalikan path scene berdasarkan scene_key (untuk legacy support)
+func get_scene_path(scene_key: String) -> String:
+	if _scenes.has(scene_key):
+		return _scenes[scene_key]
+	return ""
+
+## Dipanggil oleh Door saat player menyentuhnya. Menerima path lengkap scene (misal: "res://...")
+func go_to_door(scene_path: String, door_id: String) -> void:
+	if is_transitioning:
+		return
+	if scene_path.is_empty():
+		push_error("SceneManager: target scene path kosong!")
 		return
 
+	is_transitioning = true
 	_target_door_id = door_id
 	_player_spawn_position = Vector2.INF
 	_door_registry.clear()
 
 	# call_deferred wajib: dipanggil dari physics callback
-	call_deferred("_transition_to_scene", scene_key)
+	call_deferred("_transition_to_scene", scene_path)
+
+## Memindahkan player ke scene baru di koordinat tertentu (koordinat global)
+func go_to_scene_position(scene_path: String, target_position: Vector2) -> void:
+	if is_transitioning:
+		return
+	if scene_path.is_empty():
+		push_error("SceneManager: target scene path kosong!")
+		return
+
+	is_transitioning = true
+	_target_door_id = "" # Tidak menggunakan target pintu
+	_player_spawn_position = target_position
+	_door_registry.clear()
+
+	# call_deferred wajib: dipanggil dari physics callback
+	call_deferred("_transition_to_scene", scene_path)
 
 ## Memainkan animasi fade dan mengembalikan sinyal untuk di-await oleh EventManager
 func play_fade_animation(anim_name: String) -> Signal:
@@ -50,15 +77,20 @@ func play_fade_animation(anim_name: String) -> Signal:
 # -----------------------------------------------
 # Transition
 # -----------------------------------------------
-func _transition_to_scene(scene_key: String) -> void:
+func _transition_to_scene(scene_path: String) -> void:
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 
-	get_tree().change_scene_to_file(_scenes[scene_key])
+	get_tree().change_scene_to_file(scene_path)
 	await get_tree().process_frame
+
+	# Jika spawn menggunakan koordinat kustom (bukan pintu)
+	if _target_door_id.is_empty() and _player_spawn_position != Vector2.INF:
+		_spawn_player()
 
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
+	is_transitioning = false
 
 # -------------------------------------------------------
 # Internal

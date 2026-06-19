@@ -26,7 +26,6 @@ target_door_id = "int_door_a"
 player_spawn_offset = Vector2(0, 40)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(10337, 4562)
 
 [node name="Map" type="Sprite2D" parent="."]
 centered = false

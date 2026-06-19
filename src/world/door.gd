@@ -15,8 +15,11 @@ extends Area2D
 ## ID unik door ini dalam scene-nya. Dipakai oleh door lain sebagai target.
 @export var door_id: String = ""
 
-## Key scene tujuan (harus terdaftar di SceneManager._scenes).
+## Key scene tujuan (Legacy - jika target_scene_path diisi, key ini diabaikan).
 @export var target_scene_key: String = ""
+
+## Path scene tujuan (drag and drop file .tscn di sini)
+@export_file("*.tscn") var target_scene_path: String = ""
 
 ## ID door tujuan di scene tersebut. Player akan spawn di SpawnMarker door itu.
 @export var target_door_id: String = ""
@@ -48,11 +51,20 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
-	if target_scene_key.is_empty():
-		push_warning("Door '%s': target_scene_key belum diset!" % door_id)
+	if SceneManager.is_transitioning:
 		return
+
+	# Resolve path target scene
+	var final_scene_path := target_scene_path
+	if final_scene_path.is_empty() and not target_scene_key.is_empty():
+		final_scene_path = SceneManager.get_scene_path(target_scene_key)
+
+	if final_scene_path.is_empty():
+		push_warning("Door '%s': target_scene_path atau target_scene_key belum diset!" % door_id)
+		return
+
 	if target_door_id.is_empty():
 		push_warning("Door '%s': target_door_id belum diset!" % door_id)
 		return
 
-	SceneManager.go_to_door(target_scene_key, target_door_id)
+	SceneManager.go_to_door(final_scene_path, target_door_id)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Anambas"
-run/main_scene="uid://dwwfjwrdy7vyd"
+run/main_scene="uid://bki36g6nu5hud"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -27,6 +27,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestData="*res://src/autoload/quest_data.gd"
 AudioManager="*res://src/autoload/audio_manager/audio_manager.tscn"
 PotraitData="*res://src/autoload/potrait_data.gd"
+StoryState="*res://src/autoload/story_state.gd"
 
 [debug]
 

@@ -24,6 +24,8 @@ height = 16.0
 radius = 32.0
 
 [sub_resource type="Resource" id="Resource_0kjsw"]
+resource_local_to_scene = false
+resource_name = ""
 script = ExtResource("8_gsxuc")
 fade_type = 0
 
@@ -31,6 +33,8 @@ fade_type = 0
 radius = 32.0
 
 [sub_resource type="Resource" id="Resource_4irdt"]
+resource_local_to_scene = false
+resource_name = ""
 script = ExtResource("14_3v1tn")
 duration = 0.6
 transition = 8

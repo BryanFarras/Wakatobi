@@ -5,9 +5,10 @@ extends Node
 # Daftarkan di: Project Settings → Autoload → Name: "PlayerManager"
 # ============================================================
 
-const PLAYER_SCENE_PATH := "res://scenes/player.tscn"
+const PLAYER_SCENE_PATH := "res://src/entities/player/player.tscn"
 
 var _player: CharacterBody2D = null
+var pending_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	# Pastikan Player tidak ada di scene awal (bisa dihapus dari main scene)
@@ -29,6 +30,15 @@ func spawn(parent: Node, position: Vector2) -> void:
 		_instantiate(parent, position)
 	else:
 		_reparent(_player, parent, position)
+	
+	if pending_direction != Vector2.ZERO:
+		if _player.has_method("set_direction"):
+			_player.set_direction(pending_direction)
+		else:
+			_player.last_direction = pending_direction
+			if _player.has_method("_handle_animation"):
+				_player._handle_animation()
+		pending_direction = Vector2.ZERO
 
 func get_player() -> CharacterBody2D:
 	return _player
