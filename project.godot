@@ -28,6 +28,7 @@ QuestData="*res://src/autoload/quest_data.gd"
 AudioManager="*res://src/autoload/audio_manager/audio_manager.tscn"
 PotraitData="*res://src/autoload/potrait_data.gd"
 StoryState="*res://src/autoload/story_state.gd"
+GameplayManager="*res://src/autoload/GameplayManager.gd"
 
 [debug]
 
