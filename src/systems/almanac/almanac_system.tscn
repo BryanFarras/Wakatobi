@@ -1,0 +1,467 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://src/systems/almanac/almanac_system.gd" id="1_almanac"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.04, 0.09, 0.13, 0.98)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.08, 0.22, 0.31, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.06, 0.15, 0.22, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_inner"]
+bg_color = Color(0.03, 0.08, 0.12, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.12, 0.44, 0.64, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reputation"]
+bg_color = Color(0.05, 0.12, 0.18, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0.15, 0.65, 0.45, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[node name="AlmanacSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_almanac")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TitleLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 28.0
+offset_right = 250.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.92, 0.85, 0.65, 1)
+theme_override_font_sizes/font_size = 32
+text = "ALMANAK WAKATOBI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseBookButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 28.0
+offset_right = -28.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "X"
+
+[node name="ViewContainer" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 90.0
+offset_right = -40.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainIndexView" type="Control" parent="Control/ViewContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridMenu" type="HBoxContainer" parent="Control/ViewContainer/MainIndexView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -160.0
+offset_right = 460.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="FaunaCard" type="PanelContainer" parent="Control/ViewContainer/MainIndexView/GridMenu"]
+custom_minimum_size = Vector2(280, 320)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="Control/ViewContainer/MainIndexView/GridMenu/FaunaCard"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="CardTitle" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Satwa & Ekosistem"
+horizontal_alignment = 1
+
+[node name="IconMock" type="Panel" parent="Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox"]
+custom_minimum_size = Vector2(220, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_inner")
+
+[node name="Label" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox/IconMock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.12, 0.72, 0.62, 0.3)
+theme_override_font_sizes/font_size = 40
+text = "FAUNA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Terbuka: 0 / 4"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+text = "Buka Catatan"
+
+[node name="CultureCard" type="PanelContainer" parent="Control/ViewContainer/MainIndexView/GridMenu"]
+custom_minimum_size = Vector2(280, 320)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="Control/ViewContainer/MainIndexView/GridMenu/CultureCard"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="CardTitle" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Budaya & Legenda"
+horizontal_alignment = 1
+
+[node name="IconMock" type="Panel" parent="Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox"]
+custom_minimum_size = Vector2(220, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_inner")
+
+[node name="Label" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox/IconMock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.55, 0.08, 0.3)
+theme_override_font_sizes/font_size = 40
+text = "LORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Terbuka: 0 / 3"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+text = "Buka Catatan"
+
+[node name="DiaryCard" type="PanelContainer" parent="Control/ViewContainer/MainIndexView/GridMenu"]
+custom_minimum_size = Vector2(280, 320)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="Control/ViewContainer/MainIndexView/GridMenu/DiaryCard"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="CardTitle" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Catatan Harian"
+horizontal_alignment = 1
+
+[node name="IconMock" type="Panel" parent="Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox"]
+custom_minimum_size = Vector2(220, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_inner")
+
+[node name="Label" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox/IconMock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0.5, 0.8, 0.3)
+theme_override_font_sizes/font_size = 40
+text = "DIARY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Catatan: 0 Entri"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+text = "Buka Catatan"
+
+[node name="BookSubView" type="Control" parent="Control/ViewContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPage" type="Control" parent="Control/ViewContainer/BookSubView"]
+layout_mode = 1
+anchor_right = 0.48
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CategoryTitle" type="Label" parent="Control/ViewContainer/BookSubView/LeftPage"]
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.92, 0.85, 0.65, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fauna Wakatobi"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/ViewContainer/BookSubView/LeftPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 50.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/ViewContainer/BookSubView/LeftPage/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="BackButton" type="Button" parent="Control/ViewContainer/BookSubView/LeftPage"]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_right = 180.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+text = "Kembali ke Indeks"
+
+[node name="Divider" type="ColorRect" parent="Control/ViewContainer/BookSubView"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.08)
+
+[node name="RightPage" type="Control" parent="Control/ViewContainer/BookSubView"]
+layout_mode = 1
+anchor_left = 0.52
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EmptyStateLabel" type="Label" parent="Control/ViewContainer/BookSubView/RightPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.35)
+theme_override_font_sizes/font_size = 18
+text = "Pilih entri untuk melihat detail..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetailContent" type="VBoxContainer" parent="Control/ViewContainer/BookSubView/RightPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ItemName" type="Label" parent="Control/ViewContainer/BookSubView/RightPage/DetailContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.85, 0.65, 1)
+theme_override_font_sizes/font_size = 28
+text = "Ikan Kakaktua"
+
+[node name="TagLabel" type="Label" parent="Control/ViewContainer/BookSubView/RightPage/DetailContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.72, 0.32, 1)
+theme_override_font_sizes/font_size = 14
+text = "Fauna - Herbivora"
+
+[node name="MockVisualBox" type="ColorRect" parent="Control/ViewContainer/BookSubView/RightPage/DetailContent"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+color = Color(0.12, 0.72, 0.62, 1)
+
+[node name="MockLabel" type="Label" parent="Control/ViewContainer/BookSubView/RightPage/DetailContent/MockVisualBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.25)
+theme_override_font_sizes/font_size = 48
+text = "IK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescScroll" type="ScrollContainer" parent="Control/ViewContainer/BookSubView/RightPage/DetailContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DescLabel" type="Label" parent="Control/ViewContainer/BookSubView/RightPage/DetailContent/DescScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+text = "Penjelasan lengkap tentang Ikan Kakaktua di perairan Wakatobi..."
+autowrap_mode = 3
+
+[node name="BottomBar" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -68.0
+offset_right = -40.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_reputation")
+
+[node name="ReputationContainer" type="HBoxContainer" parent="Control/BottomBar"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ReputationLabel" type="Label" parent="Control/BottomBar/ReputationContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Reputasi Wakatobi: Level 2 (Penjelajah Wakatobi)"
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/BottomBar/ReputationContainer"]
+custom_minimum_size = Vector2(300, 16)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+value = 65.0
+show_percentage = false
