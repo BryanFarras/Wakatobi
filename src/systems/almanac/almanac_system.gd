@@ -115,9 +115,9 @@ var data_diary: Array[Dictionary] = [
 @onready var book_sub_view: Control = $Control/ViewContainer/BookSubView
 
 # Main Index Node References
-@onready var stat_fauna: Label = $Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/StatsLabel
-@onready var stat_culture: Label = $Control/ViewContainer/MainIndexView/GridMenu/CultureCard/StatsLabel
-@onready var stat_diary: Label = $Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/StatsLabel
+@onready var stat_fauna: Label = $Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox/StatsLabel
+@onready var stat_culture: Label = $Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox/StatsLabel
+@onready var stat_diary: Label = $Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox/StatsLabel
 
 # Book Sub-View Node References
 @onready var category_title: Label = $Control/ViewContainer/BookSubView/LeftPage/CategoryTitle
@@ -144,9 +144,9 @@ func _ready() -> void:
 	_init_story_state_defaults()
 
 	# Connect card buttons
-	$Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/SelectButton.pressed.connect(_on_fauna_pressed)
-	$Control/ViewContainer/MainIndexView/GridMenu/CultureCard/SelectButton.pressed.connect(_on_culture_pressed)
-	$Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/SelectButton.pressed.connect(_on_diary_pressed)
+	$Control/ViewContainer/MainIndexView/GridMenu/FaunaCard/VBox/SelectButton.pressed.connect(_on_fauna_pressed)
+	$Control/ViewContainer/MainIndexView/GridMenu/CultureCard/VBox/SelectButton.pressed.connect(_on_culture_pressed)
+	$Control/ViewContainer/MainIndexView/GridMenu/DiaryCard/VBox/SelectButton.pressed.connect(_on_diary_pressed)
 	
 	# Connect sub-page back button
 	$Control/ViewContainer/BookSubView/LeftPage/BackButton.pressed.connect(_on_back_pressed)
@@ -355,7 +355,7 @@ func _show_details(entry: Dictionary) -> void:
 	detail_mock_rect.color = entry.color
 	
 	# Short abbreviation or icon letter inside the color rect
-	detail_mock_label.text = entry.name.substr(0, 2).upper()
+	detail_mock_label.text = entry.name.substr(0, 2).to_upper()
 	detail_description.text = entry.description_long
 	
 	# Micro-animation: Pop scale the detail content for premium feedback

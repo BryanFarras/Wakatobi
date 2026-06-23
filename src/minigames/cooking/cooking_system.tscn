@@ -1,6 +1,13 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=17 format=3 uid="uid://cp6b7dp1higx3"]
 
-[ext_resource type="Script" path="res://src/minigames/cooking/cooking_system.gd" id="1_cooking"]
+[ext_resource type="Script" uid="uid://dr7m7xohkpr00" path="res://src/minigames/cooking/cooking_system.gd" id="1_cooking"]
+[ext_resource type="Texture2D" uid="uid://33rmqebqnruh" path="res://assets/Illustration/Cooking Minigame/Kapeo step 1.png" id="2_k2rfm"]
+[ext_resource type="Texture2D" uid="uid://b6t3iprrhtheo" path="res://assets/Illustration/Cooking Minigame/Button Squeze.png" id="3_jel7s"]
+[ext_resource type="Texture2D" uid="uid://b5tntukca4qui" path="res://assets/Illustration/Cooking Minigame/Hanga hanga step 2.png" id="4_5inl3"]
+[ext_resource type="Texture2D" uid="uid://dwo67oyb3y31h" path="res://assets/Illustration/Cooking Minigame/Pan Hanga hanga 1.png" id="4_jel7s"]
+[ext_resource type="Texture2D" uid="uid://b8so22si13s27" path="res://assets/Illustration/Cooking Minigame/Mengukus.png" id="6_bwu2c"]
+[ext_resource type="Texture2D" uid="uid://c5g0bisqjkl1k" path="res://assets/Illustration/Cooking Minigame/Kaloli step 3.png" id="6_g2dan"]
+[ext_resource type="Texture2D" uid="uid://dd5cks18526v3" path="res://assets/Illustration/Cooking Minigame/Serving Kasuami.png" id="8_6m4fm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kitchen_bg"]
 bg_color = Color(0.12, 0.08, 0.06, 1)
@@ -24,39 +31,6 @@ bg_color = Color(0.2, 0.14, 0.1, 0.6)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cooking_board"]
-bg_color = Color(0.06, 0.1, 0.12, 0.7)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 0.12)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
-bg_color = Color(0.05, 0.05, 0.05, 0.6)
-corner_radius_top_left = 4
-corner_radius_bottom_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cook_progress"]
-bg_color = Color(0.12, 0.68, 0.85, 1)
-corner_radius_top_left = 4
-corner_radius_bottom_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_action"]
-bg_color = Color(0.8, 0.45, 0.1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gold_panel"]
 bg_color = Color(0.14, 0.1, 0.08, 0.9)
 border_width_left = 2
@@ -72,6 +46,39 @@ expand_margin_left = 20.0
 expand_margin_top = 20.0
 expand_margin_right = 20.0
 expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_action"]
+bg_color = Color(0.8, 0.45, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cooking_board"]
+bg_color = Color(0.06, 0.1, 0.12, 0.7)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.05, 0.05, 0.05, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cook_progress"]
+bg_color = Color(0.12, 0.68, 0.85, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="CookingSystem" type="Control"]
 layout_mode = 3
@@ -152,6 +159,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SelectionPanel" type="VBoxContainer" parent="MainContainer/PrepStation"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -196,7 +204,6 @@ text = "SUP PARENDE
 (Sop Asam Pedas Kakaktua)"
 
 [node name="KasuamiPrep" type="VBoxContainer" parent="MainContainer/PrepStation"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,38 +213,14 @@ grow_vertical = 2
 alignment = 1
 
 [node name="KapeoPanel" type="Control" parent="MainContainer/PrepStation/KasuamiPrep"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/KapeoPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_top = 10.0
-offset_right = 250.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 18
-text = "Kapeo (Memeras Singkong): Kurangi Kadar Air hingga 0%"
-horizontal_alignment = 1
-
-[node name="MoistureLabel" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/KapeoPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -120.0
-offset_right = 150.0
-offset_bottom = -95.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Kadar Air Singkong"
-horizontal_alignment = 1
+[node name="KapeoStep1" type="Sprite2D" parent="MainContainer/PrepStation/KasuamiPrep/KapeoPanel"]
+position = Vector2(545.9968, 243.37503)
+scale = Vector2(0.6899576, 0.68995744)
+texture = ExtResource("2_k2rfm")
 
 [node name="MoistureBar" type="ProgressBar" parent="MainContainer/PrepStation/KasuamiPrep/KapeoPanel"]
 custom_minimum_size = Vector2(400, 24)
@@ -247,10 +230,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -90.0
-offset_right = 200.0
-offset_bottom = -66.0
+offset_top = -91.5
+offset_right = 400.0
+offset_bottom = -64.5
 grow_horizontal = 2
 grow_vertical = 2
 value = 100.0
@@ -263,10 +245,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -10.0
-offset_right = 150.0
-offset_bottom = 14.0
+offset_left = 50.0
+offset_top = -24.0
+offset_right = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12, 0.12, 0.15, 1)
@@ -292,75 +273,58 @@ grow_vertical = 2
 color = Color(0.9, 0.8, 0.2, 1)
 
 [node name="BtnSqueeze" type="Button" parent="MainContainer/PrepStation/KasuamiPrep/KapeoPanel"]
-custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 60.0
-offset_right = 100.0
-offset_bottom = 110.0
+offset_left = 64.0
+offset_top = 33.0
+offset_right = 332.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button_action")
-text = "PERAS (SQUEEZE)"
-
-[node name="QteInstructions" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/KapeoPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 130.0
-offset_right = 200.0
-offset_bottom = 153.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.4)
-text = "Tekan tombol tepat saat jarum berada di zona hijau!"
-horizontal_alignment = 1
+icon = ExtResource("3_jel7s")
+icon_alignment = 1
 
 [node name="HangaHangaPanel" type="Control" parent="MainContainer/PrepStation/KasuamiPrep"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -300.0
-offset_top = 10.0
-offset_right = 300.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 18
-text = "Hanga-Hanga (Hancurkan Gumpalan): Gosok Adonan di Papan"
-horizontal_alignment = 1
+[node name="HangaHangaStep2" type="Sprite2D" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel"]
+position = Vector2(545.7758, 244.125)
+scale = Vector2(0.68836343, 0.68836343)
+texture = ExtResource("4_5inl3")
 
 [node name="GrindArea" type="Panel" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel"]
-custom_minimum_size = Vector2(400, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -90.0
-offset_right = 200.0
-offset_bottom = 110.0
+offset_left = -92.0
+offset_top = -130.0
+offset_right = 292.56146
+offset_bottom = 171.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cooking_board")
 
+[node name="TextureRect" type="TextureRect" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel/GrindArea"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 393.66125
+offset_bottom = 302.0
+texture = ExtResource("4_jel7s")
+expand_mode = 1
+
 [node name="Label" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel/GrindArea"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,51 +339,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FinenessBar" type="ProgressBar" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel"]
-custom_minimum_size = Vector2(400, 24)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 130.0
-offset_right = 200.0
-offset_bottom = 154.0
+offset_left = 317.0
+offset_top = -72.0
+offset_right = 521.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/HangaHangaPanel/FinenessBar"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = -24.0
-offset_right = 150.0
-offset_bottom = -1.0
-grow_horizontal = 2
-text = "Tingkat Kegemburan Tepung"
-horizontal_alignment = 1
-
 [node name="KaloliPanel" type="Control" parent="MainContainer/PrepStation/KasuamiPrep"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -300.0
-offset_top = 10.0
-offset_right = 300.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 18
-text = "Kaloli (Mencetak): Tahan Tombol untuk Mengisi Cetakan Kerucut"
-horizontal_alignment = 1
+[node name="KaloliStep3" type="Sprite2D" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel"]
+position = Vector2(545.9697, 244.12503)
+scale = Vector2(0.68903136, 0.68836343)
+texture = ExtResource("6_g2dan")
 
 [node name="MoldContainer" type="Panel" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel"]
 custom_minimum_size = Vector2(160, 200)
@@ -429,10 +369,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -100.0
-offset_right = -60.0
-offset_bottom = 100.0
+offset_left = -11.0
+offset_top = -27.0
+offset_right = 149.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cooking_board")
@@ -444,10 +384,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -80.0
-offset_right = -80.0
-offset_bottom = 80.0
+offset_left = 9.0
+offset_top = -7.0
+offset_right = 129.0
+offset_bottom = 153.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.95, 0.85, 0.65, 0.2)
@@ -455,7 +395,6 @@ color = Color(0.95, 0.85, 0.65, 0.2)
 [node name="ConeOutline" type="Line2D" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel/MoldVisual"]
 points = PackedVector2Array(0, 0, 60, 160, 120, 0, 0, 0)
 width = 3.0
-color = Color(0.85, 0.65, 0.25, 0.6)
 
 [node name="MoldBar" type="ProgressBar" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel"]
 custom_minimum_size = Vector2(300, 24)
@@ -465,25 +404,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -60.0
-offset_right = 280.0
-offset_bottom = -36.0
+offset_left = -98.0
+offset_top = -136.0
+offset_right = 244.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel/MoldBar"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = -24.0
-offset_right = 150.0
-offset_bottom = -1.0
-grow_horizontal = 2
-text = "Level Kepenuhan Cetakan (Target: 100%)"
-horizontal_alignment = 1
 
 [node name="BtnMold" type="Button" parent="MainContainer/PrepStation/KasuamiPrep/KaloliPanel"]
 custom_minimum_size = Vector2(260, 44)
@@ -493,10 +419,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 260.0
-offset_bottom = 44.0
+offset_left = 263.0
+offset_top = 18.0
+offset_right = 523.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "TAHAN UNTUK MENGISI (MOLD)"
@@ -509,10 +435,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 60.0
-offset_right = 260.0
-offset_bottom = 104.0
+offset_left = 263.0
+offset_top = 79.0
+offset_right = 523.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button_action")
@@ -567,19 +493,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_cooking_board")
 [node name="Line1" type="Line2D" parent="MainContainer/PrepStation/ParendePrep/CuttingPanel/CutArea/VisualLines"]
 points = PackedVector2Array(120, 10, 120, 230)
 width = 2.0
-color = Color(1, 1, 1, 0.4)
 joint_mode = 2
 
 [node name="Line2" type="Line2D" parent="MainContainer/PrepStation/ParendePrep/CuttingPanel/CutArea/VisualLines"]
 points = PackedVector2Array(240, 10, 240, 230)
 width = 2.0
-color = Color(1, 1, 1, 0.4)
 joint_mode = 2
 
 [node name="Line3" type="Line2D" parent="MainContainer/PrepStation/ParendePrep/CuttingPanel/CutArea/VisualLines"]
 points = PackedVector2Array(360, 10, 360, 230)
 width = 2.0
-color = Color(1, 1, 1, 0.4)
 joint_mode = 2
 
 [node name="FishSlices" type="Control" parent="MainContainer/PrepStation/ParendePrep/CuttingPanel"]
@@ -630,7 +553,6 @@ color = Color(0.08, 0.5, 0.65, 1)
 
 [node name="LineDraw" type="Line2D" parent="MainContainer/PrepStation/ParendePrep/CuttingPanel"]
 width = 4.0
-color = Color(0.9, 0.8, 0.2, 1)
 
 [node name="GatheringPanel" type="Control" parent="MainContainer/PrepStation/ParendePrep"]
 visible = false
@@ -745,64 +667,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CookingControls" type="VBoxContainer" parent="MainContainer/CookingStation"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -240.0
-offset_right = 250.0
-offset_bottom = 240.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-alignment = 1
+[node name="Mengukus" type="Sprite2D" parent="MainContainer/CookingStation"]
+position = Vector2(545.6862, 244)
+scale = Vector2(0.68861985, 0.68862903)
+texture = ExtResource("6_bwu2c")
 
-[node name="CookTitle" type="Label" parent="MainContainer/CookingStation/CookingControls"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95, 0.85, 0.65, 1)
-theme_override_font_sizes/font_size = 20
-text = "Mengukus Kasuami"
-horizontal_alignment = 1
-
-[node name="PotVisual" type="ColorRect" parent="MainContainer/CookingStation/CookingControls"]
-custom_minimum_size = Vector2(240, 140)
-layout_mode = 2
-size_flags_horizontal = 4
-color = Color(0.38, 0.28, 0.22, 1)
-
-[node name="Cover" type="ColorRect" parent="MainContainer/CookingStation/CookingControls/PotVisual"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -8.0
-offset_top = -14.0
-offset_right = 8.0
-grow_horizontal = 2
-color = Color(0.24, 0.16, 0.12, 1)
-
-[node name="WaterStatus" type="Label" parent="MainContainer/CookingStation/CookingControls/PotVisual"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "BELANGA TANAH LIAT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HeatLabel" type="Label" parent="MainContainer/CookingStation/CookingControls"]
-layout_mode = 2
-text = "Suhu Tungku Kayu Bakar"
-horizontal_alignment = 1
+[node name="CookingControls" type="Control" parent="MainContainer/CookingStation"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="HeatBar" type="ProgressBar" parent="MainContainer/CookingStation/CookingControls"]
 custom_minimum_size = Vector2(400, 24)
-layout_mode = 2
+layout_mode = 0
+offset_left = 573.0
+offset_top = 138.0
+offset_right = 1060.0
+offset_bottom = 162.0
 size_flags_horizontal = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cook_progress")
@@ -810,7 +691,7 @@ show_percentage = false
 
 [node name="GreenZoneVisual" type="ColorRect" parent="MainContainer/CookingStation/CookingControls/HeatBar"]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = -1
 anchor_left = 0.6
 anchor_right = 0.85
 anchor_bottom = 1.0
@@ -819,13 +700,22 @@ grow_vertical = 2
 color = Color(0.2, 0.8, 0.4, 0.45)
 
 [node name="StatusLabel" type="Label" parent="MainContainer/CookingStation/CookingControls"]
-layout_mode = 2
+layout_mode = 0
+offset_left = 568.0
+offset_top = 172.0
+offset_right = 1068.0
+offset_bottom = 195.0
 theme_override_colors/font_color = Color(0.2, 0.9, 0.4, 1)
 text = "Suhu Optimal!"
 horizontal_alignment = 1
 
 [node name="ActionGrid" type="HBoxContainer" parent="MainContainer/CookingStation/CookingControls"]
-layout_mode = 2
+layout_mode = 0
+offset_left = 912.655
+offset_top = 230.085
+offset_right = 1111.6555
+offset_bottom = 274.08502
+scale = Vector2(0.78, 0.78)
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -835,19 +725,19 @@ layout_mode = 2
 text = "TIUP SEMPRONG (BLOW)"
 
 [node name="BtnDropFish" type="Button" parent="MainContainer/CookingStation/CookingControls/ActionGrid"]
+visible = false
 custom_minimum_size = Vector2(180, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button_action")
 text = "MASUKKAN IKAN"
 
-[node name="CookProgressLabel" type="Label" parent="MainContainer/CookingStation/CookingControls"]
-layout_mode = 2
-text = "Kematangan Masakan"
-horizontal_alignment = 1
-
 [node name="CookProgressBar" type="ProgressBar" parent="MainContainer/CookingStation/CookingControls"]
 custom_minimum_size = Vector2(400, 20)
-layout_mode = 2
+layout_mode = 0
+offset_left = 568.0
+offset_top = 333.0
+offset_right = 1065.0
+offset_bottom = 360.0
 size_flags_horizontal = 4
 
 [node name="ServingStation" type="Control" parent="MainContainer"]
@@ -856,8 +746,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 230.0
+offset_top = -13.0
+offset_right = 230.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ServingKasuami" type="Sprite2D" parent="MainContainer/ServingStation"]
+position = Vector2(315.7769, 257)
+scale = Vector2(0.68862927, 0.68862915)
+texture = ExtResource("8_6m4fm")
 
 [node name="EvaluationPanel" type="PanelContainer" parent="MainContainer/ServingStation"]
 layout_mode = 1
@@ -866,9 +765,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
+offset_left = -288.0
 offset_top = -200.0
-offset_right = 280.0
+offset_right = 272.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2

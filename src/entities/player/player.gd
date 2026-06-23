@@ -30,7 +30,7 @@ extends CharacterBody2D
 ## Priority PCam inventory saat tertutup
 @export var inventory_pcam_inactive_priority: int = 0
 
-@onready var sprite: Sprite2D = $Anim
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var inventory_pcam: Node2D = $InventoryPCam
 @onready var inventory_ui: CanvasLayer = $InventoryUI
 @onready var animation_tree: AnimationTree = %AnimationTree

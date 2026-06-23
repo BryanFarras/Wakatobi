@@ -1,10 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://bki36g6nu5hud"]
+[gd_scene load_steps=25 format=3 uid="uid://bki36g6nu5hud"]
 
-[ext_resource type="Script" uid="uid://ctupgnmrycm2o" path="res://src/world/intro.gd" id="1_i8qk8"]
 [ext_resource type="Texture2D" uid="uid://c60l6ie6c0ccl" path="res://assets/placeholder/Intro/First.jpg" id="2_3q6ft"]
-[ext_resource type="Texture2D" uid="uid://cpsp6lk7n3ylc" path="res://assets/placeholder/Intro/Second.jpg" id="3_3rbaq"]
-[ext_resource type="Texture2D" uid="uid://bmv3028bagr8w" path="res://assets/placeholder/Intro/Third.jpg" id="4_gi8a2"]
-[ext_resource type="Texture2D" uid="uid://vvcfi8qb433n" path="res://assets/placeholder/Intro/Fourth.jpg" id="5_05h6f"]
 [ext_resource type="Script" uid="uid://dxka5o8i5shwx" path="res://src/modular_component/events/event_interactable.gd" id="6_wdiit"]
 [ext_resource type="Script" uid="uid://i6aqbfqieekr" path="res://src/modular_component/events/commands/event_command.gd" id="7_aku2j"]
 [ext_resource type="Texture2D" uid="uid://bepgd8knm6luc" path="res://assets/placeholder/sign.png" id="7_qemqj"]
@@ -33,6 +29,7 @@ text = "...OK, semuanya sudah siap, kan?"
 script = ExtResource("9_jwdxq")
 character_name = "Ibu"
 text = "Harusnya sudah, yah."
+left_portrait = "res://assets/placeholder/Potrait Character/Placeholder 1/pl5 blink.png"
 
 [sub_resource type="Resource" id="Resource_mnm0y"]
 script = ExtResource("9_jwdxq")
@@ -116,9 +113,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_i8qk8")
-Text = PackedStringArray("Pada Zaman Dahulu", "Hiduplah", "")
-Images = Array[Texture2D]([ExtResource("2_3q6ft"), ExtResource("3_3rbaq"), ExtResource("4_gi8a2"), ExtResource("5_05h6f")])
 
 [node name="Blackscreen" type="PanelContainer" parent="."]
 layout_mode = 1

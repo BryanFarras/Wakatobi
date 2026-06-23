@@ -99,7 +99,6 @@ var final_accuracy: float = 0.0
 @onready var cook_progress_bar: ProgressBar = $MainContainer/CookingStation/CookingControls/CookProgressBar
 @onready var cook_status_label: Label = $MainContainer/CookingStation/CookingControls/StatusLabel
 @onready var btn_drop_fish: Button = $MainContainer/CookingStation/CookingControls/ActionGrid/BtnDropFish
-@onready var cook_title_label: Label = $MainContainer/CookingStation/CookingControls/CookTitle
 
 # Serving Station UI
 @onready var eval_dish_title: Label = $MainContainer/ServingStation/EvaluationPanel/VBox/DishTitle
@@ -217,11 +216,9 @@ func _switch_station(station: String) -> void:
 	if station == "cooking":
 		# Setup cooking titles depending on dish
 		if selected_dish == "kasuami":
-			cook_title_label.text = "Mengukus Kasuami (Simmering)"
 			btn_drop_fish.hide()
 			fish_dropped = true # Kasuami is already in the steamer
 		else:
-			cook_title_label.text = "Memasak Sup Parende (Boiling)"
 			btn_drop_fish.show()
 			fish_dropped = false
 			cook_status_label.text = "Panaskan air tungku! Masukkan Ikan di Zona Hijau."
@@ -634,12 +631,10 @@ func _flash_screen(color: Color) -> void:
 	tween.tween_callback(flash.queue_free)
 
 func _flash_pot(color: Color) -> void:
-	var pot_rect = $MainContainer/CookingStation/CookingControls/PotVisual
 	var overlay = ColorRect.new()
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.color = color
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	pot_rect.add_child(overlay)
 	
 	var tween = create_tween()
 	tween.tween_property(overlay, "modulate:a", 0.0, 0.3)

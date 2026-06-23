@@ -11,6 +11,14 @@ extends Node
 @onready var QuestSystem = get_node_or_null("/root/QuestData")
 @onready var AlmanacSystem = null # Bridged via local wrapper to StoryState
 
+# Custom gameplay signals for quest and trigger tracking
+signal fishing_completed(success: bool, item_id: String)
+signal cooking_completed(success: bool, dish_name: String)
+signal realm_shifted(active: bool)
+
+# Reference to the quest world manager for environment shifts
+var quest_world_manager: Node = null
+
 # ==============================================================================
 # Local Bridges & Mocks
 # These classes act as adapters. If the autoloads are renamed or configured differently,
@@ -88,7 +96,10 @@ class LocalAlmanacSystem:
 	func unlock_entry(entry_id: String) -> void:
 		var story_state = parent.get_node_or_null("/root/StoryState")
 		if story_state:
-			var flag = "almanac_" + entry_id + "_unlocked"
+			var clean_id = entry_id
+			if clean_id == "ikan_kakatua":
+				clean_id = "ikan_kakaktua"
+			var flag = "almanac_" + clean_id + "_unlocked"
 			story_state.set_flag(flag, true)
 			print("[AlmanacSystem Bridge] Unlocked Almanac Entry flag: ", flag)
 		else:
@@ -151,7 +162,7 @@ func start_fishing(difficulty: float, reward_item_id: String) -> void:
 			
 	if "fish_speed_base" in fishing_instance:
 		fishing_instance.fish_speed_base *= difficulty
-		
+	fishing_instance.start_game()
 	# Connect to success/failure signals
 	if fishing_instance.has_signal("fishing_success"):
 		fishing_instance.fishing_success.connect(func():
@@ -162,6 +173,8 @@ func start_fishing(difficulty: float, reward_item_id: String) -> void:
 			AlmanacSystem.unlock_entry(reward_item_id)
 			# 3. Update Quest objective
 			QuestSystem.update_objective("fish_caught", reward_item_id)
+			# 4. Emit completion signal
+			fishing_completed.emit(true, reward_item_id)
 			# Clean up UI overlay
 			canvas.queue_free()
 		)
@@ -169,6 +182,8 @@ func start_fishing(difficulty: float, reward_item_id: String) -> void:
 	if fishing_instance.has_signal("fishing_failed"):
 		fishing_instance.fishing_failed.connect(func():
 			print("[GameplayManager] Fishing Minigame FAILED.")
+			# Emit completion signal
+			fishing_completed.emit(false, reward_item_id)
 			canvas.queue_free()
 		)
 
@@ -240,8 +255,13 @@ func start_cooking(dish_name: String, ingredients: Array) -> void:
 					
 				# 4. Log diary entry into Almanac
 				AlmanacSystem.log_diary("day2")
+				
+				# 5. Emit completion signal
+				cooking_completed.emit(true, dish_name)
 			else:
 				print("[GameplayManager] Cooking FAILED due to low quality score (%.1f%%)." % score)
+				# Emit completion signal
+				cooking_completed.emit(false, dish_name)
 				
 			canvas.queue_free()
 		)
@@ -285,3 +305,11 @@ func transition_player_state(new_state: String) -> void:
 						compass.show()
 	else:
 		push_warning("[GameplayManager] Active player node not registered in PlayerManager. State transition skipped: " + new_state)
+
+## Triggers the Walillah realm shift on the active quest world manager
+func trigger_realm_shift(active: bool = true) -> void:
+	if quest_world_manager:
+		quest_world_manager.trigger_realm_shift(active)
+		realm_shifted.emit(active)
+	else:
+		push_warning("[GameplayManager] quest_world_manager not registered! Cannot trigger realm shift.")
