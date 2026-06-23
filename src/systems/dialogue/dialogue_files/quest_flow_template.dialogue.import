@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://clg1cqc1g2x3n"
+path="res://.godot/imported/quest_flow_template.dialogue-a07ecec88020c0ec036cd6dc00cdd714.tres"
+
+[deps]
+
+source_file="res://src/systems/dialogue/dialogue_files/quest_flow_template.dialogue"
+dest_files=["res://.godot/imported/quest_flow_template.dialogue-a07ecec88020c0ec036cd6dc00cdd714.tres"]
+
+[params]
+
+defaults=true

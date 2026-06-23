@@ -228,6 +228,44 @@ offset_bottom = -10.0
 text = "E"
 metadata/_edit_use_anchors_ = true
 
+[node name="NPC_Murid_4" type="CharacterBody2D" parent="Objects_NPCs"]
+position = Vector2(304, 211)
+script = ExtResource("4_a7ula")
+is_static = true
+spritesheet = ExtResource("6_5vejg")
+character_index = 6
+visibility_flag = "STORY_INTRO_DONE"
+visible_when_flag_is = false
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_4"]
+shape = SubResource("CircleShape2D_mjwpf")
+
+[node name="animation" type="AnimatedSprite2D" parent="Objects_NPCs/NPC_Murid_4"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("6_le4hg")
+animation = &"idle_bawah"
+
+[node name="raycast" type="RayCast2D" parent="Objects_NPCs/NPC_Murid_4"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventPage1" type="Node2D" parent="Objects_NPCs/NPC_Murid_4"]
+script = ExtResource("7_ishjm")
+
+[node name="interaksi" type="Area2D" parent="Objects_NPCs/NPC_Murid_4/EventPage1"]
+
+[node name="area" type="CollisionShape2D" parent="Objects_NPCs/NPC_Murid_4/EventPage1/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="Objects_NPCs/NPC_Murid_4"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+metadata/_edit_use_anchors_ = true
+
 [node name="CutsceneIntro" type="Node2D" parent="Objects_NPCs"]
 position = Vector2(720, 368)
 script = ExtResource("7_ishjm")
@@ -243,3 +281,5 @@ event_sequence = Array[ExtResource("8_cubnx")]([SubResource("Resource_s3aoe"), S
 [connection signal="body_shape_exited" from="Objects_NPCs/NPC_Murid_2/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_2" method="_on_interaksi_body_shape_exited"]
 [connection signal="body_shape_entered" from="Objects_NPCs/NPC_Murid_3/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_3" method="_on_interaksi_body_shape_entered"]
 [connection signal="body_shape_exited" from="Objects_NPCs/NPC_Murid_3/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_3" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="Objects_NPCs/NPC_Murid_4/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_4" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="Objects_NPCs/NPC_Murid_4/EventPage1/interaksi" to="Objects_NPCs/NPC_Murid_4" method="_on_interaksi_body_shape_exited"]

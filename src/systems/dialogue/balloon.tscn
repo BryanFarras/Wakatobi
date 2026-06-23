@@ -231,9 +231,11 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="ExampleBalloon" type="CanvasLayer" node_paths=PackedStringArray("potrait_left", "potrait_right")]
 layer = 100
 script = ExtResource("1_36de5")
+potrait_left = NodePath("Left")
+potrait_right = NodePath("Right")
 
 [node name="Right" type="TextureRect" parent="."]
 anchors_preset = -1

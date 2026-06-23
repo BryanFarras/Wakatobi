@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dghy0q87quntt"]
+
+[ext_resource type="Texture2D" uid="uid://c5txysx25am6m" path="res://assets/textures/environment/Bay.png" id="1_5nk1k"]
+
+[node name="Bay" type="Node2D"]
+
+[node name="Bay" type="Sprite2D" parent="."]
+position = Vector2(354, 252)
+texture = ExtResource("1_5nk1k")
