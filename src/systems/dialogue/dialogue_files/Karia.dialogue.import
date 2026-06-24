@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dr10upe3vwbm6"
+path="res://.godot/imported/Karia.dialogue-dfa7a3b3840aa1e7ce98802db84f9c61.tres"
+
+[deps]
+
+source_file="res://src/systems/dialogue/dialogue_files/Karia.dialogue"
+dest_files=["res://.godot/imported/Karia.dialogue-dfa7a3b3840aa1e7ce98802db84f9c61.tres"]
+
+[params]
+
+defaults=true

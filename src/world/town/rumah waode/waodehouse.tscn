@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ibnyoo82r8tr"]
+[gd_scene load_steps=20 format=4 uid="uid://ibnyoo82r8tr"]
 
 [ext_resource type="Texture2D" uid="uid://d1d4e0xmy4p3x" path="res://assets/textures/environment/Wa Ode House.png" id="1_o3ml2"]
 [ext_resource type="Texture2D" uid="uid://boabcqgmshqaw" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileB_Sengoku_Colored_Roof.png" id="2_8l546"]
@@ -7,6 +7,10 @@
 [ext_resource type="TileSet" uid="uid://s0cbildpkkvi" path="res://src/world/school/school_map.tres" id="5_k180s"]
 [ext_resource type="Texture2D" uid="uid://n7wisps11xxi" path="res://assets/Sample Project/Graphics/Tilesets/Collision.png" id="6_rnnot"]
 [ext_resource type="PackedScene" uid="uid://31gbi4k0x2eh" path="res://src/world/door.tscn" id="7_r1shd"]
+[ext_resource type="Script" uid="uid://bhoxnssmr62q7" path="res://src/entities/npcs/base_npc/base_npc.gd" id="8_3da6l"]
+[ext_resource type="Resource" uid="uid://d1mjmt47gtujk" path="res://src/resources/quest/interaksi_papan.tres" id="9_aua5v"]
+[ext_resource type="SpriteFrames" uid="uid://b5tstmwg4jmwq" path="res://src/entities/npcs/base_npc/base_anim.tres" id="10_altvb"]
+[ext_resource type="Script" uid="uid://dxka5o8i5shwx" path="res://src/modular_component/events/event_interactable.gd" id="11_4ko02"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwcwr"]
 texture = ExtResource("2_8l546")
@@ -552,6 +556,12 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cwaho")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjex5"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gor76"]
+radius = 32.0
+
 [node name="SchoolMap" type="Node2D"]
 
 [node name="WakatobiSchoolArea" type="Sprite2D" parent="."]
@@ -567,14 +577,91 @@ tile_set = SubResource("TileSet_kp80h")
 tile_set = ExtResource("5_k180s")
 
 [node name="Collision" type="TileMapLayer" parent="Tileset"]
+visible = false
+tile_map_data = PackedByteArray("AAAOABgAAAAAAAAAAAAPABgAAAAAAAAAAAAQABgAAAAAAAAAAAAQABcAAAAAAAAAAAAQABYAAAAAAAAAAAAQABUAAAAAAAAAAAARABUAAAAAAAAAAAASABUAAAAAAAAAAAASABQAAAAAAAAAAAASABMAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAZABMAAAAAAAAAAAAZABIAAAAAAAAAAAAZABEAAAAAAAAAAAAZABAAAAAAAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAVABEAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAXABIAAAAAAAAAAAAUABEAAAAAAAAAAAAUABIAAAAAAAAAAAALABMAAAAAAAAAAAALABQAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAANABYAAAAAAAAAAAARABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABcAAAAAAAAAAAANABgAAAAAAAAAAAAKABQAAAAAAAAAAAAJABQAAAAAAAAAAAAIABQAAAAAAAAAAAAHABQAAAAAAAAAAAAGABQAAAAAAAAAAAAFABQAAAAAAAAAAAAFABMAAAAAAAAAAAAFABIAAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAAKABEAAAAAAAAAAAAJABEAAAAAAAAAAAALABEAAAAAAAAAAAAMABEAAAAAAAAAAAANABEAAAAAAAAAAAANABAAAAAAAAAAAAANAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAASABEAAAAAAAAAAAASABAAAAAAAAAAAAASAA8AAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAASAAoAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAkAAAAAAAAAAAAZAAgAAAAAAAAAAAAZAAcAAAAAAAAAAAAZAAYAAAAAAAAAAAAZAAUAAAAAAAAAAAAZAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAYAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAKAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAGAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAASAAQAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_any3t")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(464, 752)
+position = Vector2(464, 720)
 
 [node name="Door" parent="." instance=ExtResource("7_r1shd")]
 position = Vector2(479.00003, 778)
 scale = Vector2(3.6, 1)
-door_id = "class_2A"
-target_scene_path = "uid://d0l7banp7iinh"
-target_door_id = "exit"
+door_id = "exit"
+target_scene_path = "uid://jt7gwi5tsngy"
+target_door_id = "door_rumahwaode"
+
+[node name="NPC_Objects" type="Node2D" parent="."]
+
+[node name="Wa Ode" type="CharacterBody2D" parent="NPC_Objects"]
+position = Vector2(464, 400)
+script = ExtResource("8_3da6l")
+quest_data = ExtResource("9_aua5v")
+visibility_flag = "QUEST_KARIA"
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape2D" parent="NPC_Objects/Wa Ode"]
+shape = SubResource("CircleShape2D_sjex5")
+
+[node name="animation" type="AnimatedSprite2D" parent="NPC_Objects/Wa Ode"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("10_altvb")
+animation = &"jalan_kanan"
+
+[node name="raycast" type="RayCast2D" parent="NPC_Objects/Wa Ode"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventInteractable" type="Node2D" parent="NPC_Objects/Wa Ode"]
+script = ExtResource("11_4ko02")
+
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Wa Ode/EventInteractable"]
+
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Wa Ode/EventInteractable/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="NPC_Objects/Wa Ode"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+
+[node name="Ibu Wa Ode" type="CharacterBody2D" parent="NPC_Objects"]
+position = Vector2(496, 400)
+script = ExtResource("8_3da6l")
+quest_data = ExtResource("9_aua5v")
+visibility_flag = "QUEST_KARIA"
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape2D" parent="NPC_Objects/Ibu Wa Ode"]
+shape = SubResource("CircleShape2D_sjex5")
+
+[node name="animation" type="AnimatedSprite2D" parent="NPC_Objects/Ibu Wa Ode"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("10_altvb")
+animation = &"jalan_kanan"
+
+[node name="raycast" type="RayCast2D" parent="NPC_Objects/Ibu Wa Ode"]
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventInteractable" type="Node2D" parent="NPC_Objects/Ibu Wa Ode"]
+script = ExtResource("11_4ko02")
+
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Ibu Wa Ode/EventInteractable"]
+
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi"]
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="NPC_Objects/Ibu Wa Ode"]
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+
+[connection signal="body_shape_entered" from="NPC_Objects/Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Ibu Wa Ode" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Ibu Wa Ode" method="_on_interaksi_body_shape_exited"]
