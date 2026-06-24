@@ -1,0 +1,174 @@
+[gd_scene load_steps=23 format=3 uid="uid://ujl2h05ms14y"]
+
+[ext_resource type="Script" uid="uid://dkyv1ry71gijo" path="res://src/testing_scene/testing_chamber.gd" id="1_0e7uk"]
+[ext_resource type="Script" uid="uid://dxka5o8i5shwx" path="res://src/modular_component/events/event_interactable.gd" id="2_qytnj"]
+[ext_resource type="Script" uid="uid://i6aqbfqieekr" path="res://src/modular_component/events/commands/event_command.gd" id="3_7p0sk"]
+[ext_resource type="Script" uid="uid://db067uqto5eoy" path="res://src/modular_component/events/commands/wait_command.gd" id="4_5h2a7"]
+[ext_resource type="Script" uid="uid://mci63wejq2xp" path="res://src/modular_component/events/commands/show_text_command.gd" id="5_u4wci"]
+[ext_resource type="Script" uid="uid://cg3lffuxxejqs" path="res://src/modular_component/events/commands/transfer_command.gd" id="6_mx5er"]
+[ext_resource type="Texture2D" uid="uid://bepgd8knm6luc" path="res://assets/placeholder/sign.png" id="7_k6jbd"]
+[ext_resource type="PackedScene" uid="uid://4rqdup3rhsqo" path="res://src/modular_component/interactions/interactable.tscn" id="8_0xe8n"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_si018"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_r1io2"]
+[ext_resource type="Texture2D" uid="uid://due0mid78qc2s" path="res://assets/placeholder/sign_prompt.png" id="11_mnokd"]
+
+[sub_resource type="Resource" id="Resource_4g7kb"]
+script = ExtResource("4_5h2a7")
+
+[sub_resource type="Resource" id="Resource_8dv1x"]
+script = ExtResource("5_u4wci")
+character_name = "Ayah"
+text = "...OK, semuanya sudah siap, kan?"
+left_portrait = 1
+
+[sub_resource type="Resource" id="Resource_5bsce"]
+script = ExtResource("5_u4wci")
+character_name = "Ibu"
+text = "Harusnya sudah, yah."
+right_portrait = 1
+
+[sub_resource type="Resource" id="Resource_mnm0y"]
+script = ExtResource("5_u4wci")
+character_name = "Ibu"
+text = "Ayo, Nak, nanti kita ketinggalan pesawatnya."
+
+[sub_resource type="Resource" id="Resource_vgfp0"]
+script = ExtResource("4_5h2a7")
+
+[sub_resource type="Resource" id="Resource_qua1m"]
+script = ExtResource("6_mx5er")
+transfer_type = 1
+spawn_type = 1
+target_direction = 1
+target_tile = Vector2i(16, 10)
+target_scene_path = "uid://d0l7banp7iinh"
+
+[sub_resource type="Resource" id="Resource_s2l8t"]
+script = ExtResource("10_r1io2")
+duration = 0.6
+transition = 8
+ease = 1
+
+[sub_resource type="Animation" id="Animation_s0ifd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignUI/CanvasGroup:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_c4bei"]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignUI/CanvasGroup:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jattv"]
+resource_name = "interact"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignUI/CanvasGroup:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c4bei"]
+_data = {
+&"RESET": SubResource("Animation_s0ifd"),
+&"hide": SubResource("Animation_c4bei"),
+&"show": SubResource("Animation_jattv")
+}
+
+[node name="testing_chamber" type="Node2D"]
+script = ExtResource("1_0e7uk")
+
+[node name="testing_cutscene" type="Node2D" parent="."]
+position = Vector2(1297, 135)
+script = ExtResource("2_qytnj")
+trigger_type = 1
+entity_name = "IntroCutscene"
+event_sequence = Array[ExtResource("3_7p0sk")]([SubResource("Resource_4g7kb"), SubResource("Resource_8dv1x"), SubResource("Resource_5bsce"), SubResource("Resource_mnm0y"), SubResource("Resource_vgfp0"), SubResource("Resource_qua1m")])
+
+[node name="Sprite2D" type="Sprite2D" parent="testing_cutscene"]
+visible = false
+texture = ExtResource("7_k6jbd")
+
+[node name="Interactable" parent="testing_cutscene" instance=ExtResource("8_0xe8n")]
+unique_name_in_owner = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="testing_cutscene"]
+unique_name_in_owner = true
+position = Vector2(0, -52)
+script = ExtResource("9_si018")
+zoom = Vector2(4, 4)
+tween_resource = SubResource("Resource_s2l8t")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="SignUI" type="CanvasLayer" parent="testing_cutscene"]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="testing_cutscene/SignUI"]
+self_modulate = Color(1, 1, 1, 0)
+
+[node name="Panel" type="Panel" parent="testing_cutscene/SignUI/CanvasGroup"]
+custom_minimum_size = Vector2(400, 200)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 376.0
+offset_top = 60.0
+offset_right = 776.0
+offset_bottom = 260.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="testing_cutscene/SignUI/CanvasGroup/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -177.5
+offset_right = 241.0
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_mnokd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="testing_cutscene/SignUI/CanvasGroup/Panel/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 77.5
+offset_right = 421.0
+offset_bottom = 276.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="testing_cutscene"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_c4bei")
+}

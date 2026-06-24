@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://dlprsmc6km8pk"]
 
 [ext_resource type="Script" uid="uid://cbqe0walcfk01" path="res://src/minigames/fishing/fishing_minigame.gd" id="1_1y8v4"]
 
@@ -11,8 +11,8 @@ border_width_bottom = 2
 border_color = Color(0.180392, 0.439216, 0.839216, 0.85098)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
-corner_radius_bottom_left = 12
 corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 shadow_color = Color(0, 0, 0, 0.4)
 shadow_size = 12
 shadow_offset = Vector2(0, 4)
@@ -26,20 +26,8 @@ border_width_bottom = 3
 border_color = Color(0.0784314, 0.117647, 0.196078, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
-corner_radius_bottom_left = 6
 corner_radius_bottom_right = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
-bg_color = Color(0.188235, 0.27451, 0.4, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 3
-border_color = Color(0.117647, 0.176471, 0.27451, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
 corner_radius_bottom_left = 6
-corner_radius_bottom_right = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
 bg_color = Color(0.0980392, 0.137255, 0.219608, 1)
@@ -50,8 +38,20 @@ border_width_bottom = 1
 border_color = Color(0.0588235, 0.0784314, 0.137255, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
-corner_radius_bottom_left = 6
 corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.188235, 0.27451, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.117647, 0.176471, 0.27451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
 
@@ -64,8 +64,8 @@ border_width_bottom = 2
 border_color = Color(0.117647, 0.156863, 0.235294, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
-corner_radius_bottom_left = 8
 corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bobber"]
 resource_name = "StyleBoxFlat_bobber"
@@ -77,8 +77,8 @@ border_width_bottom = 2
 border_color = Color(0.25098, 0.8, 0.4, 0.705882)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
-corner_radius_bottom_left = 6
 corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fish_bg"]
 bg_color = Color(0.941176, 0.427451, 0.117647, 0.901961)
@@ -89,8 +89,8 @@ border_width_bottom = 1
 border_color = Color(1, 0.627451, 0.352941, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
-corner_radius_bottom_left = 15
 corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 shadow_color = Color(0.941176, 0.427451, 0.117647, 0.392157)
 shadow_size = 6
 
@@ -103,8 +103,8 @@ border_width_bottom = 1
 border_color = Color(0.117647, 0.156863, 0.235294, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
-corner_radius_bottom_left = 4
 corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
 resource_name = "StyleBoxFlat_progress_fill"
@@ -116,8 +116,8 @@ border_width_bottom = 1
 border_color = Color(1, 0.5, 0.4, 0.4)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
-corner_radius_bottom_left = 3
 corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="FishingMinigame" type="Control"]
 layout_mode = 3
@@ -185,8 +185,8 @@ custom_minimum_size = Vector2(58, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Easy"
 
@@ -195,8 +195,8 @@ custom_minimum_size = Vector2(58, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Med"
 
@@ -205,8 +205,8 @@ custom_minimum_size = Vector2(58, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Hard"
 
@@ -215,8 +215,8 @@ custom_minimum_size = Vector2(58, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Leg"
 
@@ -295,7 +295,7 @@ custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "Cast Line"

@@ -1,0 +1,53 @@
+~ start_elder
+do kiri_potrait("player")
+do kiri()
+Player: Salam, Tetua. Saya mendengar ada tradisi Karia'a yang akan dilaksanakan?
+do kanan_potrait("tetua_desa")
+do kanan()
+Tetua: Ya, benar. Tapi kami butuh bantuanmu untuk mempersiapkannya. Bisakah kamu membantu kami menangkap Ikan Kakaktua segar terlebih dahulu?
+- "Ya, saya akan memancing sekarang."
+	Tetua: Bagus. Pergilah ke terumbu karang dangkal.
+	# Trigger the fishing minigame through the GameplayManager
+	# Parameters: start_fishing(difficulty: float, reward_item_id: String)
+	do GameplayManager.start_fishing(1.0, "ikan_kakaktua")
+	=> END
+- "Bagaimana cara menangkapnya?"
+	Tetua: Gunakan tombak tradisional atau pancing. Hati-hati jangan merusak terumbu karang di sekitar!
+	=> start_elder
+- "Nanti saja."
+	Tetua: Jangan terlalu lama, perayaan Karia'a akan segera dimulai.
+	=> END
+
+~ start_cooking
+do kiri_potrait("player")
+do kiri()
+Player: Tetua, saya sudah mendapatkan Ikan Kakaktua. Ini dia.
+do kanan_potrait("tetua_desa")
+do kanan()
+Tetua: Luar biasa! Mari kita bawa ikan ini ke dapur dan buat Sup Parende tradisional untuk sajian Karia'a.
+# Trigger the cooking minigame through the GameplayManager
+# Parameters: start_cooking(dish_name: String, ingredients: Array)
+do GameplayManager.start_cooking("Sup Parende", ["ikan_kakaktua", "bawang", "serai", "cabai"])
+=> END
+
+~ start_mystical_shift
+do kiri_potrait("player")
+do kiri()
+Player: Tempat ini terasa sangat sunyi... Apakah ini batu Sumpah Wambuliga?
+# Trigger the realm shift to transition the world into the Walillah Dimension
+# Parameters: trigger_realm_shift(active: bool)
+do GameplayManager.trigger_realm_shift(true)
+do kanan_potrait("mystical_spirit")
+do kanan()
+Spirit: Selamat datang di dimensi Walillah... Dimensi spiritual pelindung Wakatobi.
+Spirit: Di dimensi ini, kamu hanya bisa menavigasi dengan indra spiritual. Petunjuk arah normal akan hilang.
+Spirit: Pahami rahasia masa lalu untuk mengembalikan keseimbangan alam.
+- "Saya siap."
+	Spirit: Semoga leluhur menuntun jalanmu.
+	# Return back to the normal realm on completion
+	do GameplayManager.trigger_realm_shift(false)
+	=> END
+- "Bagaimana saya bisa kembali?"
+	Spirit: Selesaikan ritual sumpah, maka dimensi ini akan memudar dengan sendirinya.
+	do GameplayManager.trigger_realm_shift(false)
+	=> END

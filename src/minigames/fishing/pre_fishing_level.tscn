@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpjkwvnoo571d"]
+
+[ext_resource type="Script" uid="uid://b3lth6fg0dpi3" path="res://src/minigames/fishing/pre_fishing_level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://b2kidj5eqcv3c" path="res://src/minigames/fishing/fishing_hook.gd" id="2_hook"]
+[ext_resource type="Texture2D" uid="uid://cefcnf1ulx1l7" path="res://assets/textures/environment/Sea.png" id="3_t26sa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t26sa"]
+atlas = ExtResource("3_t26sa")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hook"]
+radius = 14.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
+bg_color = Color(0.05, 0.1, 0.16, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.15)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 8.0
+expand_margin_top = 6.0
+expand_margin_right = 8.0
+expand_margin_bottom = 6.0
+
+[node name="PreFishingLevel" type="Node2D"]
+script = ExtResource("1_level")
+
+[node name="WaterBackground" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1150, 0, 1150, 1800, 0, 1800)
+vertex_colors = PackedColorArray(0.24, 0.58, 0.78, 1, 0.24, 0.58, 0.78, 1, 0.02, 0.06, 0.14, 1, 0.02, 0.06, 0.14, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1217.9999, 885.99994)
+scale = Vector2(1.7, 1.7)
+texture = SubResource("AtlasTexture_t26sa")
+
+[node name="FishSpawner" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 300)
+limit_left = 0
+limit_right = 1150
+limit_bottom = 1800
+editor_draw_limits = true
+
+[node name="Hook" type="Area2D" parent="."]
+position = Vector2(575, 50)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_hook")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook"]
+shape = SubResource("CircleShape2D_hook")
+
+[node name="LineRenderer" type="Line2D" parent="Hook"]
+width = 1.5
+default_color = Color(0.9, 0.9, 0.9, 0.7)
+
+[node name="HookVisual" type="Line2D" parent="Hook"]
+points = PackedVector2Array(0, -10, 0, 6, 4, 10, 8, 6, 8, 0)
+width = 2.5
+default_color = Color(0.8, 0.8, 0.8, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="HookWeightVisual" type="Polygon2D" parent="Hook"]
+color = Color(0.9, 0.3, 0.2, 1)
+polygon = PackedVector2Array(-4, -10, 4, -10, 2, -6, -2, -6)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="InfoPanel" type="PanelContainer" parent="HUD"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/InfoPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="DepthLabel" type="Label" parent="HUD/InfoPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Kedalaman: 0 meter"
+
+[node name="StatusLabel" type="Label" parent="HUD/InfoPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+text = "Turunkan kail... Cari Ikan Kakaktua!"
+
+[node name="AlertLabel" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -25.0
+offset_right = 250.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "IKAN BESAR TERSANGKUT!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlashRect" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

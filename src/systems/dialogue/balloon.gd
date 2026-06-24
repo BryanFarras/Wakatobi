@@ -22,9 +22,8 @@ extends CanvasLayer
 
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
-
-@onready var potrait_left = $Left
-@onready var potrait_right = $Right
+@export  var potrait_left:TextureRect
+@export var potrait_right:TextureRect
 @onready var anim = $Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control/AnimationPlayer
 
 func slide_kanan() :
@@ -35,14 +34,16 @@ func kiri_potrait(character:String):
 	else : 
 		var path = PotraitData.potrait_list.get(character)
 		if path == null : potrait_right.texture = null
-		else : potrait_right.texture = load(path)
+		else : potrait_right.set_texture(load(path))
 
 func kanan_potrait(character:String):
 	if character.is_empty() : potrait_left.texture = null
-	else : 
+	else :
 		var path = PotraitData.potrait_list.get(character)
+		print(path)
+		print(load(path))
 		if path == null : potrait_left.texture = null
-		else : potrait_left.texture = load(path)
+		else : potrait_left.set_texture(load(path))
 
 func kiri():
 	potrait_left.set_modulate(Color(0.392, 0.392, 0.392))
@@ -102,6 +103,8 @@ var mutation_cooldown: Timer = Timer.new()
 
 func _ready() -> void:
 	balloon.hide()
+	potrait_left = $Left
+	potrait_right = $Right
 	potrait_left.texture = null
 	potrait_right.texture = null
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)

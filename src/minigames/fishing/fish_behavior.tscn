@@ -1,0 +1,161 @@
+[gd_scene load_steps=22 format=3 uid="uid://m6f7qfnhn1q5"]
+
+[ext_resource type="Script" uid="uid://bpjsvom1eu2fc" path="res://src/minigames/fishing/fish_behavior.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://cuatt0i7rhw2n" path="res://assets/textures/fish/ikan_kakap.png" id="2_om7xn"]
+[ext_resource type="Texture2D" uid="uid://bpu4xgt1amner" path="res://assets/textures/fish/ikan_kakatua.png" id="3_8sg6q"]
+[ext_resource type="Texture2D" uid="uid://b605x4jt28g1l" path="res://assets/textures/fish/ikan_tetra.png" id="4_2a0j5"]
+[ext_resource type="Texture2D" uid="uid://dbk6666y1xlse" path="res://assets/textures/fish/ikan_yellow_tang.png" id="5_ler0c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay8ks"]
+atlas = ExtResource("2_om7xn")
+region = Rect2(0, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ox8n"]
+atlas = ExtResource("2_om7xn")
+region = Rect2(50, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwkdb"]
+atlas = ExtResource("2_om7xn")
+region = Rect2(150, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqtwk"]
+atlas = ExtResource("3_8sg6q")
+region = Rect2(0, 0, 48, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rk36"]
+atlas = ExtResource("3_8sg6q")
+region = Rect2(0, 31, 48, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btdmm"]
+atlas = ExtResource("3_8sg6q")
+region = Rect2(0, 62, 48, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qt3t"]
+atlas = ExtResource("3_8sg6q")
+region = Rect2(0, 93, 48, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yrjx"]
+atlas = ExtResource("3_8sg6q")
+region = Rect2(0, 124, 48, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjv43"]
+atlas = ExtResource("4_2a0j5")
+region = Rect2(0, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woh3n"]
+atlas = ExtResource("4_2a0j5")
+region = Rect2(50, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu1vu"]
+atlas = ExtResource("5_ler0c")
+region = Rect2(0, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgmkw"]
+atlas = ExtResource("5_ler0c")
+region = Rect2(50, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8wky"]
+atlas = ExtResource("5_ler0c")
+region = Rect2(100, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oosp"]
+atlas = ExtResource("5_ler0c")
+region = Rect2(150, 0, 50, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mics"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay8ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ox8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwkdb")
+}],
+"loop": true,
+"name": &"kakap",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqtwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rk36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btdmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qt3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yrjx")
+}],
+"loop": true,
+"name": &"kakatua",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjv43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woh3n")
+}],
+"loop": true,
+"name": &"tetra",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu1vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgmkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8wky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oosp")
+}],
+"loop": true,
+"name": &"yellow_tang",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fish"]
+size = Vector2(55, 41)
+
+[node name="FishBehavior" type="Area2D" groups=["fish"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_fish")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_0mics")
+animation = &"kakatua"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -15.0
+offset_right = 30.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0.5)
+shape = SubResource("RectangleShape2D_fish")
