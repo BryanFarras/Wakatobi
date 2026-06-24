@@ -1,16 +1,33 @@
-[gd_scene load_steps=20 format=4 uid="uid://ibnyoo82r8tr"]
+[gd_scene load_steps=74 format=4 uid="uid://ibnyoo82r8tr"]
 
 [ext_resource type="Texture2D" uid="uid://d1d4e0xmy4p3x" path="res://assets/textures/environment/Wa Ode House.png" id="1_o3ml2"]
 [ext_resource type="Texture2D" uid="uid://boabcqgmshqaw" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileB_Sengoku_Colored_Roof.png" id="2_8l546"]
+[ext_resource type="Texture2D" uid="uid://ca5mr5l0gn" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileB_ModernInterior.png" id="3_nmp0l"]
 [ext_resource type="Texture2D" uid="uid://qaf83tnii8ef" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileCDE_Decorative.png" id="3_v3bh2"]
+[ext_resource type="Texture2D" uid="uid://jomdj6y3qdfi" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileC_ModernInterior.png" id="4_l8r70"]
 [ext_resource type="Texture2D" uid="uid://di1v2cj35wcl2" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileCDE_Decorative_2.png" id="4_vjwgb"]
 [ext_resource type="TileSet" uid="uid://s0cbildpkkvi" path="res://src/world/school/school_map.tres" id="5_k180s"]
 [ext_resource type="Texture2D" uid="uid://n7wisps11xxi" path="res://assets/Sample Project/Graphics/Tilesets/Collision.png" id="6_rnnot"]
+[ext_resource type="Texture2D" uid="uid://k3n0i66gfipr" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileD_SengokuInterior.png" id="7_l7klt"]
 [ext_resource type="PackedScene" uid="uid://31gbi4k0x2eh" path="res://src/world/door.tscn" id="7_r1shd"]
 [ext_resource type="Script" uid="uid://bhoxnssmr62q7" path="res://src/entities/npcs/base_npc/base_npc.gd" id="8_3da6l"]
 [ext_resource type="Resource" uid="uid://d1mjmt47gtujk" path="res://src/resources/quest/interaksi_papan.tres" id="9_aua5v"]
+[ext_resource type="Texture2D" uid="uid://phg4g51unyg2" path="res://assets/Sample Project/Graphics/Characters/Special_Cast.png" id="10_2x6rv"]
 [ext_resource type="SpriteFrames" uid="uid://b5tstmwg4jmwq" path="res://src/entities/npcs/base_npc/base_anim.tres" id="10_altvb"]
 [ext_resource type="Script" uid="uid://dxka5o8i5shwx" path="res://src/modular_component/events/event_interactable.gd" id="11_4ko02"]
+[ext_resource type="Script" uid="uid://i6aqbfqieekr" path="res://src/modular_component/events/commands/event_command.gd" id="13_2deab"]
+[ext_resource type="Resource" uid="uid://dr10upe3vwbm6" path="res://src/systems/dialogue/dialogue_files/Karia.dialogue" id="14_bc8bx"]
+[ext_resource type="Script" uid="uid://b8di3278ww2f6" path="res://src/modular_component/events/commands/dialogue_command.gd" id="15_klcoe"]
+[ext_resource type="Texture2D" uid="uid://cyk1khn1te2go" path="res://assets/Sample Project/Graphics/Characters/FeudalJapan-1.png" id="16_2deab"]
+[ext_resource type="Texture2D" uid="uid://b62277g4xdxre" path="res://assets/Sample Project/Graphics/Characters/NPC-1.png" id="16_rc4do"]
+[ext_resource type="Script" uid="uid://mci63wejq2xp" path="res://src/modular_component/events/commands/show_text_command.gd" id="18_bc8bx"]
+[ext_resource type="Script" uid="uid://u6q6s2hv3fr5" path="res://src/modular_component/events/commands/fade_command.gd" id="18_o4bvh"]
+[ext_resource type="Script" uid="uid://cg3lffuxxejqs" path="res://src/modular_component/events/commands/transfer_command.gd" id="19_ilhra"]
+[ext_resource type="Script" uid="uid://ba4im2lmoes7d" path="res://src/modular_component/events/commands/label_command.gd" id="19_l8r70"]
+[ext_resource type="Script" uid="uid://dbhg30nvmnv8p" path="res://src/modular_component/events/commands/scroll_camera_command.gd" id="19_rc4do"]
+[ext_resource type="Script" uid="uid://cc1t3nbv7ht6a" path="res://src/modular_component/events/commands/move_npc_command.gd" id="20_aevi1"]
+[ext_resource type="Script" uid="uid://ckfmwr51u6neu" path="res://src/modular_component/events/commands/show_balloon_command.gd" id="23_ilhra"]
+[ext_resource type="Script" uid="uid://dwhx4hff28eev" path="res://src/modular_component/events/commands/set_switch_command.gd" id="28_l7klt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwcwr"]
 texture = ExtResource("2_8l546")
@@ -250,6 +267,508 @@ texture_region_size = Vector2i(32, 32)
 13:15/0 = 0
 14:15/0 = 0
 15:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u6yc"]
+texture = ExtResource("3_nmp0l")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+11:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flkm8"]
+texture = ExtResource("4_l8r70")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjw"]
 texture = ExtResource("3_v3bh2")
@@ -538,12 +1057,230 @@ texture_region_size = Vector2i(32, 32)
 0:11/0 = 0
 1:11/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1ofs"]
+texture = ExtResource("7_l7klt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_kp80h"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_7ivjw")
 sources/4 = SubResource("TileSetAtlasSource_4tnvo")
 sources/0 = SubResource("TileSetAtlasSource_xwcwr")
+sources/1 = SubResource("TileSetAtlasSource_2u6yc")
+sources/2 = SubResource("TileSetAtlasSource_flkm8")
+sources/5 = SubResource("TileSetAtlasSource_n1ofs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwaho"]
 texture = ExtResource("6_rnnot")
@@ -556,11 +1293,186 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cwaho")
 
+[sub_resource type="Resource" id="Resource_uo8pk"]
+script = ExtResource("28_l7klt")
+switch_name = "QUEST_KARIA"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjex5"]
-radius = 16.0
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gor76"]
 radius = 32.0
+
+[sub_resource type="Resource" id="Resource_27io5"]
+script = ExtResource("19_l8r70")
+label_text = "Transition to Cutscene"
+
+[sub_resource type="Resource" id="Resource_6dbnm"]
+script = ExtResource("18_o4bvh")
+
+[sub_resource type="Resource" id="Resource_5ocgu"]
+script = ExtResource("19_rc4do")
+scroll_type = 2
+zoom = Vector2(0, -3)
+
+[sub_resource type="Resource" id="Resource_cv4pi"]
+script = ExtResource("19_ilhra")
+target_direction = 1
+target_tile = Vector2i(15, 17)
+
+[sub_resource type="Resource" id="Resource_nmp0l"]
+script = ExtResource("18_o4bvh")
+fade_type = 0
+
+[sub_resource type="Resource" id="Resource_cwbbs"]
+script = ExtResource("19_l8r70")
+label_text = "Prelude: Snippet Pakaian Karia Adik Wa Ode"
+
+[sub_resource type="Resource" id="Resource_klcoe"]
+script = ExtResource("18_bc8bx")
+character_name = "Wa Ode"
+text = "Cie, anak spesial~\\nYang bentar lagi jadi dewasa~"
+
+[sub_resource type="Resource" id="Resource_o4bvh"]
+script = ExtResource("19_rc4do")
+target_tile = Vector2i(14, 12)
+
+[sub_resource type="Resource" id="Resource_ilhra"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Adik Wa Ode")
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_2u6yc"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Adik Wa Ode")
+balloon_type = 4
+
+[sub_resource type="Resource" id="Resource_l8r70"]
+script = ExtResource("18_bc8bx")
+character_name = "Adik Wa Ode"
+text = "Berisik, kak!\\nMending kamu tanggepin temenmu di belakang tu!"
+
+[sub_resource type="Resource" id="Resource_xmuo3"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_l7klt"]
+script = ExtResource("19_rc4do")
+scroll_type = 2
+
+[sub_resource type="Resource" id="Resource_flkm8"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+duration = 0.0
+tiles = 0
+
+[sub_resource type="Resource" id="Resource_n1ofs"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+
+[sub_resource type="Resource" id="Resource_e2mms"]
+script = ExtResource("18_bc8bx")
+character_name = "Wa Ode"
+text = "Wah, Farras!\\nTernyata kamu di sini?"
+
+[sub_resource type="Resource" id="Resource_o0c3p"]
+script = ExtResource("19_l8r70")
+label_text = "Bagian Utama: Player Diminta Quest"
+
+[sub_resource type="Resource" id="Resource_34knx"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+movement_type = 1
+tiles = 2
+
+[sub_resource type="Resource" id="Resource_du8le"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 3
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_sqtq2"]
+script = ExtResource("20_aevi1")
+target_type = 1
+direction = 2
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_565pm"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_1"
+
+[sub_resource type="Resource" id="Resource_bn2hk"]
+script = ExtResource("20_aevi1")
+target_type = 1
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 0
+movement_type = 1
+tiles = 0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_4ev5r"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 0
+movement_type = 1
+duration = 0.0
+tiles = 0
+
+[sub_resource type="Resource" id="Resource_g6d51"]
+script = ExtResource("23_ilhra")
+target_type = 0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_qrlb2"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+
+[sub_resource type="Resource" id="Resource_k06hr"]
+script = ExtResource("20_aevi1")
+target_type = 1
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 0
+movement_type = 1
+tiles = 4
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_gjgla"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 0
+movement_type = 1
+tiles = 4
+
+[sub_resource type="Resource" id="Resource_a58j1"]
+script = ExtResource("23_ilhra")
+target_type = 0
+balloon_type = 8
+
+[sub_resource type="Resource" id="Resource_gruko"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+balloon_type = 2
+
+[sub_resource type="Resource" id="Resource_7xip1"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_2"
+
+[sub_resource type="Resource" id="Resource_munea"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+direction = 2
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_rnjl3"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_3"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2deab"]
+size = Vector2(64, 32)
 
 [node name="SchoolMap" type="Node2D"]
 
@@ -573,12 +1485,18 @@ texture = ExtResource("1_o3ml2")
 [node name="Above" type="TileMapLayer" parent="Tileset"]
 tile_set = SubResource("TileSet_kp80h")
 
-[node name="Layer 1" type="TileMapLayer" parent="Tileset"]
+[node name="Offset" type="TileMapLayer" parent="Tileset"]
+position = Vector2(0, -8)
+tile_map_data = PackedByteArray("AAAMAAsABQAIAAQAAAARAAsABQAIAAQAAAA=")
 tile_set = ExtResource("5_k180s")
+
+[node name="SameAsPlayer" type="TileMapLayer" parent="Tileset"]
+tile_map_data = PackedByteArray("AAATAA0AAQAGAAkAAAATAA4AAQAGAAoAAAAJABAAAQABAAkAAAAJABEAAQABAAoAAAAKABEAAQACAAoAAAAKABAAAQACAAkAAAA=")
+tile_set = SubResource("TileSet_kp80h")
 
 [node name="Collision" type="TileMapLayer" parent="Tileset"]
 visible = false
-tile_map_data = PackedByteArray("AAAOABgAAAAAAAAAAAAPABgAAAAAAAAAAAAQABgAAAAAAAAAAAAQABcAAAAAAAAAAAAQABYAAAAAAAAAAAAQABUAAAAAAAAAAAARABUAAAAAAAAAAAASABUAAAAAAAAAAAASABQAAAAAAAAAAAASABMAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAZABMAAAAAAAAAAAAZABIAAAAAAAAAAAAZABEAAAAAAAAAAAAZABAAAAAAAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAVABEAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAXABIAAAAAAAAAAAAUABEAAAAAAAAAAAAUABIAAAAAAAAAAAALABMAAAAAAAAAAAALABQAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAANABYAAAAAAAAAAAARABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABcAAAAAAAAAAAANABgAAAAAAAAAAAAKABQAAAAAAAAAAAAJABQAAAAAAAAAAAAIABQAAAAAAAAAAAAHABQAAAAAAAAAAAAGABQAAAAAAAAAAAAFABQAAAAAAAAAAAAFABMAAAAAAAAAAAAFABIAAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAAKABEAAAAAAAAAAAAJABEAAAAAAAAAAAALABEAAAAAAAAAAAAMABEAAAAAAAAAAAANABEAAAAAAAAAAAANABAAAAAAAAAAAAANAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAASABEAAAAAAAAAAAASABAAAAAAAAAAAAASAA8AAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAASAAoAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAkAAAAAAAAAAAAZAAgAAAAAAAAAAAAZAAcAAAAAAAAAAAAZAAYAAAAAAAAAAAAZAAUAAAAAAAAAAAAZAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAYAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAKAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAGAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAASAAQAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAQABgAAAAAAAAAAAAQABcAAAAAAAAAAAAQABYAAAAAAAAAAAAQABUAAAAAAAAAAAARABUAAAAAAAAAAAASABUAAAAAAAAAAAASABQAAAAAAAAAAAASABMAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAZABMAAAAAAAAAAAAZABIAAAAAAAAAAAAZABEAAAAAAAAAAAAZABAAAAAAAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAVABEAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAXABIAAAAAAAAAAAAUABEAAAAAAAAAAAAUABIAAAAAAAAAAAALABMAAAAAAAAAAAALABQAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAANABYAAAAAAAAAAAARABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABcAAAAAAAAAAAANABgAAAAAAAAAAAAKABQAAAAAAAAAAAAJABQAAAAAAAAAAAAIABQAAAAAAAAAAAAHABQAAAAAAAAAAAAGABQAAAAAAAAAAAAFABQAAAAAAAAAAAAFABMAAAAAAAAAAAAFABIAAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAAKABEAAAAAAAAAAAAJABEAAAAAAAAAAAALABEAAAAAAAAAAAAMABEAAAAAAAAAAAANABEAAAAAAAAAAAANABAAAAAAAAAAAAANAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAASABEAAAAAAAAAAAASABAAAAAAAAAAAAASAA8AAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAASAAoAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAkAAAAAAAAAAAAZAAgAAAAAAAAAAAAZAAcAAAAAAAAAAAAZAAYAAAAAAAAAAAAZAAUAAAAAAAAAAAAZAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAYAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAATAAUAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAKAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAGAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAASAAQAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAOABgAAAAAAAAAAAAPABgAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_any3t")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -590,13 +1508,22 @@ scale = Vector2(3.6, 1)
 door_id = "exit"
 target_scene_path = "uid://jt7gwi5tsngy"
 target_door_id = "door_rumahwaode"
+player_spawn_offset = Vector2(0, -32)
 
 [node name="NPC_Objects" type="Node2D" parent="."]
 
+[node name="Event" type="Node2D" parent="NPC_Objects"]
+position = Vector2(368, 368)
+script = ExtResource("11_4ko02")
+trigger_type = 1
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_uo8pk")])
+
 [node name="Wa Ode" type="CharacterBody2D" parent="NPC_Objects"]
-position = Vector2(464, 400)
+position = Vector2(464, 496)
 script = ExtResource("8_3da6l")
-quest_data = ExtResource("9_aua5v")
+is_static = true
+default_direction = "atas"
+spritesheet = ExtResource("10_2x6rv")
 visibility_flag = "QUEST_KARIA"
 metadata/_edit_group_ = true
 
@@ -609,6 +1536,7 @@ sprite_frames = ExtResource("10_altvb")
 animation = &"jalan_kanan"
 
 [node name="raycast" type="RayCast2D" parent="NPC_Objects/Wa Ode"]
+visible = false
 scale = Vector2(2, 2)
 target_position = Vector2(0, 16)
 
@@ -618,9 +1546,52 @@ script = ExtResource("11_4ko02")
 [node name="interaksi" type="Area2D" parent="NPC_Objects/Wa Ode/EventInteractable"]
 
 [node name="area" type="CollisionShape2D" parent="NPC_Objects/Wa Ode/EventInteractable/interaksi"]
+visible = false
 shape = SubResource("CircleShape2D_gor76")
 
 [node name="Label" type="Label" parent="NPC_Objects/Wa Ode"]
+visible = false
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+
+[node name="Adik Wa Ode" type="CharacterBody2D" parent="NPC_Objects"]
+position = Vector2(464, 400)
+script = ExtResource("8_3da6l")
+quest_data = ExtResource("9_aua5v")
+is_static = true
+default_direction = "kanan"
+spritesheet = ExtResource("16_2deab")
+character_index = 5
+visibility_flag = "QUEST_KARIA"
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape2D" parent="NPC_Objects/Adik Wa Ode"]
+shape = SubResource("CircleShape2D_sjex5")
+
+[node name="animation" type="AnimatedSprite2D" parent="NPC_Objects/Adik Wa Ode"]
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("10_altvb")
+animation = &"idle_atas"
+
+[node name="raycast" type="RayCast2D" parent="NPC_Objects/Adik Wa Ode"]
+visible = false
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
+[node name="EventInteractable" type="Node2D" parent="NPC_Objects/Adik Wa Ode"]
+script = ExtResource("11_4ko02")
+
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Adik Wa Ode/EventInteractable"]
+
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Adik Wa Ode/EventInteractable/interaksi"]
+visible = false
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="Label" type="Label" parent="NPC_Objects/Adik Wa Ode"]
+visible = false
 offset_left = -4.0
 offset_top = -33.0
 offset_right = 5.0
@@ -631,6 +1602,10 @@ text = "E"
 position = Vector2(496, 400)
 script = ExtResource("8_3da6l")
 quest_data = ExtResource("9_aua5v")
+is_static = true
+default_direction = "kiri"
+spritesheet = ExtResource("16_rc4do")
+character_index = 2
 visibility_flag = "QUEST_KARIA"
 metadata/_edit_group_ = true
 
@@ -643,6 +1618,7 @@ sprite_frames = ExtResource("10_altvb")
 animation = &"jalan_kanan"
 
 [node name="raycast" type="RayCast2D" parent="NPC_Objects/Ibu Wa Ode"]
+visible = false
 scale = Vector2(2, 2)
 target_position = Vector2(0, 16)
 
@@ -652,16 +1628,62 @@ script = ExtResource("11_4ko02")
 [node name="interaksi" type="Area2D" parent="NPC_Objects/Ibu Wa Ode/EventInteractable"]
 
 [node name="area" type="CollisionShape2D" parent="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi"]
+visible = false
 shape = SubResource("CircleShape2D_gor76")
 
 [node name="Label" type="Label" parent="NPC_Objects/Ibu Wa Ode"]
+visible = false
 offset_left = -4.0
 offset_top = -33.0
 offset_right = 5.0
 offset_bottom = -10.0
 text = "E"
 
+[node name="Karia_Quest_Trigger" type="CharacterBody2D" parent="NPC_Objects"]
+position = Vector2(479, 552)
+script = ExtResource("8_3da6l")
+quest_data = ExtResource("9_aua5v")
+is_static = true
+touch_trigger = true
+visibility_flag = "QUEST_KARIA"
+metadata/_edit_group_ = true
+
+[node name="collision" type="CollisionShape2D" parent="NPC_Objects/Karia_Quest_Trigger"]
+
+[node name="QuestCutscene" type="Node2D" parent="NPC_Objects/Karia_Quest_Trigger"]
+position = Vector2(1, 2)
+script = ExtResource("11_4ko02")
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_27io5"), SubResource("Resource_6dbnm"), SubResource("Resource_5ocgu"), SubResource("Resource_cv4pi"), SubResource("Resource_nmp0l"), SubResource("Resource_cwbbs"), SubResource("Resource_klcoe"), SubResource("Resource_o4bvh"), SubResource("Resource_ilhra"), SubResource("Resource_2u6yc"), SubResource("Resource_l8r70"), SubResource("Resource_xmuo3"), SubResource("Resource_l7klt"), SubResource("Resource_flkm8"), SubResource("Resource_n1ofs"), SubResource("Resource_e2mms"), SubResource("Resource_o0c3p"), SubResource("Resource_34knx"), SubResource("Resource_du8le"), SubResource("Resource_sqtq2"), SubResource("Resource_565pm"), SubResource("Resource_bn2hk"), SubResource("Resource_4ev5r"), SubResource("Resource_g6d51"), SubResource("Resource_qrlb2"), SubResource("Resource_k06hr"), SubResource("Resource_gjgla"), SubResource("Resource_a58j1"), SubResource("Resource_gruko"), SubResource("Resource_7xip1"), SubResource("Resource_munea"), SubResource("Resource_rnjl3")])
+
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Karia_Quest_Trigger/QuestCutscene"]
+
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Karia_Quest_Trigger/QuestCutscene/interaksi"]
+shape = SubResource("RectangleShape2D_2deab")
+
+[node name="animation" type="AnimatedSprite2D" parent="NPC_Objects/Karia_Quest_Trigger"]
+visible = false
+scale = Vector2(0.1, 0.118)
+sprite_frames = ExtResource("10_altvb")
+animation = &"jalan_kanan"
+
+[node name="Label" type="Label" parent="NPC_Objects/Karia_Quest_Trigger"]
+visible = false
+offset_left = -4.0
+offset_top = -33.0
+offset_right = 5.0
+offset_bottom = -10.0
+text = "E"
+
+[node name="raycast" type="RayCast2D" parent="NPC_Objects/Karia_Quest_Trigger"]
+visible = false
+scale = Vector2(2, 2)
+target_position = Vector2(0, 16)
+
 [connection signal="body_shape_entered" from="NPC_Objects/Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_entered"]
 [connection signal="body_shape_exited" from="NPC_Objects/Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="NPC_Objects/Adik Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Adik Wa Ode" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Adik Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Adik Wa Ode" method="_on_interaksi_body_shape_exited"]
 [connection signal="body_shape_entered" from="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Ibu Wa Ode" method="_on_interaksi_body_shape_entered"]
 [connection signal="body_shape_exited" from="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Ibu Wa Ode" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="NPC_Objects/Karia_Quest_Trigger/QuestCutscene/interaksi" to="NPC_Objects/Karia_Quest_Trigger" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Karia_Quest_Trigger/QuestCutscene/interaksi" to="NPC_Objects/Karia_Quest_Trigger" method="_on_interaksi_body_shape_exited"]

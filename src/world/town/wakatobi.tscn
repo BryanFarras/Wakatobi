@@ -585,6 +585,7 @@ scale = Vector2(2.4, 1)
 door_id = "door_rumahwaode"
 target_scene_path = "uid://ibnyoo82r8tr"
 target_door_id = "exit"
+player_spawn_offset = Vector2(0, 16)
 
 [node name="door_kanan_sprite" type="CharacterBody2D" parent="Door"]
 position = Vector2(4.5833282, 2)

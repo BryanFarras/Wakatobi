@@ -1,30 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://be3j7lfnl6rpm"]
+[gd_scene load_steps=11 format=3 uid="uid://be3j7lfnl6rpm"]
 
 [ext_resource type="Script" uid="uid://dxka5o8i5shwx" path="res://src/modular_component/events/event_interactable.gd" id="1_0kjsw"]
-[ext_resource type="Script" uid="uid://i6aqbfqieekr" path="res://src/modular_component/events/commands/event_command.gd" id="2_dr0o5"]
-[ext_resource type="Texture2D" uid="uid://bepgd8knm6luc" path="res://assets/placeholder/sign.png" id="2_pwbew"]
-[ext_resource type="Script" uid="uid://u6q6s2hv3fr5" path="res://src/modular_component/events/commands/fade_command.gd" id="3_6oy23"]
 [ext_resource type="PackedScene" uid="uid://4rqdup3rhsqo" path="res://src/modular_component/interactions/interactable.tscn" id="3_181ql"]
-[ext_resource type="Script" uid="uid://db067uqto5eoy" path="res://src/modular_component/events/commands/wait_command.gd" id="4_j2r8q"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_jadlf"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_2kd7j"]
-[ext_resource type="Script" uid="uid://b65no85hqh53y" path="res://src/modular_component/events/commands/eval_command.gd" id="5_dr0o5"]
 [ext_resource type="Texture2D" uid="uid://due0mid78qc2s" path="res://assets/placeholder/sign_prompt.png" id="6_atdix"]
-
-[sub_resource type="Resource" id="Resource_0kjsw"]
-script = ExtResource("3_6oy23")
-
-[sub_resource type="Resource" id="Resource_dr0o5"]
-script = ExtResource("4_j2r8q")
-wait_time = 5.0
-
-[sub_resource type="Resource" id="Resource_6oy23"]
-script = ExtResource("3_6oy23")
-fade_type = 0
-
-[sub_resource type="Resource" id="Resource_x53aw"]
-script = ExtResource("5_dr0o5")
-expression_text = "print(\"Hello World!\")"
 
 [sub_resource type="Resource" id="Resource_4irdt"]
 script = ExtResource("5_2kd7j")
@@ -85,14 +65,8 @@ _data = {
 &"show": SubResource("Animation_jattv")
 }
 
-[node name="Sign" type="Node2D"]
+[node name="Event" type="Node2D"]
 script = ExtResource("1_0kjsw")
-entity_name = "EventSign"
-event_sequence = Array[ExtResource("2_dr0o5")]([SubResource("Resource_0kjsw"), SubResource("Resource_dr0o5"), SubResource("Resource_6oy23"), SubResource("Resource_x53aw")])
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_pwbew")
 
 [node name="Interactable" parent="." instance=ExtResource("3_181ql")]
 unique_name_in_owner = true

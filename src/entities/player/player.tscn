@@ -17,16 +17,12 @@ atlas = ExtResource("2_oih67")
 region = Rect2(0, 0, 72, 128)
 
 [sub_resource type="Resource" id="Resource_ur7pv"]
-resource_local_to_scene = false
-resource_name = ""
 script = ExtResource("6_smehm")
 duration = 0.6
 transition = 3
 ease = 1
 
 [sub_resource type="Resource" id="Resource_fjrip"]
-resource_local_to_scene = false
-resource_name = ""
 script = ExtResource("6_smehm")
 duration = 0.6
 transition = 5
@@ -266,6 +262,7 @@ position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_fjrip")
 
 [node name="Anim" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
 skew = 0.00407722
 texture = SubResource("AtlasTexture_eb65w")
 hframes = 3

@@ -15,11 +15,13 @@ quest_data = ExtResource("2_21ban")
 [node name="collision" type="CollisionShape2D" parent="."]
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.1, 0.118)
 sprite_frames = ExtResource("3_gor76")
 animation = &"jalan_kanan"
 
 [node name="raycast" type="RayCast2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 target_position = Vector2(0, 16)
 
@@ -29,9 +31,11 @@ script = ExtResource("4_axhkp")
 [node name="interaksi" type="Area2D" parent="EventInteractable"]
 
 [node name="area" type="CollisionShape2D" parent="EventInteractable/interaksi"]
+visible = false
 shape = SubResource("CircleShape2D_gor76")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -4.0
 offset_top = -33.0
 offset_right = 5.0

@@ -1,4 +1,5 @@
 # set_switch_command.gd
+@tool
 class_name CommandSetSwitch
 extends EventCommand
 

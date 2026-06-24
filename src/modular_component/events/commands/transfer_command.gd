@@ -1,4 +1,5 @@
 # command_transfer.gd
+@tool
 class_name CommandTransfer
 extends EventCommand
 
@@ -6,8 +7,16 @@ enum TransferType { SAME_SCENE, DIFFERENT_SCENE }
 enum SpawnType { DOOR, COORDINATES }
 enum CharacterDirection { NONE, UP, DOWN, LEFT, RIGHT }
 
-@export var transfer_type: TransferType = TransferType.SAME_SCENE
-@export var spawn_type: SpawnType = SpawnType.DOOR
+@export var transfer_type: TransferType = TransferType.SAME_SCENE:
+	set(value):
+		transfer_type = value
+		notify_property_list_changed()
+
+@export var spawn_type: SpawnType = SpawnType.DOOR:
+	set(value):
+		spawn_type = value
+		notify_property_list_changed()
+
 @export var target_direction: CharacterDirection = CharacterDirection.NONE
 
 ## Koordinat tile tujuan (X, Y - masing-masing berukuran 32x32 piksel)
@@ -57,6 +66,7 @@ func execute() -> Signal:
 	if transfer_type == TransferType.SAME_SCENE:
 		# Instantly move the player using your PlayerManager
 		if player and is_instance_valid(player):
+			print("[DEBUG Transfer] Teleporting Player to position: ", pixel_pos)
 			player.global_position = pixel_pos
 	else:
 		# Resolve scene path (supporting both new path and legacy key)
@@ -100,3 +110,21 @@ func _to_string() -> String:
 			CharacterDirection.RIGHT: dir_str = "Right"
 		desc += " (Facing " + dir_str + ")"
 	return desc
+
+func _validate_property(property: Dictionary) -> void:
+	if transfer_type == TransferType.SAME_SCENE:
+		if property.name in ["spawn_type", "target_scene_path", "door_id", "local_position", "scene_key"]:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	else:
+		if property.name in ["local_position", "scene_key"]:
+			if property.name == "local_position" and local_position == Vector2.ZERO:
+				property.usage = PROPERTY_USAGE_NO_EDITOR
+			elif property.name == "scene_key" and scene_key.is_empty():
+				property.usage = PROPERTY_USAGE_NO_EDITOR
+				
+		if spawn_type == SpawnType.DOOR:
+			if property.name == "target_tile":
+				property.usage = PROPERTY_USAGE_NO_EDITOR
+		elif spawn_type == SpawnType.COORDINATES:
+			if property.name == "door_id":
+				property.usage = PROPERTY_USAGE_NO_EDITOR

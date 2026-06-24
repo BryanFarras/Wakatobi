@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: float = 50.0
 @export var quest_data: BaseQuest 
 @export var is_static: bool = false
+@export var touch_trigger: bool = false
 @export_enum("atas", "bawah", "kiri", "kanan") var default_direction: String = "bawah"
 
 @export_group("Spritesheet Settings")
@@ -32,6 +33,7 @@ var wander_timer: float = 0.0
 var is_controlled_externally: bool = false
 var external_direction: Vector2 = Vector2.ZERO
 var external_move_timer: float = 0.0
+var external_speed: float = 0.0
 
 func _ready() -> void:
 	interact_label.hide()
@@ -141,23 +143,25 @@ func _physics_process(_delta: float) -> void:
 	elif not interact_label.visible and player_in_range and not EventManager.is_processing_event and not is_talking:
 		interact_label.show()
 
-	if is_talking or EventManager.is_processing_event:
-		velocity = Vector2.ZERO
-		return
-		
 	if is_controlled_externally:
 		external_move_timer -= _delta
 		if external_move_timer <= 0:
 			is_controlled_externally = false
 			velocity = Vector2.ZERO
+			play_movement_animation()
 			if not is_static:
 				pilih_arah_baru()
 		else:
 			move_direction = external_direction
-			velocity = move_direction * speed
+			var active_speed = external_speed if external_speed > 0.0 else speed
+			velocity = move_direction * active_speed
 			update_raycast_rotation()
 			play_movement_animation()
 			move_and_slide()
+		return
+
+	if is_talking or EventManager.is_processing_event:
+		velocity = Vector2.ZERO
 		return
 		
 	if is_static:
@@ -176,11 +180,23 @@ func _physics_process(_delta: float) -> void:
 	play_movement_animation()
 	move_and_slide()
 
-func move_externally(dir: Vector2, time: float) -> void:
+func move_externally(dir: Vector2, time: float, custom_speed: float = 0.0) -> void:
 	external_direction = dir
 	external_move_timer = time
+	external_speed = custom_speed
 	is_controlled_externally = true
 
+func set_direction(dir: Vector2) -> void:
+	if dir == Vector2.ZERO:
+		return
+	var direction_str = "bawah"
+	if abs(dir.x) > abs(dir.y):
+		direction_str = "kanan" if dir.x > 0 else "kiri"
+	else:
+		direction_str = "bawah" if dir.y > 0 else "atas"
+	last_direction = direction_str
+	if sprite:
+		sprite.play("idle_" + direction_str)
 
 func pilih_arah_baru():
 	var directions = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2.ZERO]
@@ -242,7 +258,10 @@ func mulai_dialog():
 func _on_interaksi_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body.name == "Player":
 		player_in_range = true
-		interact_label.show()
+		if touch_trigger and not is_talking:
+			mulai_dialog()
+		else:
+			interact_label.show()
 
 func _on_interaksi_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body.name == "Player":

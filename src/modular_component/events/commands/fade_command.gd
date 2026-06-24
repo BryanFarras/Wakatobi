@@ -1,4 +1,5 @@
 # command_fade.gd
+@tool
 class_name CommandFade
 extends EventCommand
 

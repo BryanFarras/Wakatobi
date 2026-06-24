@@ -1,4 +1,5 @@
 # show_balloon_command.gd
+@tool
 class_name CommandShowBalloon
 extends EventCommand
 
@@ -39,6 +40,8 @@ func execute() -> Signal:
 				if scene_root:
 					target_node = scene_root.get_node_or_null(npc_node_path)
 
+	print("[ShowBalloon] target_type: ", TargetType.keys()[target_type], " path: ", npc_node_path, " resolved_node: ", target_node)
+
 	if not target_node:
 		push_error("CommandShowBalloon: Target node not found!")
 		return Engine.get_main_loop().process_frame
@@ -48,6 +51,7 @@ func execute() -> Signal:
 	balloon.texture = load("res://assets/Sample Project/Graphics/System/Balloon2.png")
 	if not balloon.texture:
 		push_error("CommandShowBalloon: Balloon2.png not found!")
+		print("[ShowBalloon] Error: Failed to load Balloon2.png texture")
 		balloon.queue_free()
 		return Engine.get_main_loop().process_frame
 		
@@ -56,6 +60,8 @@ func execute() -> Signal:
 	balloon.frame_coords = Vector2i(0, int(balloon_type))
 	balloon.position = Vector2(0, vertical_offset)
 	target_node.add_child(balloon)
+	print("[ShowBalloon] Added balloon sprite to ", target_node.name, " at offset ", balloon.position)
+	print("[ShowBalloon] balloon global_position: ", balloon.global_position, " global_scale: ", balloon.global_scale, " z_index: ", balloon.z_index, " visible: ", balloon.visible)
 
 	# Execute the animation in a deferred loop or coroutine
 	var tree = target_node.get_tree()

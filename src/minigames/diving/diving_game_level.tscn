@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://cicg3d1xh8wp4"]
 
 [ext_resource type="PackedScene" path="res://src/minigames/diving/diver.tscn" id="1_diver"]
 [ext_resource type="PackedScene" path="res://src/minigames/diving/hud.tscn" id="2_hud"]

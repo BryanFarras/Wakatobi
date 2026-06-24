@@ -39,6 +39,12 @@ extends CharacterBody2D
 var last_direction: Vector2 = Vector2.DOWN
 var is_interacting: bool = false
 
+# External movement variables
+var is_controlled_externally: bool = false
+var external_direction: Vector2 = Vector2.ZERO
+var external_move_timer: float = 0.0
+var external_speed: float = 0.0
+
 # Reference to AudioManager autoload
 var audio_manager := AudioManager
 
@@ -62,6 +68,32 @@ func _unhandled_input(event: InputEvent) -> void:
 			_open_inventory()
 
 func _physics_process(_delta: float) -> void:
+	if is_controlled_externally:
+		external_move_timer -= _delta
+		if external_move_timer <= 0:
+			is_controlled_externally = false
+			velocity = Vector2.ZERO
+			if _was_moving:
+				audio_manager.sfx_character.stop_footstep()
+				_was_moving = false
+				animation_player.speed_scale = 1.0
+			_handle_animation()
+		else:
+			last_direction = external_direction
+			var active_speed = external_speed if external_speed > 0.0 else speed
+			velocity = external_direction * active_speed
+			
+			animation_player.speed_scale = 1.0
+			audio_manager.sfx_character.footstep_interval = 0.4
+			if not _was_moving:
+				audio_manager.play_footstep(_current_surface)
+				_was_moving = true
+				
+			move_and_slide()
+			global_position = global_position.snapped(Vector2(0.1, 0.1))
+			_handle_animation()
+		return
+
 	if is_interacting or SceneManager.is_transitioning:
 		velocity = Vector2.ZERO
 		return
@@ -124,6 +156,12 @@ func _close_inventory() -> void:
 # -------------------------------------------------------
 # Animation
 # -------------------------------------------------------
+
+func move_externally(dir: Vector2, time: float, custom_speed: float = 0.0) -> void:
+	external_direction = dir
+	external_move_timer = time
+	external_speed = custom_speed
+	is_controlled_externally = true
 
 func set_direction(dir: Vector2) -> void:
 	last_direction = dir

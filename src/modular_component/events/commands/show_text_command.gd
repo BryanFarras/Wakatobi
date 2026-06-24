@@ -1,4 +1,5 @@
 # command_show_text.gd
+@tool
 class_name CommandShowText
 extends EventCommand
 

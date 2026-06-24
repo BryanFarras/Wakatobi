@@ -1,4 +1,5 @@
 # command_wait.gd
+@tool
 class_name CommandWait
 extends EventCommand
 

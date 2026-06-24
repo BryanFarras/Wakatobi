@@ -181,10 +181,16 @@ func _on_add_pressed() -> void:
 		var sequence = target_node.get("event_sequence")
 		var new_sequence = sequence.duplicate()
 		var new_cmd = script.new()
-		new_sequence.append(new_cmd)
+		
+		# Find the current selection to insert above it
+		var selected_items = command_list.get_selected_items()
+		var current_selection = selected_items[0] if selected_items.size() > 0 else -1
+		
+		var insert_idx = current_selection if current_selection != -1 else new_sequence.size()
+		new_sequence.insert(insert_idx, new_cmd)
 		
 		if new_cmd is CommandIf:
-			new_sequence.append(CommandEnd.new())
+			new_sequence.insert(insert_idx + 1, CommandEnd.new())
 			
 		if undo_redo:
 			undo_redo.create_action("Add Event Command")
@@ -196,6 +202,10 @@ func _on_add_pressed() -> void:
 			target_node.notify_property_list_changed()
 		
 		refresh_list()
+		
+		# Select the newly inserted command and display it in inspector
+		command_list.select(insert_idx)
+		_on_command_selected(insert_idx)
 
 func _move_command(from_index: int, to_index: int) -> void:
 	if not target_node or not "event_sequence" in target_node:

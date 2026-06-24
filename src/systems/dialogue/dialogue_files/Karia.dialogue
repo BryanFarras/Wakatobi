@@ -1,11 +1,18 @@
-~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ KARIA_QUEST_1
+Wa Ode: Kamu kok datang ke sini?
+Wa Ode: Balikin pancingan?\nWah, iya. Aku kelupaan, makasih!
+- Kenapa rame banget di sini?
+- Kelihatannya keluargamu sedang sibuk sekali...
+Wa Ode: Soalnya bentar lagi ada acara besar! Kamu harus lihat pokoknya nanti!
+Ibu Wa Ode: Oh, jadi kamu anak pindahan yang disebut-sebut Wa Ode itu?
+=> END
+~ KARIA_QUEST_2
+Ibu Wa Ode: Halo, Farras.\nJadi, gimana rasanya tinggal di Wangi-Wangi?
+Ibu Wa Ode: Maaf ya, kalau keliatannya agak berantakan. Ada acara besar mendekati soalnya.
+- Kalau boleh nanya, acara apa itu?
+=> END
+~ KARIA_QUEST_3
+Ibu Wa Ode: Adik Wa Ode sebentar lagi akan mengikuti Karia’a, jadi kami sedang menyiapkan semuanya.
+- Karia'a? Festival seperti apa itu?
+Wa Ode: Karia'a itu tradisi tahunan suci di Wakatobi.
 => END

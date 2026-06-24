@@ -1,4 +1,5 @@
 # command_eval.gd
+@tool
 class_name CommandEval
 extends EventCommand
 

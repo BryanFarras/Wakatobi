@@ -1,4 +1,5 @@
 # command_dialogue.gd
+@tool
 class_name CommandDialogue
 extends EventCommand
 
