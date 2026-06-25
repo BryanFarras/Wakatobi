@@ -13,10 +13,13 @@ extends CharacterBody2D
 ## Index (0 to 7) of the character to render from the sheet
 @export var character_index: int = 0
 
+enum VisibilityMode { EVENT_INHERIT, INDEPENDENT }
+
 @export_group("Spawn Settings")
-## StoryState flag that controls NPC presence
+@export var visibility_mode: VisibilityMode = VisibilityMode.EVENT_INHERIT
+## StoryState flag that controls NPC presence (used if visibility_mode is INDEPENDENT)
 @export var visibility_flag: String = ""
-## The NPC will exist when this flag's boolean value matches this condition
+## The NPC will exist when this flag's boolean value matches this condition (used if visibility_mode is INDEPENDENT)
 @export var visible_when_flag_is: bool = true
 
 @onready var sprite: AnimatedSprite2D = $animation
@@ -38,14 +41,6 @@ var external_speed: float = 0.0
 func _ready() -> void:
 	interact_label.hide()
 	
-	if not visibility_flag.strip_edges().is_empty():
-		var flag_name = visibility_flag.strip_edges()
-		var flag_value = StoryState.get_flag(flag_name)
-		if flag_value != visible_when_flag_is:
-			queue_free()
-			return
-		StoryState.state_changed.connect(_on_story_state_changed)
-	
 	if spritesheet:
 		setup_dynamic_animations()
 		sprite.scale = Vector2.ONE
@@ -55,6 +50,12 @@ func _ready() -> void:
 	sprite.play("idle_" + last_direction)
 	if not is_static:
 		pilih_arah_baru()
+
+	# Connect StoryState changes for real-time visibility/position updates
+	StoryState.state_changed.connect(_on_story_state_changed)
+	
+	# Initial update
+	update_npc_state()
 
 func setup_dynamic_animations() -> void:
 	var sf = SpriteFrames.new()
@@ -129,13 +130,45 @@ func setup_dynamic_animations() -> void:
 			sf.add_frame(walk_anim, walk_atlas)
 			
 	sprite.sprite_frames = sf
+func _on_story_state_changed(_key: StringName, _value: Variant) -> void:
+	update_npc_state()
 
-func _on_story_state_changed(key: StringName, value: Variant) -> void:
-	if str(key) == visibility_flag.strip_edges():
-		if typeof(value) == TYPE_BOOL:
-			if value != visible_when_flag_is:
-				queue_free()
+func update_npc_state() -> void:
+	var active_interactable: EventInteractable = null
+	for child in get_children():
+		if child is EventInteractable:
+			var is_valid = child.is_condition_valid()
+			if is_valid and not active_interactable:
+				active_interactable = child
+				child.set_active(true)
+			else:
+				child.set_active(false)
 
+	# 1. Handle Visibility
+	var is_visible = true
+	if visibility_mode == VisibilityMode.EVENT_INHERIT:
+		is_visible = (active_interactable != null)
+	elif visibility_mode == VisibilityMode.INDEPENDENT:
+		if not visibility_flag.strip_edges().is_empty():
+			var flag_name = visibility_flag.strip_edges()
+			var flag_value = StoryState.get_flag(flag_name)
+			is_visible = (flag_value == visible_when_flag_is)
+			
+	if is_visible:
+		show()
+		var col = get_node_or_null("collision")
+		if col: col.set_deferred("disabled", false)
+	else:
+		hide()
+		var col = get_node_or_null("collision")
+		if col: col.set_deferred("disabled", true)
+
+	# 2. Handle Positioning (if visible and active page has position override)
+	if is_visible and active_interactable and active_interactable.new_base_position != Vector2i.ZERO:
+		global_position = Vector2(
+			active_interactable.new_base_position.x * 32 + 16, 
+			active_interactable.new_base_position.y * 32 + 16
+		)
 func _physics_process(_delta: float) -> void:
 	# Hide interact label if an event is running or the NPC is talking
 	if interact_label.visible and (EventManager.is_processing_event or is_talking):
@@ -229,9 +262,10 @@ func mulai_dialog():
 	# If we have an EventInteractable child node with commands, run its event sequence!
 	var event_interactable: EventInteractable = null
 	for child in get_children():
-		if child is EventInteractable and not child.is_queued_for_deletion():
-			event_interactable = child
-			break
+		if child is EventInteractable:
+			if child.is_condition_valid():
+				event_interactable = child
+				break
 			
 	if event_interactable and event_interactable.event_sequence.size() > 0:
 		is_talking = true

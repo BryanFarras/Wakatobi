@@ -721,7 +721,10 @@ func _get_game_states(extra_game_states: Array) -> Array:
 			# Ignore the dialogue manager
 			if child.name == &"DialogueManager": continue
 			# Ignore the current main scene
-			if Engine.get_main_loop().current_scene and child.name == Engine.get_main_loop().current_scene.name: continue
+			var main_loop = Engine.get_main_loop()
+			if main_loop and main_loop.current_scene:
+				if child.name == main_loop.current_scene.name:
+					continue
 			# Add the node to our known autoloads
 			_autoloads[child.name] = child
 		game_states = [_autoloads]

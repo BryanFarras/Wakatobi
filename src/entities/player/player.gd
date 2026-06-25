@@ -30,7 +30,7 @@ extends CharacterBody2D
 ## Priority PCam inventory saat tertutup
 @export var inventory_pcam_inactive_priority: int = 0
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Anim
 @onready var inventory_pcam: Node2D = $InventoryPCam
 @onready var inventory_ui: CanvasLayer = $InventoryUI
 @onready var animation_tree: AnimationTree = %AnimationTree
@@ -90,7 +90,6 @@ func _physics_process(_delta: float) -> void:
 				_was_moving = true
 				
 			move_and_slide()
-			global_position = global_position.snapped(Vector2(0.1, 0.1))
 			_handle_animation()
 		return
 
@@ -130,7 +129,6 @@ func _physics_process(_delta: float) -> void:
 			animation_player.speed_scale = 1.0
 
 	move_and_slide()
-	global_position = global_position.snapped(Vector2(0.1, 0.1))
 	_handle_animation()
 
 # -------------------------------------------------------

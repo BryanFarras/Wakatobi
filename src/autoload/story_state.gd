@@ -4,6 +4,11 @@ signal state_changed(key: StringName, value: Variant)
 
 var flags: Dictionary = {}
 var variables: Dictionary = {}
+var _builtin_properties: Dictionary = {}
+
+func _ready() -> void:
+	for prop in get_property_list():
+		_builtin_properties[prop.name] = true
 
 func set_flag(name: String, value: bool) -> void:
 	flags[name] = value
@@ -40,6 +45,8 @@ func load_state(data: Dictionary) -> void:
 # Note: Undefined properties return false by default.
 
 func _get(property: StringName) -> Variant:
+	if _builtin_properties.has(property):
+		return null
 	var prop_str = str(property)
 	if flags.has(prop_str):
 		return flags[prop_str]
@@ -49,6 +56,8 @@ func _get(property: StringName) -> Variant:
 	return false
 
 func _set(property: StringName, value: Variant) -> bool:
+	if _builtin_properties.has(property):
+		return false
 	var prop_str = str(property)
 	if typeof(value) == TYPE_BOOL:
 		flags[prop_str] = value

@@ -557,6 +557,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cwaho")
 
 [node name="SchoolMap" type="Node2D"]
+y_sort_enabled = true
 
 [node name="WakatobiSchoolArea" type="Sprite2D" parent="."]
 position = Vector2(1120, 1120)
@@ -586,15 +587,17 @@ door_id = "door_rumahwaode"
 target_scene_path = "uid://ibnyoo82r8tr"
 target_door_id = "exit"
 player_spawn_offset = Vector2(0, 16)
+metadata/_edit_group_ = true
 
 [node name="door_kanan_sprite" type="CharacterBody2D" parent="Door"]
-position = Vector2(4.5833282, 2)
+position = Vector2(4.5833435, 1)
 scale = Vector2(0.41666666, 1)
 script = ExtResource("8_ws6hv")
 speed = 0.0
 is_static = true
 spritesheet = ExtResource("9_q7e5o")
 character_index = 3
+visibility_mode = 1
 metadata/_edit_group_ = true
 
 [node name="collision" type="CollisionShape2D" parent="Door/door_kanan_sprite"]
@@ -623,6 +626,7 @@ speed = 0.0
 is_static = true
 spritesheet = ExtResource("11_ubbkr")
 character_index = 3
+visibility_mode = 1
 metadata/_edit_group_ = true
 
 [node name="collision" type="CollisionShape2D" parent="Door/door_kiri_sprite"]
@@ -644,3 +648,4 @@ offset_bottom = -10.0
 text = "E"
 
 [node name="NPC_Objects" type="Node2D" parent="."]
+y_sort_enabled = true

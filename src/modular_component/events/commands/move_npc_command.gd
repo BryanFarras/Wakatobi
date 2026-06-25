@@ -114,7 +114,7 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _to_string() -> String:
-	var target_desc = "Player" if target_type == TargetType.PLAYER else str(npc_node_path)
+	var target_desc = "Player" if target_type == TargetType.PLAYER else str(npc_node_path).get_file()
 	
 	# Check if turning only (tiles is 0 or duration is 0)
 	var is_turning_only = false

@@ -14,5 +14,46 @@ Ibu Wa Ode: Maaf ya, kalau keliatannya agak berantakan. Ada acara besar mendekat
 ~ KARIA_QUEST_3
 Ibu Wa Ode: Adik Wa Ode sebentar lagi akan mengikuti Karia’a, jadi kami sedang menyiapkan semuanya.
 - Karia'a? Festival seperti apa itu?
-Wa Ode: Karia'a itu tradisi tahunan suci di Wakatobi.
 => END
+~ KARIA_QUEST_4
+Wa Ode: Karia'a itu, kayak, tradisi tahunan suci di sini.\nIni acara ritual untuk anak-anak yang beranjak dewasa.
+=> END
+~ KARIA_QUEST_5
+Ibu Wa Ode: Iya, makanya kita lagi siapin pakaiannya Heni.
+=> END
+~ KARIA_QUEST_6
+Ibu Wa Ode: Oh iya, Nak, Ibu lupa, kita sebenarnya kekurangan bahan untuk buat Parende dan Kasuaminya.
+=> END
+~ KARIA_QUEST_7
+Wa Ode: Serius, bu?\nBukannya udah bentar lagi ya, festivalnya?
+Ibu Wa Ode: Justru karena itu, Nak. Bisa kah kau bantu cari?\nStok ikan sama singkong di pasar udah abis soalnya.
+Wa Ode: Bisa sih, tapi kayaknya agak susah kalau aku cari sendiri...
+- (Bantu Wa Ode)
+	set StoryState.QUEST_KARIA_ACCEPTED = true
+- (Aku ada kesibukan lain...)
+	Wa Ode: Ya udah lah ya...
+=> END
+~ KARIA_QUEST_8
+if StoryState.QUEST_KARIA_ACCEPTED:
+	Wa Ode: Serius, Farras? Kamu mau bantu?
+	Wa Ode: Eh, makasih banget!\nHehe!
+	Wa Ode: Temuin aku di deket pintu, biar kita buat plan.
+else:
+	Wa Ode: Maaf ya ras, aku lagi gabisa main.
+	Wa Ode: Lain kali mungkin.\nTapi jangan lupa liat Karia'a, ya, nanti!
+=> END
+~ KARIA_QUEST_9
+if StoryState.QUEST_KARIA_ACCEPTED:
+	Ibu Wa Ode: Makasih, ya, kalian berdua.
+else:
+	Ibu Wa Ode: Makasih, ya, Nak.
+=> END
+
+~ KARIA_QUEST_ASK
+Wa Ode: Maaf ya ras, aku lagi gabisa main.\nSiapin jamuan untuk Karia'a emang sepenting itu, soalnya.
+- (Bantu Wa Ode)
+	set StoryState.QUEST_KARIA_ACCEPTED = true
+- (Aku ada kesibukan lain...)
+	Wa Ode: Jangan lupa liat adikku di Karia'a, ya, nanti!
+=> END
+

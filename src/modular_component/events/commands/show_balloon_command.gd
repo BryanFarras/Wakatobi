@@ -59,6 +59,7 @@ func execute() -> Signal:
 	balloon.vframes = 10
 	balloon.frame_coords = Vector2i(0, int(balloon_type))
 	balloon.position = Vector2(0, vertical_offset)
+	balloon.z_index = 5
 	target_node.add_child(balloon)
 	print("[ShowBalloon] Added balloon sprite to ", target_node.name, " at offset ", balloon.position)
 	print("[ShowBalloon] balloon global_position: ", balloon.global_position, " global_scale: ", balloon.global_scale, " z_index: ", balloon.z_index, " visible: ", balloon.visible)
@@ -91,6 +92,6 @@ func _run_async_animation(balloon: Sprite2D, row_index: int, tree: SceneTree) ->
 		balloon.queue_free()
 
 func _to_string() -> String:
-	var target_str = "Player" if target_type == TargetType.PLAYER else str(npc_node_path)
+	var target_str = "Player" if target_type == TargetType.PLAYER else str(npc_node_path).get_file()
 	var wait_str = "" if wait_for_completion else " (No Wait)"
 	return "Show Balloon: " + BalloonType.keys()[balloon_type] + " on " + target_str + wait_str

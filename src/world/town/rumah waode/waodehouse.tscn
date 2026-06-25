@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://ibnyoo82r8tr"]
+[gd_scene load_steps=123 format=4 uid="uid://ibnyoo82r8tr"]
 
 [ext_resource type="Texture2D" uid="uid://d1d4e0xmy4p3x" path="res://assets/textures/environment/Wa Ode House.png" id="1_o3ml2"]
 [ext_resource type="Texture2D" uid="uid://boabcqgmshqaw" path="res://assets/Sample Project/Graphics/Tilesets/DSPlus_TileB_Sengoku_Colored_Roof.png" id="2_8l546"]
@@ -28,6 +28,11 @@
 [ext_resource type="Script" uid="uid://cc1t3nbv7ht6a" path="res://src/modular_component/events/commands/move_npc_command.gd" id="20_aevi1"]
 [ext_resource type="Script" uid="uid://ckfmwr51u6neu" path="res://src/modular_component/events/commands/show_balloon_command.gd" id="23_ilhra"]
 [ext_resource type="Script" uid="uid://dwhx4hff28eev" path="res://src/modular_component/events/commands/set_switch_command.gd" id="28_l7klt"]
+[ext_resource type="Script" uid="uid://dpwb22ygwdakp" path="res://src/modular_component/events/commands/if_command.gd" id="29_flkm8"]
+[ext_resource type="Script" uid="uid://b778g75hr2rxi" path="res://src/modular_component/events/commands/else_command.gd" id="30_e2mms"]
+[ext_resource type="Script" uid="uid://67hduw7cotxy" path="res://src/modular_component/events/commands/end_command.gd" id="30_n1ofs"]
+[ext_resource type="Script" uid="uid://db067uqto5eoy" path="res://src/modular_component/events/commands/wait_command.gd" id="31_n1ofs"]
+[ext_resource type="Script" uid="uid://bbr0iujth0xe4" path="res://src/modular_component/events/commands/set_npc_location_command.gd" id="33_565pm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwcwr"]
 texture = ExtResource("2_8l546")
@@ -1300,8 +1305,59 @@ switch_name = "QUEST_KARIA"
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjex5"]
 radius = 15.0
 
+[sub_resource type="Resource" id="Resource_vfqee"]
+script = ExtResource("18_bc8bx")
+text = "Ini Page 1!"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gor76"]
 radius = 32.0
+
+[sub_resource type="Resource" id="Resource_xsfbj"]
+script = ExtResource("18_bc8bx")
+text = "Ini Page 2!"
+
+[sub_resource type="Resource" id="Resource_kxn02"]
+script = ExtResource("18_bc8bx")
+character_name = "Heni"
+text = "...Jadi kamu temen kakakku?"
+
+[sub_resource type="Resource" id="Resource_4sqgt"]
+script = ExtResource("18_bc8bx")
+character_name = "Heni"
+text = "Kok gak keliatan sih aura kota-kotanya?"
+
+[sub_resource type="Resource" id="Resource_lk7vq"]
+script = ExtResource("29_flkm8")
+condition = "StoryState.QUEST_KARIA_ACCEPTED"
+
+[sub_resource type="Resource" id="Resource_3gi5v"]
+script = ExtResource("18_bc8bx")
+character_name = "Ibu Wak Ode"
+text = "Makasih ya, udah mau bantuin kita.\\nKasuami dan Parende itu makanan wajib soalnya untuk acara ini."
+
+[sub_resource type="Resource" id="Resource_8feop"]
+script = ExtResource("18_bc8bx")
+character_name = "Ibu Wak Ode"
+text = "Tradisinya, makanan itu melambangkan kemakmuran. Untuk momen sakral seperti Karia'a, Parende terbaik harus menggunakan Ikan Kakaktua segar"
+
+[sub_resource type="Resource" id="Resource_qwe8t"]
+script = ExtResource("30_e2mms")
+
+[sub_resource type="Resource" id="Resource_oxgfl"]
+script = ExtResource("18_bc8bx")
+character_name = "Ibu Wak Ode"
+text = "Sekali lagi, maaf ya, kondisi rumah kami agak berantakan seperti ini."
+
+[sub_resource type="Resource" id="Resource_6k4l8"]
+script = ExtResource("18_bc8bx")
+character_name = "Ibu Wak Ode"
+text = "Ini tradisi penting, jadi kita harus siapin yang terbaik."
+
+[sub_resource type="Resource" id="Resource_v8pth"]
+script = ExtResource("30_n1ofs")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2deab"]
+size = Vector2(64, 32)
 
 [sub_resource type="Resource" id="Resource_27io5"]
 script = ExtResource("19_l8r70")
@@ -1349,7 +1405,7 @@ balloon_type = 4
 
 [sub_resource type="Resource" id="Resource_l8r70"]
 script = ExtResource("18_bc8bx")
-character_name = "Adik Wa Ode"
+character_name = "Heni"
 text = "Berisik, kak!\\nMending kamu tanggepin temenmu di belakang tu!"
 
 [sub_resource type="Resource" id="Resource_xmuo3"]
@@ -1460,7 +1516,7 @@ script = ExtResource("15_klcoe")
 dialogue_resource = ExtResource("14_bc8bx")
 start_node = "KARIA_QUEST_2"
 
-[sub_resource type="Resource" id="Resource_munea"]
+[sub_resource type="Resource" id="Resource_jdr43"]
 script = ExtResource("20_aevi1")
 npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
 direction = 2
@@ -1471,10 +1527,181 @@ script = ExtResource("15_klcoe")
 dialogue_resource = ExtResource("14_bc8bx")
 start_node = "KARIA_QUEST_3"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2deab"]
-size = Vector2(64, 32)
+[sub_resource type="Resource" id="Resource_munea"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+duration = 0.0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_ffdow"]
+script = ExtResource("20_aevi1")
+target_type = 1
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+direction = 2
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_4ip0t"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 3
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_ip3m5"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_4"
+
+[sub_resource type="Resource" id="Resource_pj3gj"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+direction = 2
+duration = 0.0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_f8nck"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 0
+duration = 0.0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_gpv1t"]
+script = ExtResource("20_aevi1")
+target_type = 1
+direction = 0
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_iprh5"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_5"
+
+[sub_resource type="Resource" id="Resource_8px18"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+duration = 0.0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_3y845"]
+script = ExtResource("19_l8r70")
+label_text = "Bagian Tanya Quest: Bantu Wa Ode atau Tidak?"
+
+[sub_resource type="Resource" id="Resource_x8534"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_6"
+
+[sub_resource type="Resource" id="Resource_ivlhi"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+
+[sub_resource type="Resource" id="Resource_uwquw"]
+script = ExtResource("20_aevi1")
+target_type = 1
+direction = 2
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_vso60"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_7"
+
+[sub_resource type="Resource" id="Resource_tlug8"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 3
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_2os55"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_8"
+
+[sub_resource type="Resource" id="Resource_x6ps2"]
+script = ExtResource("29_flkm8")
+condition = "StoryState.QUEST_KARIA_ACCEPTED"
+
+[sub_resource type="Resource" id="Resource_yljo5"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+balloon_type = 2
+
+[sub_resource type="Resource" id="Resource_0vdlm"]
+script = ExtResource("30_n1ofs")
+
+[sub_resource type="Resource" id="Resource_rumrx"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+duration = 0.0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_hcjqc"]
+script = ExtResource("23_ilhra")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+balloon_type = 2
+
+[sub_resource type="Resource" id="Resource_6e6en"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+direction = 0
+duration = 0.0
+wait_for_completion = false
+
+[sub_resource type="Resource" id="Resource_ctdwq"]
+script = ExtResource("20_aevi1")
+target_type = 1
+direction = 0
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_hlrf2"]
+script = ExtResource("15_klcoe")
+dialogue_resource = ExtResource("14_bc8bx")
+start_node = "KARIA_QUEST_9"
+
+[sub_resource type="Resource" id="Resource_ryx2s"]
+script = ExtResource("19_l8r70")
+label_text = "Transition to Gameplay"
+
+[sub_resource type="Resource" id="Resource_gljcu"]
+script = ExtResource("18_o4bvh")
+
+[sub_resource type="Resource" id="Resource_537nk"]
+script = ExtResource("31_n1ofs")
+wait_time = 0.5
+
+[sub_resource type="Resource" id="Resource_wkawt"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Ibu Wa Ode")
+direction = 2
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_moysc"]
+script = ExtResource("20_aevi1")
+npc_node_path = NodePath("NPC_Objects/Adik Wa Ode")
+direction = 3
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_wmcsl"]
+script = ExtResource("19_ilhra")
+target_direction = 2
+target_tile = Vector2i(15, 14)
+
+[sub_resource type="Resource" id="Resource_ykbnt"]
+script = ExtResource("28_l7klt")
+switch_name = "QUEST_KARIA_IN_PROGRESS"
+
+[sub_resource type="Resource" id="Resource_r3eg8"]
+script = ExtResource("33_565pm")
+npc_node_path = NodePath("NPC_Objects/Wa Ode")
+target_tile = Vector2i(13, 19)
+target_direction = 2
+
+[sub_resource type="Resource" id="Resource_gp2qi"]
+script = ExtResource("18_o4bvh")
+fade_type = 0
 
 [node name="SchoolMap" type="Node2D"]
+y_sort_enabled = true
 
 [node name="WakatobiSchoolArea" type="Sprite2D" parent="."]
 position = Vector2(560, 416)
@@ -1503,7 +1730,7 @@ tile_set = SubResource("TileSet_any3t")
 position = Vector2(464, 720)
 
 [node name="Door" parent="." instance=ExtResource("7_r1shd")]
-position = Vector2(479.00003, 778)
+position = Vector2(479, 778)
 scale = Vector2(3.6, 1)
 door_id = "exit"
 target_scene_path = "uid://jt7gwi5tsngy"
@@ -1511,6 +1738,7 @@ target_door_id = "door_rumahwaode"
 player_spawn_offset = Vector2(0, -32)
 
 [node name="NPC_Objects" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Event" type="Node2D" parent="NPC_Objects"]
 position = Vector2(368, 368)
@@ -1524,7 +1752,6 @@ script = ExtResource("8_3da6l")
 is_static = true
 default_direction = "atas"
 spritesheet = ExtResource("10_2x6rv")
-visibility_flag = "QUEST_KARIA"
 metadata/_edit_group_ = true
 
 [node name="collision" type="CollisionShape2D" parent="NPC_Objects/Wa Ode"]
@@ -1540,12 +1767,26 @@ visible = false
 scale = Vector2(2, 2)
 target_position = Vector2(0, 16)
 
-[node name="EventInteractable" type="Node2D" parent="NPC_Objects/Wa Ode"]
+[node name="EventPage1" type="Node2D" parent="NPC_Objects/Wa Ode"]
 script = ExtResource("11_4ko02")
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_vfqee")])
+visibility_flag = "QUEST_KARIA_IN_PROGRESS"
+new_base_position = Vector2i(13, 19)
 
-[node name="interaksi" type="Area2D" parent="NPC_Objects/Wa Ode/EventInteractable"]
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Wa Ode/EventPage1"]
 
-[node name="area" type="CollisionShape2D" parent="NPC_Objects/Wa Ode/EventInteractable/interaksi"]
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Wa Ode/EventPage1/interaksi"]
+visible = false
+shape = SubResource("CircleShape2D_gor76")
+
+[node name="EventPage2" type="Node2D" parent="NPC_Objects/Wa Ode"]
+script = ExtResource("11_4ko02")
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_xsfbj")])
+visibility_flag = "QUEST_KARIA"
+
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Wa Ode/EventPage2"]
+
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Wa Ode/EventPage2/interaksi"]
 visible = false
 shape = SubResource("CircleShape2D_gor76")
 
@@ -1565,7 +1806,6 @@ is_static = true
 default_direction = "kanan"
 spritesheet = ExtResource("16_2deab")
 character_index = 5
-visibility_flag = "QUEST_KARIA"
 metadata/_edit_group_ = true
 
 [node name="collision" type="CollisionShape2D" parent="NPC_Objects/Adik Wa Ode"]
@@ -1583,6 +1823,8 @@ target_position = Vector2(0, 16)
 
 [node name="EventInteractable" type="Node2D" parent="NPC_Objects/Adik Wa Ode"]
 script = ExtResource("11_4ko02")
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_kxn02"), SubResource("Resource_4sqgt")])
+visibility_flag = "QUEST_KARIA"
 
 [node name="interaksi" type="Area2D" parent="NPC_Objects/Adik Wa Ode/EventInteractable"]
 
@@ -1606,7 +1848,6 @@ is_static = true
 default_direction = "kiri"
 spritesheet = ExtResource("16_rc4do")
 character_index = 2
-visibility_flag = "QUEST_KARIA"
 metadata/_edit_group_ = true
 
 [node name="collision" type="CollisionShape2D" parent="NPC_Objects/Ibu Wa Ode"]
@@ -1624,6 +1865,8 @@ target_position = Vector2(0, 16)
 
 [node name="EventInteractable" type="Node2D" parent="NPC_Objects/Ibu Wa Ode"]
 script = ExtResource("11_4ko02")
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_lk7vq"), SubResource("Resource_3gi5v"), SubResource("Resource_8feop"), SubResource("Resource_qwe8t"), SubResource("Resource_oxgfl"), SubResource("Resource_6k4l8"), SubResource("Resource_v8pth")])
+visibility_flag = "QUEST_KARIA"
 
 [node name="interaksi" type="Area2D" parent="NPC_Objects/Ibu Wa Ode/EventInteractable"]
 
@@ -1642,18 +1885,27 @@ text = "E"
 [node name="Karia_Quest_Trigger" type="CharacterBody2D" parent="NPC_Objects"]
 position = Vector2(479, 552)
 script = ExtResource("8_3da6l")
-quest_data = ExtResource("9_aua5v")
 is_static = true
 touch_trigger = true
-visibility_flag = "QUEST_KARIA"
 metadata/_edit_group_ = true
 
 [node name="collision" type="CollisionShape2D" parent="NPC_Objects/Karia_Quest_Trigger"]
 
+[node name="DisableQuestCutscene" type="Node2D" parent="NPC_Objects/Karia_Quest_Trigger"]
+position = Vector2(1, 2)
+script = ExtResource("11_4ko02")
+visibility_flag = "QUEST_KARIA_IN_PROGRESS"
+
+[node name="interaksi" type="Area2D" parent="NPC_Objects/Karia_Quest_Trigger/DisableQuestCutscene"]
+
+[node name="area" type="CollisionShape2D" parent="NPC_Objects/Karia_Quest_Trigger/DisableQuestCutscene/interaksi"]
+shape = SubResource("RectangleShape2D_2deab")
+
 [node name="QuestCutscene" type="Node2D" parent="NPC_Objects/Karia_Quest_Trigger"]
 position = Vector2(1, 2)
 script = ExtResource("11_4ko02")
-event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_27io5"), SubResource("Resource_6dbnm"), SubResource("Resource_5ocgu"), SubResource("Resource_cv4pi"), SubResource("Resource_nmp0l"), SubResource("Resource_cwbbs"), SubResource("Resource_klcoe"), SubResource("Resource_o4bvh"), SubResource("Resource_ilhra"), SubResource("Resource_2u6yc"), SubResource("Resource_l8r70"), SubResource("Resource_xmuo3"), SubResource("Resource_l7klt"), SubResource("Resource_flkm8"), SubResource("Resource_n1ofs"), SubResource("Resource_e2mms"), SubResource("Resource_o0c3p"), SubResource("Resource_34knx"), SubResource("Resource_du8le"), SubResource("Resource_sqtq2"), SubResource("Resource_565pm"), SubResource("Resource_bn2hk"), SubResource("Resource_4ev5r"), SubResource("Resource_g6d51"), SubResource("Resource_qrlb2"), SubResource("Resource_k06hr"), SubResource("Resource_gjgla"), SubResource("Resource_a58j1"), SubResource("Resource_gruko"), SubResource("Resource_7xip1"), SubResource("Resource_munea"), SubResource("Resource_rnjl3")])
+event_sequence = Array[ExtResource("13_2deab")]([SubResource("Resource_27io5"), SubResource("Resource_6dbnm"), SubResource("Resource_5ocgu"), SubResource("Resource_cv4pi"), SubResource("Resource_nmp0l"), SubResource("Resource_cwbbs"), SubResource("Resource_klcoe"), SubResource("Resource_o4bvh"), SubResource("Resource_ilhra"), SubResource("Resource_2u6yc"), SubResource("Resource_l8r70"), SubResource("Resource_xmuo3"), SubResource("Resource_l7klt"), SubResource("Resource_flkm8"), SubResource("Resource_n1ofs"), SubResource("Resource_e2mms"), SubResource("Resource_o0c3p"), SubResource("Resource_34knx"), SubResource("Resource_du8le"), SubResource("Resource_sqtq2"), SubResource("Resource_565pm"), SubResource("Resource_bn2hk"), SubResource("Resource_4ev5r"), SubResource("Resource_g6d51"), SubResource("Resource_qrlb2"), SubResource("Resource_k06hr"), SubResource("Resource_gjgla"), SubResource("Resource_a58j1"), SubResource("Resource_gruko"), SubResource("Resource_7xip1"), SubResource("Resource_jdr43"), SubResource("Resource_rnjl3"), SubResource("Resource_munea"), SubResource("Resource_ffdow"), SubResource("Resource_4ip0t"), SubResource("Resource_ip3m5"), SubResource("Resource_pj3gj"), SubResource("Resource_f8nck"), SubResource("Resource_gpv1t"), SubResource("Resource_iprh5"), SubResource("Resource_8px18"), SubResource("Resource_3y845"), SubResource("Resource_x8534"), SubResource("Resource_ivlhi"), SubResource("Resource_uwquw"), SubResource("Resource_vso60"), SubResource("Resource_tlug8"), SubResource("Resource_2os55"), SubResource("Resource_x6ps2"), SubResource("Resource_yljo5"), SubResource("Resource_0vdlm"), SubResource("Resource_rumrx"), SubResource("Resource_hcjqc"), SubResource("Resource_6e6en"), SubResource("Resource_ctdwq"), SubResource("Resource_hlrf2"), SubResource("Resource_ryx2s"), SubResource("Resource_gljcu"), SubResource("Resource_537nk"), SubResource("Resource_wkawt"), SubResource("Resource_moysc"), SubResource("Resource_wmcsl"), SubResource("Resource_ykbnt"), SubResource("Resource_r3eg8"), SubResource("Resource_gp2qi")])
+visibility_flag = "QUEST_KARIA"
 
 [node name="interaksi" type="Area2D" parent="NPC_Objects/Karia_Quest_Trigger/QuestCutscene"]
 
@@ -1679,11 +1931,15 @@ visible = false
 scale = Vector2(2, 2)
 target_position = Vector2(0, 16)
 
-[connection signal="body_shape_entered" from="NPC_Objects/Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_entered"]
-[connection signal="body_shape_exited" from="NPC_Objects/Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="NPC_Objects/Wa Ode/EventPage1/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Wa Ode/EventPage1/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="NPC_Objects/Wa Ode/EventPage2/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Wa Ode/EventPage2/interaksi" to="NPC_Objects/Wa Ode" method="_on_interaksi_body_shape_exited"]
 [connection signal="body_shape_entered" from="NPC_Objects/Adik Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Adik Wa Ode" method="_on_interaksi_body_shape_entered"]
 [connection signal="body_shape_exited" from="NPC_Objects/Adik Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Adik Wa Ode" method="_on_interaksi_body_shape_exited"]
 [connection signal="body_shape_entered" from="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Ibu Wa Ode" method="_on_interaksi_body_shape_entered"]
 [connection signal="body_shape_exited" from="NPC_Objects/Ibu Wa Ode/EventInteractable/interaksi" to="NPC_Objects/Ibu Wa Ode" method="_on_interaksi_body_shape_exited"]
+[connection signal="body_shape_entered" from="NPC_Objects/Karia_Quest_Trigger/DisableQuestCutscene/interaksi" to="NPC_Objects/Karia_Quest_Trigger" method="_on_interaksi_body_shape_entered"]
+[connection signal="body_shape_exited" from="NPC_Objects/Karia_Quest_Trigger/DisableQuestCutscene/interaksi" to="NPC_Objects/Karia_Quest_Trigger" method="_on_interaksi_body_shape_exited"]
 [connection signal="body_shape_entered" from="NPC_Objects/Karia_Quest_Trigger/QuestCutscene/interaksi" to="NPC_Objects/Karia_Quest_Trigger" method="_on_interaksi_body_shape_entered"]
 [connection signal="body_shape_exited" from="NPC_Objects/Karia_Quest_Trigger/QuestCutscene/interaksi" to="NPC_Objects/Karia_Quest_Trigger" method="_on_interaksi_body_shape_exited"]

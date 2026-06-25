@@ -253,6 +253,7 @@ states/walk/position = Vector2(486.66666, 171)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_fjrip"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_smehm")]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_g2els")
 run_speed = 225.0
