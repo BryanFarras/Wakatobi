@@ -557,7 +557,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cwaho")
 
 [node name="SchoolMap" type="Node2D"]
-y_sort_enabled = true
 
 [node name="WakatobiSchoolArea" type="Sprite2D" parent="."]
 position = Vector2(1120, 1120)

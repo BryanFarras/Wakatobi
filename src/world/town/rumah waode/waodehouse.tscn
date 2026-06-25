@@ -1701,7 +1701,6 @@ script = ExtResource("18_o4bvh")
 fade_type = 0
 
 [node name="SchoolMap" type="Node2D"]
-y_sort_enabled = true
 
 [node name="WakatobiSchoolArea" type="Sprite2D" parent="."]
 position = Vector2(560, 416)
@@ -1924,7 +1923,6 @@ offset_left = -4.0
 offset_top = -33.0
 offset_right = 5.0
 offset_bottom = -10.0
-text = "E"
 
 [node name="raycast" type="RayCast2D" parent="NPC_Objects/Karia_Quest_Trigger"]
 visible = false

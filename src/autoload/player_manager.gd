@@ -26,10 +26,17 @@ func _ready() -> void:
 # -------------------------------------------------------
 
 func spawn(parent: Node, position: Vector2) -> void:
+	var target_parent = parent
+	if parent == get_tree().current_scene:
+		if parent.has_node("NPC_Objects"):
+			target_parent = parent.get_node("NPC_Objects")
+		elif parent.has_node("YSort"):
+			target_parent = parent.get_node("YSort")
+			
 	if _player == null or not is_instance_valid(_player):
-		_instantiate(parent, position)
+		_instantiate(target_parent, position)
 	else:
-		_reparent(_player, parent, position)
+		_reparent(_player, target_parent, position)
 	
 	if pending_direction != Vector2.ZERO:
 		if _player.has_method("set_direction"):

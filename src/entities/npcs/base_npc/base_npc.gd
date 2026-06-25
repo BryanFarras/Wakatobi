@@ -267,6 +267,20 @@ func mulai_dialog():
 				event_interactable = child
 				break
 			
+	var previous_direction = last_direction
+	
+	# Turn to face player
+	var player = PlayerManager.get_player()
+	if player:
+		var dir_to_player = (player.global_position - global_position).normalized()
+		var turn_dir = "bawah"
+		if abs(dir_to_player.x) > abs(dir_to_player.y):
+			turn_dir = "kanan" if dir_to_player.x > 0 else "kiri"
+		else:
+			turn_dir = "bawah" if dir_to_player.y > 0 else "atas"
+		if sprite:
+			sprite.play("idle_" + turn_dir)
+			
 	if event_interactable and event_interactable.event_sequence.size() > 0:
 		is_talking = true
 		velocity = Vector2.ZERO
@@ -279,15 +293,17 @@ func mulai_dialog():
 			await get_tree().process_frame
 			
 		is_talking = false
-		return
-
-	# Fallback to legacy quest dialogue
-	if quest_data and quest_data.dialogue:
+	elif quest_data and quest_data.dialogue:
 		is_talking = true
 		velocity = Vector2.ZERO
 		DialogueManager.show_dialogue_balloon(quest_data.dialogue, "Awal")
 		await DialogueManager.dialogue_ended
 		is_talking = false
+
+	# Restore previous direction
+	last_direction = previous_direction
+	if sprite:
+		sprite.play("idle_" + previous_direction)
 
 func _on_interaksi_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body.name == "Player":
